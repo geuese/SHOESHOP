@@ -1,5 +1,9 @@
 package ar.edu.unlam.dominio;
 
+import ar.edu.unalm.enums.Genero;
+import ar.edu.unalm.enums.Marca;
+import ar.edu.unalm.enums.TipoDeUso;
+
 public class OutDoor extends Calzado {
 
 	private TipoDeUso tipoDeUso;
@@ -9,8 +13,6 @@ public class OutDoor extends Calzado {
 		super(idCalzado, talle, stock, color, genero, precio, marca);
 
 		this.tipoDeUso = tipoDeUso;
-
-		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -1,4 +1,4 @@
-package ar.edu.unlam.dominio;
+package ar.edu.unalm.enums;
 
 public enum TipoCalzado {
 	
