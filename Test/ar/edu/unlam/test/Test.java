@@ -4,27 +4,27 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 
+import ar.edu.unalm.enums.Categoria;
+import ar.edu.unalm.enums.TipoContrato;
+import ar.edu.unalm.enums.Genero;
+import ar.edu.unalm.enums.Marca;
+import ar.edu.unalm.enums.ModoDePago;
+import ar.edu.unalm.enums.TipoCalzado;
+import ar.edu.unalm.enums.TipoDeEmpleado;
+import ar.edu.unalm.enums.TipoDePisada;
+import ar.edu.unalm.enums.TipoDeUso;
+import ar.edu.unalm.enums.TipoSuperficie;
 import ar.edu.unlam.dominio.Botin;
 import ar.edu.unlam.dominio.Calzado;
-import ar.edu.unlam.dominio.Categoria;
 import ar.edu.unlam.dominio.Cliente;
-import ar.edu.unlam.dominio.Contrato;
 import ar.edu.unlam.dominio.Empleado;
-import ar.edu.unlam.dominio.Genero;
-import ar.edu.unlam.dominio.Marca;
-import ar.edu.unlam.dominio.ModoDePago;
 import ar.edu.unlam.dominio.OutDoor;
 import ar.edu.unlam.dominio.Running;
 import ar.edu.unlam.dominio.TiendaDeCalzado;
-import ar.edu.unlam.dominio.TipoCalzado;
-import ar.edu.unlam.dominio.TipoDeEmpleado;
-import ar.edu.unlam.dominio.TipoDePisada;
-import ar.edu.unlam.dominio.TipoDeUso;
-import ar.edu.unlam.dominio.TipoSuperficie;
 
 public class Test {
 
-	private static final String NOMBRE_TIENDA_CALZADO = "El Pichu";
+	private static final String NOMBRE_TIENDA_CALZADO = "ShoresShop";
 	private TiendaDeCalzado tiendaDeCalzado;
 
 	@Before
@@ -124,7 +124,7 @@ public class Test {
 		
 		
 		String nombre = "Empleado";
-		Contrato modalidadDeContratacion = Contrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
