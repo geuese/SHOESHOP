@@ -123,7 +123,7 @@ public class Test {
 	public void queSePuedaCrearElEmpleado() {
 		
 		
-		String nombre = "Pichu";
+		String nombre = "Empleado";
 		Contrato modalidadDeContratacion = Contrato.TIEMPO_INDETERMINDADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
@@ -138,5 +138,85 @@ public class Test {
 		assertTrue(empleado.equals(empleado1));
 		
 	}
-
+	
+	@org.junit.Test
+	public void queTraigaTodosLosRunning() {
+		
+	}
+	
+	@org.junit.Test
+	public void queTraigaTodosLosOutDoor() {
+		
+	}
+	
+	@org.junit.Test
+	public void queTraigaTodosLosBotin() {
+		
+	}
+	
+	@org.junit.Test
+	public void buscarCalzadoPorCodigo() {
+		
+	}
+	
+	@org.junit.Test
+	public void buscarCalzadoPorCodigoDevuelvePrecio() {
+		
+	}
+	
+	@org.junit.Test
+	public void buscarCalzadoTipoOrdenadoPorTalle() {
+		
+	}
+	
+	@org.junit.Test
+	public void asignarCalzadosAUnCliente() {
+		
+	}
+	
+	@org.junit.Test
+	public void asignarClienteAUnEmpleado() {
+		
+	}
+	
+	@org.junit.Test
+	public void obtenerListaDeCalzadosDelCliente() {
+		
+	}
+	
+	@org.junit.Test
+	public void obtenerListaDeClientesDelEmpleado() {
+		
+	}
+	
+	@org.junit.Test
+	public void calcularElTotalGastadoPorCadaCliente() {
+		
+	}
+	
+	@org.junit.Test
+	public void obtenerElTotalDeVentasPorEmpleado() {
+		
+	}
+	
+	@org.junit.Test
+	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
+		
+	}
+	
+	@org.junit.Test
+	public void venderCalzadoAUnCliente() {
+		
+	}
+	
+	@org.junit.Test
+	public void calcularComisionDelEmpleado() {
+		
+	}
+	
+	@org.junit.Test
+	public void calcularSueldoTotalSegunTipoEmpleado() {
+		
+	}
+	
 }
