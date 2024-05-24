@@ -64,7 +64,6 @@ public class Test {
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
-
 		Marca marca = Marca.TOPPER;
 
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
