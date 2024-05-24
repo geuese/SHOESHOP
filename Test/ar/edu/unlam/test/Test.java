@@ -32,6 +32,7 @@ public class Test {
 		this.tiendaDeCalzado = new TiendaDeCalzado(NOMBRE_TIENDA_CALZADO);
 	}
 
+	//Faa
 	@org.junit.Test
 	public void queSePuedaAnadirCalzadoBotinALaTienda() {
 
@@ -64,7 +65,6 @@ public class Test {
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
-
 		Marca marca = Marca.TOPPER;
 
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
@@ -121,102 +121,100 @@ public class Test {
 
 	@org.junit.Test
 	public void queSePuedaCrearElEmpleado() {
-		
-		
+
 		String nombre = "Empleado";
 		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
 		Categoria categoria = Categoria.FULL_TIME;
-		
-		
-		Empleado empleado = new Empleado(nombre,modalidadDeContratacion,legajo,tipoDeEmpleado,antiguedad,categoria);
 
-		Empleado empleado1 = new Empleado(nombre,modalidadDeContratacion,legajo,tipoDeEmpleado,antiguedad,categoria);
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		Empleado empleado1 = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
 
 		assertTrue(empleado.equals(empleado1));
-		
+
 	}
-	
+
+	// Alexis
 	@org.junit.Test
 	public void queTraigaTodosLosRunning() {
-		
+
 	}
-	
+
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
-		
 	}
-	
+
 	@org.junit.Test
 	public void queTraigaTodosLosBotin() {
-		
 	}
-	
-	@org.junit.Test
-	public void buscarCalzadoPorCodigo() {
-		
-	}
-	
-	@org.junit.Test
-	public void buscarCalzadoPorCodigoDevuelvePrecio() {
-		
-	}
-	
-	@org.junit.Test
-	public void buscarCalzadoTipoOrdenadoPorTalle() {
-		
-	}
-	
-	@org.junit.Test
-	public void asignarCalzadosAUnCliente() {
-		
-	}
-	
-	@org.junit.Test
-	public void asignarClienteAUnEmpleado() {
-		
-	}
-	
-	@org.junit.Test
-	public void obtenerListaDeCalzadosDelCliente() {
-		
-	}
-	
-	@org.junit.Test
-	public void obtenerListaDeClientesDelEmpleado() {
-		
-	}
-	
-	@org.junit.Test
-	public void calcularElTotalGastadoPorCadaCliente() {
-		
-	}
-	
-	@org.junit.Test
-	public void obtenerElTotalDeVentasPorEmpleado() {
-		
-	}
-	
-	@org.junit.Test
-	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
-		
-	}
-	
-	@org.junit.Test
-	public void venderCalzadoAUnCliente() {
-		
-	}
-	
+
 	@org.junit.Test
 	public void calcularComisionDelEmpleado() {
-		
 	}
-	
+
+	// Kevin
+	@org.junit.Test
+	public void buscarCalzadoPorCodigo() {
+	}
+
+	@org.junit.Test
+	public void buscarCalzadoPorCodigoDevuelvePrecio() {
+	}
+
+	@org.junit.Test
+	public void buscarCalzadoTipoOrdenadoPorTalle() {
+	}
+
 	@org.junit.Test
 	public void calcularSueldoTotalSegunTipoEmpleado() {
-		
 	}
-	
+
+	// Gustavo
+	@org.junit.Test
+	public void asignarCalzadosAUnCliente() {
+	}
+
+	@org.junit.Test
+	public void asignarClienteAUnEmpleado() {
+	}
+
+	@org.junit.Test
+	public void calcularElTotalGastadoPorCadaCliente() {
+	}
+
+	@org.junit.Test
+	public void venderCalzadoAUnCliente() {
+	}
+
+	// Elias
+
+	@org.junit.Test
+	public void obtenerListaDeCalzadosDelCliente() {
+
+	}
+
+	@org.junit.Test
+	public void obtenerListaDeClientesDelEmpleado() {
+
+	}
+
+	@org.junit.Test
+	public void obtenerElTotalDeVentasPorEmpleado() {
+
+	}
+
+	@org.junit.Test
+	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
+
+	}
+
+	// obtenerListaDeCalzadosDelCliente 19.
+	// obtenerListaDeClientesDelEmpleado 20. obtenerElTotalDeVentasPorEmpleado 21.
+	// obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente
+
 }
