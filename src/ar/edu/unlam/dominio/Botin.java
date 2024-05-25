@@ -11,6 +11,16 @@ public class Botin extends Calzado {
 		super(idCalzado, talle, stock, color, genero, precio, marca);
 		this.tipoSuperficie = tipoSuperficie;
 	}
+
+
+	public TipoSuperficie getTipoSuperficie() {
+		return tipoSuperficie;
+	}
+
+
+	public void setTipoSuperficie(TipoSuperficie tipoSuperficie) {
+		this.tipoSuperficie = tipoSuperficie;
+	}
 	
 	
 	
