@@ -1,8 +1,9 @@
 package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
-
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
@@ -49,8 +50,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
-
 		return null;
+
 	}
 
 	public List<Calzado> obtenerListaDeBotines() {
@@ -73,5 +74,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return null;
 
 	}
+
+	
 
 }
