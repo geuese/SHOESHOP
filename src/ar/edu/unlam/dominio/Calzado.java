@@ -44,4 +44,8 @@ public class Calzado {
 		this.stock += cantidadDeCalzados;
 	}
 
+	public Double getPrecio() {
+		return this.precio;
+	}
+
 }

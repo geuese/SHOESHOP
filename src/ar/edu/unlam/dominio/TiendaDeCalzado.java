@@ -1,6 +1,7 @@
 package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
@@ -88,13 +89,30 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return cantidadTotalDeZapatos;
 	}
 	
+	@Override
+	public List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente) {
+		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
+		for (ClienteCalzado cc : clientesCalzados) {
+			if (cc != null && cc.getCliente().getDni().equals(cliente.getDni())) {
+				calzadosDeCliente.add(cc.getCalzado());
+			}
+		}
+		Collections.sort(calzadosDeCliente, (o1, o2) -> o2.getPrecio().compareTo(o1.getPrecio()));
+		return calzadosDeCliente;
+	}
+	
 	public List<ClienteCalzado> getClientesCalzados() {
 		return this.clientesCalzados;
 	}
+	
+	
 
 	public List<Calzado> getCalzados() {
 		return this.calzados;
 	}
+	
+	
+	
 
 	
 

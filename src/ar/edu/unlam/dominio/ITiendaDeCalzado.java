@@ -9,4 +9,5 @@ public interface ITiendaDeCalzado {
 	ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar);
 	List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente);
 	Integer obtenerCantidadDeParesTotalesDeMiTienda();
+	List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente);
 }

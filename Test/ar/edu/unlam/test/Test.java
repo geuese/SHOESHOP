@@ -196,6 +196,7 @@ public class Test {
 
 	// Elias
 
+	//1
 	@org.junit.Test
 	public void obtenerListaDeCalzadosDelCliente() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
@@ -298,19 +299,71 @@ public class Test {
 
 	}
 
+	//2
 	@org.junit.Test
 	public void obtenerListaDeClientesDelEmpleado() {
+		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
 
+		Calzado calzadoUno = crearBotin(123, 42, "Negro", Genero.MASCULINO, 45000.00, Marca.ADIDAS,
+				TipoSuperficie.SUELO_FIRME);
+		Calzado calzadoDos = crearOutDoor(12, 42, "Rojo", Genero.MASCULINO, 90000.00, Marca.TOPPER, TipoDeUso.HIKING);
+		Calzado calzadoTres = crearRunning(45, 42, "Amarillo", Genero.MASCULINO, 70000.00, Marca.JOHN_FOOS,
+				TipoDePisada.PISADA_SUPINADORA);
+
+		Integer cantidadDeCalzados = 4;
+
+		this.tiendaDeCalzado.agregarCalzado(calzadoUno, cantidadDeCalzados);
+		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
+		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
+
+		Integer cantidadAVender = 2;
+
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, cantidadAVender);
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoDos, cantidadAVender);
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoTres, cantidadAVender);
+
+		List<Calzado> calzados = new ArrayList<Calzado>();
+		calzadoUno.setStock(cantidadAVender);
+		calzadoDos.setStock(cantidadAVender);
+		calzadoTres.setStock(cantidadAVender);
+		calzados.add(calzadoDos);
+		calzados.add(calzadoTres);
+		calzados.add(calzadoUno);
+		
+		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(cliente));
+	
+		//chequeo precio por precio
+				int i = 0;
+
+				for (Calzado c : calzados) {
+					switch (i) {
+					case 0:
+						assertEquals(90000.00,  c.getPrecio(), 0.001);
+						//el 0.001 es un parametro de tolerancia que se necesita para evitar errores cuando comparo doubles
+						break;
+					case 1:
+						assertEquals(70000.00, c.getPrecio(), 0.001);
+						break;
+					case 2:
+						assertEquals(45000.00, c.getPrecio(), 0.001);
+						break;
+					default:
+						break;
+					}
+					i++;
+				}
 	}
 
+	//3
 	@org.junit.Test
 	public void obtenerElTotalDeVentasPorEmpleado() {
 
 	}
 
+	//4
 	@org.junit.Test
 	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
-
+		
 	}
 
 	// Metodos para la resolucion
