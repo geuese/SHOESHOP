@@ -80,9 +80,11 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(legajo, nombre);
+		return Objects.hash(antiguedad, categoria, legajo, modalidadDeContratacion, nombre, sueldo, tipoDeEmpleado);
 	}
 
 	@Override
@@ -94,7 +96,10 @@ public class Empleado {
 		if (getClass() != obj.getClass())
 			return false;
 		Empleado other = (Empleado) obj;
-		return Objects.equals(legajo, other.legajo) && Objects.equals(nombre, other.nombre);
+		return Objects.equals(antiguedad, other.antiguedad) && categoria == other.categoria
+				&& Objects.equals(legajo, other.legajo) && modalidadDeContratacion == other.modalidadDeContratacion
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(sueldo, other.sueldo)
+				&& tipoDeEmpleado == other.tipoDeEmpleado;
 	}
 
 	public void calcularElSueldo() {
@@ -178,5 +183,7 @@ public class Empleado {
 			break;
 		}
 	}
+
+	
 
 }
