@@ -11,7 +11,7 @@ import ar.edu.unalm.enums.TipoContrato;
 import ar.edu.unalm.enums.Genero;
 import ar.edu.unalm.enums.Marca;
 import ar.edu.unalm.enums.ModoDePago;
-import ar.edu.unalm.enums.TipoCalzado;
+import ar.edu.unalm.enums.TipoCalzado; ////// lo saco?
 import ar.edu.unalm.enums.TipoDeEmpleado;
 import ar.edu.unalm.enums.TipoDePisada;
 import ar.edu.unalm.enums.TipoDeUso;
@@ -313,8 +313,11 @@ public class Test {
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
+		Empleado empleado2 = new Empleado("Kevin", TipoContrato.TIEMPO_INDETERMINDADO, 11123,  TipoDeEmpleado.CAJERO, 13,
+				Categoria.FULL_TIME);
 		
-		// deberia agregar un empleado al array  tienda de calzado y el test de que se pueda crear un empleado teberia tener el agregado ahi?
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+		this.tiendaDeCalzado.agregarEmpleado(empleado2);
 
 		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
 		
