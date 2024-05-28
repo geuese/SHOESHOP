@@ -273,7 +273,7 @@ public class Test {
 
 		// Aca me da el total de calzados de la tienda, es decir el stock total de todos
 		// los calzados de la tienda.
-		assertEquals(6, (int) this.tiendaDeCalzado.obtenerCantidadDeParesTotalesDeLaTienda());
+		assertEquals(6, (int) this.tiendaDeCalzado.obtenerCantidadDeParesTotalesDeMiTienda());
 
 	}
 
