@@ -20,16 +20,17 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
-	    for (Calzado c : calzados) {
-	        if (c != null && c.getID().equals(calzado.getID())) {
-	            c.incrementarStock(cantidadDeCalzados);
-	            return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
-	        }
-	    }
-	    // Si se recorrio toda la lista y no se encontro el calzado, se agrega uno nuevo.
-	    calzado.setStock(cantidadDeCalzados);
-	    calzados.add(calzado);
-	    return true;
+		for (Calzado c : calzados) {
+			if (c != null && c.getID().equals(calzado.getID())) {
+				c.incrementarStock(cantidadDeCalzados);
+				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
+			}
+		}
+		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
+		// nuevo.
+		calzado.setStock(cantidadDeCalzados);
+		calzados.add(calzado);
+		return true;
 	}
 
 	@Override
@@ -79,16 +80,16 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public Integer obtenerCantidadDeParesTotalesDeMiTienda() {
+	public Integer obtenerCantidadDeParesTotalesDeLaTienda() {
 		int cantidadTotalDeZapatos = 0;
 		for (Calzado c : calzados) {
-			if (c!=null) {
+			if (c != null) {
 				cantidadTotalDeZapatos += c.getStock();
 			}
 		}
 		return cantidadTotalDeZapatos;
 	}
-	
+
 	@Override
 	public List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente) {
 		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
@@ -100,20 +101,13 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		Collections.sort(calzadosDeCliente, (o1, o2) -> o2.getPrecio().compareTo(o1.getPrecio()));
 		return calzadosDeCliente;
 	}
-	
+
 	public List<ClienteCalzado> getClientesCalzados() {
 		return this.clientesCalzados;
 	}
-	
-	
 
 	public List<Calzado> getCalzados() {
 		return this.calzados;
 	}
-	
-	
-	
-
-	
 
 }
