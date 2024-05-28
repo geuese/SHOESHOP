@@ -7,12 +7,12 @@ import ar.edu.unalm.enums.TipoContrato;
 import ar.edu.unalm.enums.TipoDeEmpleado;
 
 public class Empleado {
-	
-	private Integer legajo;
+
 	private String nombre;
-	private Integer antiguedad;
 	private TipoContrato modalidadDeContratacion;
+	private Integer legajo;
 	private TipoDeEmpleado tipoDeEmpleado;
+	private Integer antiguedad;
 	private Categoria categoria;
 
 	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
@@ -40,24 +40,6 @@ public class Empleado {
 			return false;
 		Empleado other = (Empleado) obj;
 		return Objects.equals(legajo, other.legajo) && Objects.equals(nombre, other.nombre);
-	}
-
-	public Integer getLegajo() {
-		return this.legajo;
-	}
-
-	public Integer getAntiguedad() {
-		return this.antiguedad;
-	}
-
-	public TipoContrato getTipoContrato() {
-		// TODO Auto-generated method stub
-		return this.modalidadDeContratacion;
-	}
-
-	public Categoria getCategoria() {
-
-		return this.categoria;
 	}
 
 }
