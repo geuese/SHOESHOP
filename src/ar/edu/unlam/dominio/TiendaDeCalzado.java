@@ -6,7 +6,7 @@ import java.util.List;
 import ar.edu.unalm.enums.TipoContrato;
 
 public class TiendaDeCalzado {
-	private String nombreTienda;
+	private String nombreTienda;// este no lo usamos
 
 	private List<Calzado> calzados;
 	private List<Empleado> empleados;
@@ -58,7 +58,7 @@ public class TiendaDeCalzado {
 
 	}
 
-	public Integer calcularComisionEmpleado(Empleado empleadoBuscado) {
+	public Integer obtenerComisionEmpleado(Empleado empleadoBuscado) {
 		Integer comision = 0;
 
 		for (Empleado empleado : this.empleados) {
@@ -77,15 +77,21 @@ public class TiendaDeCalzado {
 		        
 		        switch (empleado.getCategoria()) {
 		            case FULL_TIME:
-		                comision *= 7;
+		                comision *= 9;
 		                break;
 		            case PART_TIME:
-		                comision *= 9;
+		                comision *= 6;
 		                break;
 		        }
 		    }
 		}
 
 		return comision;
+	}
+
+	public void agregarEmpleado(Empleado empleado) {
+	
+		this.empleados.add(empleado);
+		
 	}
 }
