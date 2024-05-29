@@ -11,12 +11,21 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private List<Calzado> calzados;
 
 	private List<ClienteCalzado> clientesCalzados;
+	
+	private List<Empleado> empleados;
 
 	public TiendaDeCalzado(String nombreTienda) {
 		this.nombreTienda = nombreTienda;
 		this.calzados = new ArrayList<>();
 		this.clientesCalzados = new ArrayList<>();
+		this.empleados= new ArrayList<>();
 	}
+	
+	public Boolean agregarCalzado(Calzado calzado) {
+		return calzados.add(calzado);		}
+		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
+		// nuevo.
+		
 
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
@@ -110,4 +119,75 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return this.calzados;
 	}
 
+	
+	public List<Running> obtenerTodosLosRunning() {
+
+		List<Running> calzadosRunning = new ArrayList<>();
+
+		for (Calzado calzado : calzados) {
+			if (calzado instanceof Running) {
+				calzadosRunning.add((Running) calzado);
+			}
+		}
+		return calzadosRunning;
+
+	}
+
+	public List<OutDoor> obtenerTodosLosOutDoor() {
+		List<OutDoor> calzadosOutDoor = new ArrayList<>();
+
+		for (Calzado calzado : calzados) {
+			if (calzado instanceof OutDoor) {
+				calzadosOutDoor.add((OutDoor) calzado);
+			}
+		}
+		return calzadosOutDoor;
+	}
+
+	public List<Botin> obtenerTodosLosBotin() {
+
+		List<Botin> calzadosBotin = new ArrayList<>();
+
+		for (Calzado calzado : calzados) {
+			if (calzado instanceof Botin) {
+				calzadosBotin.add((Botin) calzado);
+			}
+		}
+		return calzadosBotin;
+
+	}
+
+	public Integer calcularComisionEmpleado(Empleado empleadoBuscado) {
+		Integer comision = 0;
+
+		for (Empleado empleado : this.empleados) {
+		    if (empleado.getLegajo().equals(empleadoBuscado.getLegajo())) {
+		        switch (empleado.getTipoContrato()) {
+		            case PRUEBA:
+		                comision = empleado.getAntiguedad() * 2;
+		                break;
+		            case PASANTIA:
+		                comision = empleado.getAntiguedad() * 4;
+		                break;
+		            case TIEMPO_INDETERMINDADO:
+		                comision = empleado.getAntiguedad() * 6;
+		                break;
+		        }
+		        
+		        switch (empleado.getCategoria()) {
+		            case FULL_TIME:
+		                comision *= 7;
+		                break;
+		            case PART_TIME:
+		                comision *= 9;
+		                break;
+		        }
+		    }
+		}
+
+		return comision;
+	}
+	
+	
+	
 }
