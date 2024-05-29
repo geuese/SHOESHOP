@@ -153,14 +153,14 @@ public class Test {
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
-		Calzado running = new Running(idCalzado, talle, stock, color, genero, precio, marca, tipoPisada);
-		Calzado running2 = new Running(2, 40, 12, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
+		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
+		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
 		// Agregar calzadoBuscado a local
 
-		this.tiendaDeCalzado.agregarCalzado(running);
-		this.tiendaDeCalzado.agregarCalzado(running2);
+		this.tiendaDeCalzado.agregarCalzado(running,12);
+		this.tiendaDeCalzado.agregarCalzado(running2,21);
 
 		// ahora agrego otro tipo
 
@@ -175,12 +175,12 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, stockOut, colorOut, generoOut, precioOut, marcaOut,
+		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado botin = new Botin(3, 33, 3, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
+		Calzado botin = new Botin(3, 33, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		this.tiendaDeCalzado.agregarCalzado(outDoor);
-		this.tiendaDeCalzado.agregarCalzado(botin);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,11);
+		this.tiendaDeCalzado.agregarCalzado(botin,22);
 		
 		//verifico
 
@@ -201,17 +201,17 @@ public class Test {
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
-		Calzado running = new Running(idCalzado, talle, stock, color, genero, precio, marca, tipoPisada);
-		Calzado running2 = new Running(2, 40, 12, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
+		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
+		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		this.tiendaDeCalzado.agregarCalzado(running);
-		this.tiendaDeCalzado.agregarCalzado(running2);
+		this.tiendaDeCalzado.agregarCalzado(running,20);
+		this.tiendaDeCalzado.agregarCalzado(running2,21);
 		
-		Calzado botin = new Botin(3, 33, 3, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
+		Calzado botin = new Botin(3, 33,  "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
 		
-		this.tiendaDeCalzado.agregarCalzado(botin);
+		this.tiendaDeCalzado.agregarCalzado(botin,32);
 		
 
 		// ahora agrego de Tipo que busco
@@ -227,16 +227,16 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, stockOut, colorOut, generoOut, precioOut, marcaOut,
+		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
+		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
 				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
+		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
 				tipoDeUsoOut);
 		
-		this.tiendaDeCalzado.agregarCalzado(outDoor);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,2);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2,4);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3,20);
 	
 		
 		//verifico
@@ -257,17 +257,17 @@ public class Test {
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
-		Calzado running = new Running(idCalzado, talle, stock, color, genero, precio, marca, tipoPisada);
-		Calzado running2 = new Running(2, 40, 12, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
+		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
+		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		this.tiendaDeCalzado.agregarCalzado(running);
-		this.tiendaDeCalzado.agregarCalzado(running2);
+		this.tiendaDeCalzado.agregarCalzado(running,30);
+		this.tiendaDeCalzado.agregarCalzado(running2,22);
 		
-		Calzado botin = new Botin(3, 33, 3, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
+		Calzado botin = new Botin(3, 33, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
 		
-		this.tiendaDeCalzado.agregarCalzado(botin);
+		this.tiendaDeCalzado.agregarCalzado(botin,10);
 		
 
 		Integer idCalzadoOut = 1;
@@ -281,16 +281,16 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, stockOut, colorOut, generoOut, precioOut, marcaOut,
+		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
+		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
 				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
+		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
 				tipoDeUsoOut);
 		
-		this.tiendaDeCalzado.agregarCalzado(outDoor);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,4);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2,2);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3,5);
 	
 		
 		//verifico
