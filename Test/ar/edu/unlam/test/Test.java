@@ -185,14 +185,18 @@ public class Test {
 		//verifico
 
 		List<Running>calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
-		
-		assertEquals(2,calzadosRunning.size());
+		// verifico
+
+		List<Running> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
+
+		assertEquals(2, calzadosRunning.size());
 
 	}
 
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
 		
+
 		Integer idCalzado = 1;
 		Integer talle = 36;
 		Integer stock = 10;
@@ -207,12 +211,11 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarCalzado(running);
 		this.tiendaDeCalzado.agregarCalzado(running2);
-		
+
 		Calzado botin = new Botin(3, 33, 3, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		
+
 		this.tiendaDeCalzado.agregarCalzado(botin);
-		
 
 		// ahora agrego de Tipo que busco
 
@@ -229,26 +232,22 @@ public class Test {
 
 		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, stockOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
-				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
-				tipoDeUsoOut);
-		
+		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
+		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
 		this.tiendaDeCalzado.agregarCalzado(outDoor);
 		this.tiendaDeCalzado.agregarCalzado(outDoor2);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3);
-	
-		
-		//verifico
 
-		List<OutDoor>calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
-		
-		assertEquals(3,calzadosOutDoor.size());
+		// verifico
+
+		List<OutDoor> calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
+
+		assertEquals(3, calzadosOutDoor.size());
 	}
 
 	@org.junit.Test
-	public void queTraigaTodosLosBotin() { //repito codigo desordenado
-		
+	public void queTraigaTodosLosBotin() { // repito codigo desordenado
+
 		Integer idCalzado = 1;
 		Integer talle = 36;
 		Integer stock = 10;
@@ -263,12 +262,11 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarCalzado(running);
 		this.tiendaDeCalzado.agregarCalzado(running2);
-		
+
 		Calzado botin = new Botin(3, 33, 3, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		
+
 		this.tiendaDeCalzado.agregarCalzado(botin);
-		
 
 		Integer idCalzadoOut = 1;
 		Integer talleOut = 36;
@@ -283,26 +281,22 @@ public class Test {
 
 		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, stockOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
-				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
-				tipoDeUsoOut);
-		
+		Calzado outDoor2 = new OutDoor(2, 43, 11, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
+		Calzado outDoor3 = new OutDoor(3, 47, 3, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
+
 		this.tiendaDeCalzado.agregarCalzado(outDoor);
 		this.tiendaDeCalzado.agregarCalzado(outDoor2);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3);
-	
-		
-		//verifico
 
-		List<Botin>calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
-		
-		assertEquals(1,calzadosBotin.size());
+		// verifico
+
+		List<Botin> calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
+
+		assertEquals(1, calzadosBotin.size());
 	}
 
 	@org.junit.Test
 	public void calcularComisionDelEmpleado() {
-		
 
 		String nombre = "Empleado";
 		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
@@ -313,15 +307,13 @@ public class Test {
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
-		
-		// deberia agregar un empleado al array  tienda de calzado y el test de que se pueda crear un empleado teberia tener el agregado ahi?
 
-		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
-		
-		
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+		Integer comision = this.tiendaDeCalzado.obtenerComisionEmpleado(empleado);
+
 		// seria 20 * 6 * 9
-		assertEquals(1080, (int)comision);
-		
+		assertEquals(1080, (int) comision);
+
 	}
 
 	// Kevin
