@@ -53,7 +53,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado,3);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
 
 		assertTrue(calzadoAgregado);
 
@@ -75,7 +75,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running,3);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
 
 		assertTrue(calzadoAgregado);
 
@@ -99,7 +99,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, 40);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, stock);
 
 		assertTrue(calzadoAgregado);
 
@@ -143,6 +143,7 @@ public class Test {
 	}
 
 // Alexis
+	@org.junit.Test
 	public void queTraigaTodosLosRunning() {
 
 		Integer idCalzado = 1;
@@ -159,8 +160,8 @@ public class Test {
 
 		// Agregar calzadoBuscado a local
 
-		this.tiendaDeCalzado.agregarCalzado(running,12);
-		this.tiendaDeCalzado.agregarCalzado(running2,21);
+		this.tiendaDeCalzado.agregarCalzado(running, 12);
+		this.tiendaDeCalzado.agregarCalzado(running2, 21);
 
 		// ahora agrego otro tipo
 
@@ -175,50 +176,47 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
-				tipoDeUsoOut);
+		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut, tipoDeUsoOut);
 		Calzado botin = new Botin(3, 33, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		this.tiendaDeCalzado.agregarCalzado(outDoor,11);
-		this.tiendaDeCalzado.agregarCalzado(botin,22);
-		
-		//verifico
+		this.tiendaDeCalzado.agregarCalzado(outDoor, 11);
+		this.tiendaDeCalzado.agregarCalzado(botin, 22);
 
-		List<Running>calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
-		
-		assertEquals(2,calzadosRunning.size());
+		// verifico
+
+		List<Running> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
+
+		assertEquals(2, calzadosRunning.size());
 
 	}
 
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
-		
-		Integer idCalzado = 1;
+
+		Integer idCalzado = 44;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
+
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
-		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
+		Calzado running2 = new Running(66, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		this.tiendaDeCalzado.agregarCalzado(running,20);
-		this.tiendaDeCalzado.agregarCalzado(running2,21);
-		
-		Calzado botin = new Botin(3, 33,  "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
+		this.tiendaDeCalzado.agregarCalzado(running, 20);
+		this.tiendaDeCalzado.agregarCalzado(running2, 21);
+
+		Calzado botin = new Botin(123, 33, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		
-		this.tiendaDeCalzado.agregarCalzado(botin,32);
-		
+
+		this.tiendaDeCalzado.agregarCalzado(botin, 32);
 
 		// ahora agrego de Tipo que busco
 
-		Integer idCalzadoOut = 1;
+		Integer idCalzadoOut = 23;
 		Integer talleOut = 36;
-		Integer stockOut = 10;
 		String colorOut = "Negro";
 		Genero generoOut = Genero.MASCULINO;
 		Double precioOut = 20.0;
@@ -227,28 +225,24 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
+		Calzado outDoor = this.crearOutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
 				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
-				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
-				tipoDeUsoOut);
-		
-		this.tiendaDeCalzado.agregarCalzado(outDoor,2);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2,4);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3,20);
-	
-		
-		//verifico
+		Calzado outDoor2 = this.crearOutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
+		Calzado outDoor3 = this.crearOutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
 
-		List<OutDoor>calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
-		
-		assertEquals(3,calzadosOutDoor.size());
+		this.tiendaDeCalzado.agregarCalzado(outDoor, 3);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2, 3);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3, 3);
+
+		// verifico
+		List<OutDoor> calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
+
+		assertEquals(3, calzadosOutDoor.size());
 	}
 
 	@org.junit.Test
-	public void queTraigaTodosLosBotin() { //repito codigo desordenado
-		
+	public void queTraigaTodosLosBotin() { // repito codigo desordenado
+
 		Integer idCalzado = 1;
 		Integer talle = 36;
 		Integer stock = 10;
@@ -261,14 +255,13 @@ public class Test {
 		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		this.tiendaDeCalzado.agregarCalzado(running,30);
-		this.tiendaDeCalzado.agregarCalzado(running2,22);
-		
+		this.tiendaDeCalzado.agregarCalzado(running, 30);
+		this.tiendaDeCalzado.agregarCalzado(running2, 22);
+
 		Calzado botin = new Botin(3, 33, "Blanco", Genero.MASCULINO, 333.0, Marca.JOHN_FOOS,
 				TipoSuperficie.SUELO_BLANDO);
-		
-		this.tiendaDeCalzado.agregarCalzado(botin,10);
-		
+
+		this.tiendaDeCalzado.agregarCalzado(botin, 10);
 
 		Integer idCalzadoOut = 1;
 		Integer talleOut = 36;
@@ -281,29 +274,23 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut,
-				tipoDeUsoOut);
-		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE,
-				TipoDeUso.HIKING);
-		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE,
-				tipoDeUsoOut);
-		
-		this.tiendaDeCalzado.agregarCalzado(outDoor,4);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2,2);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3,5);
-	
-		
-		//verifico
+		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut, tipoDeUsoOut);
+		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
+		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
 
-		List<Botin>calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
-		
-		assertEquals(1,calzadosBotin.size());
+		this.tiendaDeCalzado.agregarCalzado(outDoor, 4);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2, 2);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3, 5);
+
+		// verifico
+
+		List<Botin> calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
+
+		assertEquals(1, calzadosBotin.size());
 	}
 
-	
 	@org.junit.Test
 	public void calcularComisionDelEmpleado() {
-		
 
 		String nombre = "Empleado";
 		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
@@ -314,19 +301,35 @@ public class Test {
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
-		
-		// deberia agregar un empleado al array  tienda de calzado y el test de que se pueda crear un empleado teberia tener el agregado ahi?
+
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// deberia agregar un empleado al array tienda de calzado y el test de que se
+		// pueda crear un empleado teberia tener el agregado ahi?
 
 		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
-		
-		
+
 		// seria 20 * 6 * 9
-		assertEquals(1080, (int)comision);
-		
+		assertEquals(1080, (int) comision);
+
 	}
-	
-	
-	
+
+	@org.junit.Test
+	public void queSePuedaAgregarEmpleadoATienda() {
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 20;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		Boolean sePudo = this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		assertTrue(sePudo);
+	}
 
 	// Kevin
 	@org.junit.Test

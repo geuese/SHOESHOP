@@ -21,16 +21,16 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		this.empleados = new ArrayList<>();
 	}
 
-	public Boolean agregarCalzado(Calzado calzado) {
-		return calzados.add(calzado);
-	}
-	// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-	// nuevo.
+//	public Boolean agregarCalzado(Calzado calzado) {
+//		return calzados.add(calzado);
+//	}
+//	// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
+//	// nuevo.
 
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
 		for (Calzado c : calzados) {
-			if (c != null && c.getID().equals(calzado.getID())) {
+			if (c.getID().equals(calzado.getID())) {
 				c.incrementarStock(cantidadDeCalzados);
 				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
 			}
@@ -174,18 +174,25 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 					break;
 				}
 
-				switch (empleado.getCategoria()) {
-				case FULL_TIME:
-					comision *= 7;
-					break;
-				case PART_TIME:
-					comision *= 9;
-					break;
-				}
+				
+			}switch (empleado.getCategoria()) {
+			case FULL_TIME:
+				comision *= 9;
+				break;
+			case PART_TIME:
+				comision *= 7;
+				break;
 			}
 		}
 
 		return comision;
+	}
+
+	@Override
+	public Boolean agregarEmpleado(Empleado empleado) {
+
+		return this.empleados.add(empleado);
+
 	}
 
 }

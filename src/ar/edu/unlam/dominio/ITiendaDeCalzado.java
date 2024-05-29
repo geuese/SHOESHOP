@@ -18,4 +18,6 @@ public interface ITiendaDeCalzado {
 
 	List<Running> obtenerTodosLosRunning();
 
+	Boolean agregarEmpleado(Empleado empleado);
+
 }
