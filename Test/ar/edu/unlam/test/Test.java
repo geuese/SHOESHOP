@@ -396,11 +396,12 @@ public class Test {
 		calzados.add(calzadoTres);
 
 		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente));
+		assertEquals(calzados.size(), this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente).size());
 
 		// chequeo stock
 		int i = 0;
 
-		for (Calzado c : calzados) {
+		for (Calzado c : this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente)) {
 			switch (i) {
 			case 0:
 				assertEquals((int) cantidadAVender, (int) c.getStock());
@@ -455,15 +456,17 @@ public class Test {
 		Calzado calzadoTres = crearRunning(45, 42, "Amarillo", Genero.MASCULINO, 70000.00, Marca.JOHN_FOOS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		Boolean seAgregoCalzadoUno = this.tiendaDeCalzado.agregarCalzado(calzadoUno, 3);
-		Boolean seAgregoCalzadoDos = this.tiendaDeCalzado.agregarCalzado(calzadoDos, 3);
-		Boolean seAgregoCalzadoTres = this.tiendaDeCalzado.agregarCalzado(calzadoTres, 3);
+		this.tiendaDeCalzado.agregarCalzado(calzadoUno, 3);
+		this.tiendaDeCalzado.agregarCalzado(calzadoDos, 3);
+		this.tiendaDeCalzado.agregarCalzado(calzadoTres, 3);
 
 		Boolean seVendioCalzadoUno = this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, 2);
 		Boolean seVendioCalzadoDos = this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, 1);
+		Boolean seVendioCalzadoTres = this.tiendaDeCalzado.venderCalzado(cliente, calzadoTres, 3);
 
 		assertTrue(seVendioCalzadoUno);
 		assertTrue(seVendioCalzadoDos);
+		assertTrue(seVendioCalzadoTres);
 
 	}
 
@@ -514,7 +517,7 @@ public class Test {
 		// chequeo precio por precio
 		int i = 0;
 
-		for (Calzado c : calzados) {
+		for (Calzado c : this.tiendaDeCalzado.obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(cliente)) {
 			switch (i) {
 			case 0:
 				assertEquals(90000.00, c.getPrecio(), 0.001);
