@@ -184,7 +184,6 @@ public class Test {
 		
 		//verifico
 
-		List<Running>calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
 		// verifico
 
 		List<Running> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
