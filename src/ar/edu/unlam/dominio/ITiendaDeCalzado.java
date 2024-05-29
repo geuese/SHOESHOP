@@ -16,4 +16,6 @@ public interface ITiendaDeCalzado {
 
 	Integer obtenerCantidadDeParesTotalesDeLaTienda();
 
+	List<Running> obtenerTodosLosRunning();
+
 }

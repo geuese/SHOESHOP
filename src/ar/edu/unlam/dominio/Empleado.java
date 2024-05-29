@@ -6,30 +6,8 @@ import ar.edu.unalm.enums.Categoria;
 import ar.edu.unalm.enums.TipoContrato;
 import ar.edu.unalm.enums.TipoDeEmpleado;
 
-//public class Empleado {
-//
-//	private String nombre;
-//	private TipoContrato modalidadDeContratacion;
-//	private Integer legajo;
-//	private TipoDeEmpleado tipoDeEmpleado;
-//	private Integer antiguedad;
-//	private Categoria categoria;
-//
-//	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
-//			Integer antiguedad, Categoria categoria) {
-//		this.nombre = nombre;
-//		this.modalidadDeContratacion = modalidadDeContratacion;
-//		this.legajo = legajo;
-//		this.tipoDeEmpleado = tipoDeEmpleado;
-//		this.antiguedad = antiguedad;
-//		this.categoria = categoria;
-//	}
-
-
-
 public class Empleado {
 
-	
 	private Integer legajo;
 	private String nombre;
 	private Integer antiguedad;
@@ -37,8 +15,8 @@ public class Empleado {
 	private TipoDeEmpleado tipoDeEmpleado;
 	private Categoria categoria;
 
-	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,Integer antiguedad, Categoria categoria)
-	{
+	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
+			Integer antiguedad, Categoria categoria) {
 		this.nombre = nombre;
 		this.modalidadDeContratacion = modalidadDeContratacion;
 		this.legajo = legajo;
@@ -65,7 +43,6 @@ public class Empleado {
 		return this.categoria;
 	}
 
-}
 	@Override
 	public int hashCode() {
 		return Objects.hash(legajo, nombre);

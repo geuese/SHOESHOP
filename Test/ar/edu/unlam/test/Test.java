@@ -53,7 +53,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado,3);
 
 		assertTrue(calzadoAgregado);
 
@@ -75,7 +75,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running,3);
 
 		assertTrue(calzadoAgregado);
 
@@ -99,7 +99,7 @@ public class Test {
 
 		// Agregar calzado a local
 
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor);
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, 40);
 
 		assertTrue(calzadoAgregado);
 

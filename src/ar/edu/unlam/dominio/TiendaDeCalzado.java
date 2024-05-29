@@ -11,21 +11,21 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private List<Calzado> calzados;
 
 	private List<ClienteCalzado> clientesCalzados;
-	
+
 	private List<Empleado> empleados;
 
 	public TiendaDeCalzado(String nombreTienda) {
 		this.nombreTienda = nombreTienda;
 		this.calzados = new ArrayList<>();
 		this.clientesCalzados = new ArrayList<>();
-		this.empleados= new ArrayList<>();
+		this.empleados = new ArrayList<>();
 	}
-	
+
 	public Boolean agregarCalzado(Calzado calzado) {
-		return calzados.add(calzado);		}
-		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-		// nuevo.
-		
+		return calzados.add(calzado);
+	}
+	// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
+	// nuevo.
 
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
@@ -46,7 +46,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender) {
 
 		for (Calzado c : calzados) {
-			if (c != (null) && c.getID().equals(calzado.getID()) && c.getStock() >= cantidadAVender) {
+			if (c.getID().equals(calzado.getID()) && c.getStock() >= cantidadAVender) {
 				c.reducirStock(cantidadAVender);
 
 				Boolean clienteCalzadoEncontrado = false;
@@ -81,7 +81,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente) {
 		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
 		for (ClienteCalzado cc : clientesCalzados) {
-			if (cc != null && cc.getCliente().getDni().equals(cliente.getDni())) {
+			if (cc.getCliente().getDni().equals(cliente.getDni())) {
 				calzadosDeCliente.add(cc.getCalzado());
 			}
 		}
@@ -119,7 +119,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return this.calzados;
 	}
 
-	
+	@Override
 	public List<Running> obtenerTodosLosRunning() {
 
 		List<Running> calzadosRunning = new ArrayList<>();
@@ -161,33 +161,31 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		Integer comision = 0;
 
 		for (Empleado empleado : this.empleados) {
-		    if (empleado.getLegajo().equals(empleadoBuscado.getLegajo())) {
-		        switch (empleado.getTipoContrato()) {
-		            case PRUEBA:
-		                comision = empleado.getAntiguedad() * 2;
-		                break;
-		            case PASANTIA:
-		                comision = empleado.getAntiguedad() * 4;
-		                break;
-		            case TIEMPO_INDETERMINDADO:
-		                comision = empleado.getAntiguedad() * 6;
-		                break;
-		        }
-		        
-		        switch (empleado.getCategoria()) {
-		            case FULL_TIME:
-		                comision *= 7;
-		                break;
-		            case PART_TIME:
-		                comision *= 9;
-		                break;
-		        }
-		    }
+			if (empleado.getLegajo().equals(empleadoBuscado.getLegajo())) {
+				switch (empleado.getTipoContrato()) {
+				case PRUEBA:
+					comision = empleado.getAntiguedad() * 2;
+					break;
+				case PASANTIA:
+					comision = empleado.getAntiguedad() * 4;
+					break;
+				case TIEMPO_INDETERMINDADO:
+					comision = empleado.getAntiguedad() * 6;
+					break;
+				}
+
+				switch (empleado.getCategoria()) {
+				case FULL_TIME:
+					comision *= 7;
+					break;
+				case PART_TIME:
+					comision *= 9;
+					break;
+				}
+			}
 		}
 
 		return comision;
 	}
-	
-	
-	
+
 }
