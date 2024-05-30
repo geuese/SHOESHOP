@@ -1,20 +1,23 @@
 package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
 
-	private List<Calzado> calzados;
+	private Set<Calzado> calzados;
+	private Set<Empleado> empleados;
 
 	public TiendaDeCalzado(String nombreLocal) {
 		// TODO Auto-generated constructor stub
 
 		this.nombreLocal = nombreLocal;
-		this.calzados = new ArrayList<>();
+		this.calzados = new TreeSet<>();
+		this.empleados = new TreeSet<>();
 
 	}
 
@@ -75,6 +78,62 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	
+	@Override
+	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
+
+		List<Calzado> botines = new ArrayList<>();
+
+		for (Calzado calzado : this.calzados) {
+			if (calzado instanceof Botin) {
+				botines.add(calzado);
+			}
+
+		}
+
+		ordenarDeManeraAscendente(botines);
+
+		return botines;
+
+	}
+
+	@Override
+	public List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente() {
+		// TODO Auto-generated method stub
+		List<Calzado> outDoors = new ArrayList<>();
+
+		for (Calzado calzado : this.calzados) {
+			if (calzado instanceof OutDoor) {
+				outDoors.add(calzado);
+			}
+
+		}
+
+		ordenarDeManeraAscendente(outDoors);
+
+		return outDoors;
+
+	}
+
+	@Override
+	public List<Calzado> ordenarRunningsPorTalleDeManeraAscendente() {
+		// TODO Auto-generated method stub
+		List<Calzado> runnings = new ArrayList<>();
+
+		for (Calzado calzado : this.calzados) {
+			if (calzado instanceof Running) {
+				runnings.add(calzado);
+			}
+
+		}
+
+		ordenarDeManeraAscendente(runnings);
+
+		return runnings;
+
+	}
+
+	private void ordenarDeManeraAscendente(List<Calzado> calzados) {
+		Collections.sort(calzados, (o1, o2) -> o1.getTalle().compareTo(o2.getTalle()));
+	}
 
 }

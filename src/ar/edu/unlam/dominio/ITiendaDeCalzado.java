@@ -12,5 +12,7 @@ public interface ITiendaDeCalzado {
 	List<Calzado> obtenerListaDeBotines();
 	List<Calzado> obtenerListaDeRunnings();
 	List<Calzado> obtenerListaDeOutDoors();
-
+	List<Calzado> ordenarBotinesPorTalleDeManeraAscendente();
+	List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente();
+	List<Calzado> ordenarRunningsPorTalleDeManeraAscendente();
 }

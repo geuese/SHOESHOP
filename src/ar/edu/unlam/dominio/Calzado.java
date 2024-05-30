@@ -2,7 +2,7 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
-public abstract class Calzado {
+public abstract class Calzado implements Comparable<Calzado> {
 	
 	private Integer idCalzado;
 	private Integer talle;
@@ -133,6 +133,12 @@ public abstract class Calzado {
 				&& Objects.equals(talle, other.talle);
 	}
 	
+	
+	@Override
+    public int compareTo(Calzado o) {
+		return this.idCalzado.compareTo(o.getIdCalzado());
+	}
+
 	
 	
 	

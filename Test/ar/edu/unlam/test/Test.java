@@ -17,7 +17,6 @@ import ar.edu.unlam.dominio.Empleado;
 import ar.edu.unlam.dominio.Genero;
 import ar.edu.unlam.dominio.Marca;
 import ar.edu.unlam.dominio.ModoDePago;
-import ar.edu.unlam.dominio.OrdenarPorMarca;
 import ar.edu.unlam.dominio.OutDoor;
 import ar.edu.unlam.dominio.Running;
 import ar.edu.unlam.dominio.TiendaDeCalzado;
@@ -232,7 +231,6 @@ public class Test {
 		assertEquals(41000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
 
 	@org.junit.Test
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime() {
@@ -279,17 +277,125 @@ public class Test {
 		empleado.calcularElSueldo();
 
 		assertEquals(81000.0, empleado.getSueldo(), 0.01);
-		
+
 	}
-	
-	
+
 	@org.junit.Test
-	public void queSePuedaOrdenarBotinesPorTalle() {
-		
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime() {
+		Empleado empleado = new Empleado("Jose", Contrato.PASANTIA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
+				Categoria.FULL_TIME);
+
+		empleado.calcularElSueldo();
+
+		assertEquals(250000.0, empleado.getSueldo(), 0.01);
+
 	}
-	
-	
-	
+
+	@org.junit.Test
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime() {
+		Empleado empleado = new Empleado("Jose", Contrato.PRUEBA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
+				Categoria.FULL_TIME);
+
+		empleado.calcularElSueldo();
+
+		assertEquals(250000.0, empleado.getSueldo(), 0.01);
+
+	}
+
+	// DUDA SURGIDA: ¿LA FUNCION CALCULAR SUELDO NO DEBERIA IR EN LA TIENDA DE
+	// CALZADO?
+	//
+
+	@org.junit.Test
+	public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
+		Integer idCalzado = 1001;
+		Integer talle = 36;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+		Marca marca = Marca.TOPPER;
+		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
+
+		Calzado botin1 = generarBotin(idCalzado, talle, stock, color, genero, precio, marca, tipoSuperficie);
+		Calzado botin2 = generarBotin(1002, 40, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+				TipoSuperficie.SUELO_BLANDO);
+		Calzado botin3 = generarBotin(1003, 35, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+				TipoSuperficie.TERRENO_ARTIFICIAL);
+
+		// AGREGAMOS CALZADOS
+		this.tiendaDeCalzado.agregarCalzado(botin1);
+		this.tiendaDeCalzado.agregarCalzado(botin2);
+		this.tiendaDeCalzado.agregarCalzado(botin3);
+
+		List<Calzado> botinesOrdenados = this.tiendaDeCalzado.ordenarBotinesPorTalleDeManeraAscendente();
+
+		assertEquals(botin3, botinesOrdenados.get(0));
+		assertEquals(botin1, botinesOrdenados.get(1));
+		assertEquals(botin2, botinesOrdenados.get(2));
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaOrdenarLosOutDoorSegunElTalleDeFormaAscendente() {
+		Integer idCalzado = 1001;
+		Integer talle = 36;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+		Marca marca = Marca.TOPPER;
+		TipoDeUso tipoUso = TipoDeUso.ESCALADA;
+
+		Calzado outDoor1 = generarOutDoor(idCalzado, talle, stock, color, genero, precio, marca, tipoUso);
+		Calzado outDoor2 = generarOutDoor(1002, 35, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+				TipoDeUso.TRAIL_RUNNING);
+		Calzado outDoor3 = generarOutDoor(1003, 40, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
+
+		// AGREGAMOS CALZADOS
+		this.tiendaDeCalzado.agregarCalzado(outDoor1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3);
+
+		List<Calzado> outDoorsOrdenados = this.tiendaDeCalzado.ordenarOutDoorsPorTalleDeManeraAscendente();
+
+		assertEquals(outDoor2, outDoorsOrdenados.get(0));
+		assertEquals(outDoor1, outDoorsOrdenados.get(1));
+		assertEquals(outDoor3, outDoorsOrdenados.get(2));
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaOrdenarLosRunningsSegunElTalleDeFormaAscendente() {
+
+		Integer idCalzado = 1001;
+		Integer talle = 40;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+		Marca marca = Marca.TOPPER;
+		TipoDePisada tipoSuperficie = TipoDePisada.PISADA_NEUTRA;
+
+		Calzado running1 = generarRunning(idCalzado, talle, stock, color, genero, precio, marca, tipoSuperficie);
+		Calzado running2 = generarRunning(1002, 37, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+				TipoDePisada.PISADA_PRONADORA);
+		Calzado running3 = generarRunning(1003, 38, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+				TipoDePisada.PISADA_SUPINADORA);
+
+		// AGREGAMOS CALZADOS
+		this.tiendaDeCalzado.agregarCalzado(running1);
+		this.tiendaDeCalzado.agregarCalzado(running2);
+		this.tiendaDeCalzado.agregarCalzado(running3);
+		
+		List<Calzado> runningsOrdenados = this.tiendaDeCalzado.ordenarRunningsPorTalleDeManeraAscendente();
+		
+		assertEquals(running2, runningsOrdenados.get(0));
+		assertEquals(running3, runningsOrdenados.get(1));
+		assertEquals(running1, runningsOrdenados.get(2));
+
+
+	}
 
 	private Running generarRunning(Integer idCalzado, Integer talle, Integer stock, String color, Genero genero,
 			Double precio, Marca marca, TipoDePisada tipoPisada) {
