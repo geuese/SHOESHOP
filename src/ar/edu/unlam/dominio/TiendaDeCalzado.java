@@ -117,14 +117,14 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return this.clientesCalzados;
 	}
 
-	public List<Calzado> getCalzados() {
+	public Set<Calzado> getCalzados() {
 		return this.calzados;
 	}
 
 	@Override
-	public List<Running> obtenerTodosLosRunning() {
+	public List<Calzado> obtenerTodosLosRunning() {
 
-		List<Running> calzadosRunning = new ArrayList<>();
+		List<Calzado> calzadosRunning = new ArrayList<>();
 
 		for (Calzado calzado : calzados) {
 			if (calzado instanceof Running) {
@@ -134,9 +134,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosRunning;
 
 	}
+	
+	
 
-	public List<OutDoor> obtenerTodosLosOutDoor() {
-		List<OutDoor> calzadosOutDoor = new ArrayList<>();
+	public List<Calzado> obtenerTodosLosOutDoor() {
+		List<Calzado> calzadosOutDoor = new ArrayList<>();
 
 		for (Calzado calzado : calzados) {
 			if (calzado instanceof OutDoor) {
@@ -146,9 +148,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosOutDoor;
 	}
 
-	public List<Botin> obtenerTodosLosBotin() {
+	public List<Calzado> obtenerTodosLosBotin() {
 
-		List<Botin> calzadosBotin = new ArrayList<>();
+		List<Calzado> calzadosBotin = new ArrayList<>();
 
 		for (Calzado calzado : calzados) {
 			if (calzado instanceof Botin) {
@@ -228,31 +230,12 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	public List<Calzado> obtenerListaDeBotines() {
-		// TODO Auto-generated method stub
-
-		return null;
-
-	}
+	
 
 	@Override
-	public List<Calzado> obtenerListaDeRunnings() {
-		return null;
-		// TODO Auto-generated method stub
+	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
 
-	}
-
-	@Override
-	public List<Calzado> obtenerListaDeOutDoors() {
-		// TODO Auto-generated method stub
-		return null;
-
-	}
-
-	@Override
-	public List<Botin> ordenarBotinesPorTalleDeManeraAscendente() {
-
-		List<Botin> botines = obtenerTodosLosBotin();
+		List<Calzado> botines = obtenerTodosLosBotin();
 
 		
 		ordenarDeManeraAscendente(botines);
@@ -262,9 +245,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public List<OutDoor> ordenarOutDoorsPorTalleDeManeraAscendente() {
+	public List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente() {
 		// TODO Auto-generated method stub
-		List<OutDoor> outDoors = obtenerTodosLosOutDoor();
+		List<Calzado> outDoors = obtenerTodosLosOutDoor();
 
 		
 
@@ -275,9 +258,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public List<Running> ordenarRunningsPorTalleDeManeraAscendente() {
+	public List<Calzado> ordenarRunningsPorTalleDeManeraAscendente() {
 		// TODO Auto-generated method stub
-		List<Running> runnings = obtenerTodosLosRunning();
+		List<Calzado> runnings = obtenerTodosLosRunning();
 
 		
 
@@ -290,5 +273,13 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private void ordenarDeManeraAscendente(List<Calzado> calzados) {
 		Collections.sort(calzados, (o1, o2) -> o1.getTalle().compareTo(o2.getTalle()));
 	}
+
+	@Override
+	public List<Calzado> obtenerTodosLosBotines() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

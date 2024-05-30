@@ -2,8 +2,11 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
+import ar.edu.unalm.enums.Genero;
+import ar.edu.unalm.enums.Marca;
+
 public abstract class Calzado implements Comparable<Calzado> {
-	
+
 	private Integer idCalzado;
 	private Integer talle;
 	private String color;
@@ -14,25 +17,17 @@ public abstract class Calzado implements Comparable<Calzado> {
 
 	public Calzado(Integer id, Integer talle, String color, Genero genero, Double precio, Marca marca) {
 
-		this.ID = id;
+		this.idCalzado = id;
 		this.talle = talle;
 		this.color = color;
 		this.genero = genero;
 		this.precio = precio;
 		this.marca = marca;
-		this.stock=0;
+		this.stock = 0;
 	}
 
 	public Integer getID() {
-		return this.ID;
-	}
-
-	public void setStock(Integer cantidadDeCalzados) {
-		this.stock = cantidadDeCalzados;
-	}
-
-	public Integer getStock() {
-		return this.stock;
+		return this.idCalzado;
 	}
 
 	public void reducirStock(Integer cantidadAVender) {
@@ -43,102 +38,66 @@ public abstract class Calzado implements Comparable<Calzado> {
 		this.stock += cantidadDeCalzados;
 	}
 
-	public Double getPrecio() {
-		return this.precio;
-	}
-
-
-
 	public Integer getIdCalzado() {
 		return idCalzado;
 	}
-
-
 
 	public void setIdCalzado(Integer idCalzado) {
 		this.idCalzado = idCalzado;
 	}
 
-
-
 	public Integer getTalle() {
 		return talle;
 	}
-
-
 
 	public void setTalle(Integer talle) {
 		this.talle = talle;
 	}
 
-
-
 	public Integer getStock() {
 		return stock;
 	}
-
-
 
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 
-
-
 	public String getColor() {
 		return color;
 	}
-
-
 
 	public void setColor(String color) {
 		this.color = color;
 	}
 
-
-
 	public Genero getGenero() {
 		return genero;
 	}
-
-
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
-
-
 	public Double getPrecio() {
 		return precio;
 	}
-
-
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 
-
-
 	public Marca getMarca() {
 		return marca;
 	}
-
-
 
 	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(color, genero, idCalzado, marca, precio, stock, talle);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -154,16 +113,10 @@ public abstract class Calzado implements Comparable<Calzado> {
 				&& Objects.equals(precio, other.precio) && Objects.equals(stock, other.stock)
 				&& Objects.equals(talle, other.talle);
 	}
-	
-	
+
 	@Override
-    public int compareTo(Calzado o) {
+	public int compareTo(Calzado o) {
 		return this.idCalzado.compareTo(o.getIdCalzado());
 	}
-
-	
-	
-	
-	
 
 }

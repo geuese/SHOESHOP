@@ -35,11 +35,14 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 
-	public Contrato getModalidadDeContratacion() {
+
+
+
+	public TipoContrato getModalidadDeContratacion() {
 		return modalidadDeContratacion;
 	}
 
-	public void setModalidadDeContratacion(Contrato modalidadDeContratacion) {
+	public void setModalidadDeContratacion(TipoContrato modalidadDeContratacion) {
 		this.modalidadDeContratacion = modalidadDeContratacion;
 	}
 
@@ -84,19 +87,14 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
-	public Integer getAntiguedad() {
-		return this.antiguedad;
-	}
+	
 
 	public TipoContrato getTipoContrato() {
 
 		return this.modalidadDeContratacion;
 	}
 
-	public Categoria getCategoria() {
-
-		return this.categoria;
-	}
+	
 
 	@Override
 	public int hashCode() {

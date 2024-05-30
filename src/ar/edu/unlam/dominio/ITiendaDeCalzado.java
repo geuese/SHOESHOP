@@ -9,9 +9,7 @@ public interface ITiendaDeCalzado {
 	Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados);
 	Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException;
 	Double devolverPrecioDelCalzado(Integer idCalzado) throws CalzadoInexistenteException;
-	List<Calzado> obtenerListaDeBotines();
-	List<Calzado> obtenerListaDeRunnings();
-	List<Calzado> obtenerListaDeOutDoors();
+	
 	List<Calzado> ordenarBotinesPorTalleDeManeraAscendente();
 	List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente();
 	List<Calzado> ordenarRunningsPorTalleDeManeraAscendente();
@@ -21,6 +19,9 @@ public interface ITiendaDeCalzado {
 	List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente);
 	List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente);
 	Integer obtenerCantidadDeParesTotalesDeLaTienda();
+	List<Calzado> obtenerTodosLosRunning();
+	List<Calzado> obtenerTodosLosOutDoor(); 
+	List<Calzado> obtenerTodosLosBotines(); 
 
 
 }

@@ -8,28 +8,10 @@ import java.util.List;
 
 import org.junit.Before;
 
-import ar.edu.unalm.enums.Categoria;
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.Marca;
-import ar.edu.unalm.enums.ModoDePago;
-import ar.edu.unalm.enums.TipoContrato;
-import ar.edu.unalm.enums.TipoDeEmpleado;
-import ar.edu.unalm.enums.TipoDePisada;
-import ar.edu.unalm.enums.TipoDeUso;
-import ar.edu.unalm.enums.TipoSuperficie;
-import ar.edu.unlam.dominio.Botin;
-import ar.edu.unlam.dominio.Calzado;
-import ar.edu.unlam.dominio.CalzadoInexistenteException;
-import ar.edu.unlam.dominio.Categoria;
-import ar.edu.unlam.dominio.Cliente;
-import ar.edu.unlam.dominio.Empleado;
-import ar.edu.unlam.dominio.OutDoor;
-import ar.edu.unlam.dominio.Running;
-import ar.edu.unlam.dominio.TiendaDeCalzado;
-import ar.edu.unlam.dominio.TipoDeEmpleado;
-import ar.edu.unlam.dominio.TipoDePisada;
-import ar.edu.unlam.dominio.TipoDeUso;
-import ar.edu.unlam.dominio.TipoSuperficie;
+
+import ar.edu.unlam.dominio.*;
+import ar.edu.unalm.enums.*;
+
 
 public class Test {
 
@@ -162,9 +144,9 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, stock, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
@@ -185,7 +167,7 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, stock, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
@@ -206,9 +188,9 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, stock, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
 		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
 
@@ -325,16 +307,16 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
 
-		Calzado botin1 = generarBotin(idCalzado, talle, stock, color, genero, precio, marca, tipoSuperficie);
-		Calzado botin2 = generarBotin(1002, 40, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado botin1 = generarBotin(idCalzado, talle,  color, genero, precio, marca, tipoSuperficie);
+		Calzado botin2 = generarBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoSuperficie.SUELO_BLANDO);
-		Calzado botin3 = generarBotin(1003, 35, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado botin3 = generarBotin(1003, 35,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoSuperficie.TERRENO_ARTIFICIAL);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(botin1);
-		this.tiendaDeCalzado.agregarCalzado(botin2);
-		this.tiendaDeCalzado.agregarCalzado(botin3);
+		this.tiendaDeCalzado.agregarCalzado(botin1,2);
+		this.tiendaDeCalzado.agregarCalzado(botin2,2);
+		this.tiendaDeCalzado.agregarCalzado(botin3,2);
 
 		List<Calzado> botinesOrdenados = this.tiendaDeCalzado.ordenarBotinesPorTalleDeManeraAscendente();
 
@@ -355,15 +337,15 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoDeUso tipoUso = TipoDeUso.ESCALADA;
 
-		Calzado outDoor1 = generarOutDoor(idCalzado, talle, stock, color, genero, precio, marca, tipoUso);
-		Calzado outDoor2 = generarOutDoor(1002, 35, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado outDoor1 = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoUso);
+		Calzado outDoor2 = generarOutDoor(1002, 35,  "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDeUso.TRAIL_RUNNING);
-		Calzado outDoor3 = generarOutDoor(1003, 40, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
+		Calzado outDoor3 = generarOutDoor(1003, 40,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(outDoor1);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3);
+		this.tiendaDeCalzado.agregarCalzado(outDoor1,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3,1);
 
 		List<Calzado> outDoorsOrdenados = this.tiendaDeCalzado.ordenarOutDoorsPorTalleDeManeraAscendente();
 
@@ -385,16 +367,16 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoSuperficie = TipoDePisada.PISADA_NEUTRA;
 
-		Calzado running1 = generarRunning(idCalzado, talle, stock, color, genero, precio, marca, tipoSuperficie);
-		Calzado running2 = generarRunning(1002, 37, 5, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado running1 = generarRunning(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+		Calzado running2 = generarRunning(1002, 37, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDePisada.PISADA_PRONADORA);
-		Calzado running3 = generarRunning(1003, 38, 8, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado running3 = generarRunning(1003, 38, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoDePisada.PISADA_SUPINADORA);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(running1);
-		this.tiendaDeCalzado.agregarCalzado(running2);
-		this.tiendaDeCalzado.agregarCalzado(running3);
+		this.tiendaDeCalzado.agregarCalzado(running1,1);
+		this.tiendaDeCalzado.agregarCalzado(running2,1);
+		this.tiendaDeCalzado.agregarCalzado(running3,1);
 		
 		List<Calzado> runningsOrdenados = this.tiendaDeCalzado.ordenarRunningsPorTalleDeManeraAscendente();
 		
@@ -418,6 +400,10 @@ public class Test {
 	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero,
 			Double precio, Marca marca, TipoSuperficie tipoSuperficie) {
 		return new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+	}
+	
+		
+		
 	@org.junit.Test
 	public void queTraigaTodosLosRunnings() {
 
@@ -433,6 +419,7 @@ public class Test {
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
+		
 
 		// Agregar calzadoBuscado a local
 
@@ -460,11 +447,12 @@ public class Test {
 
 		// verifico
 
-		List<Running> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
+		List<Calzado> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
 
 		assertEquals(2, calzadosRunning.size());
 
 	}
+	
 
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
@@ -511,7 +499,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(outDoor3, 3);
 
 		// verifico
-		List<OutDoor> calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
+		List<Calzado> calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
 
 		assertEquals(3, calzadosOutDoor.size());
 	}
@@ -560,7 +548,7 @@ public class Test {
 
 		// verifico
 
-		List<Botin> calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
+		List<Calzado> calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotin();
 
 		assertEquals(1, calzadosBotin.size());
 	}
@@ -818,5 +806,4 @@ public class Test {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
 
-}
 }
