@@ -2,6 +2,9 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
+import ar.edu.unalm.enums.Genero;
+import ar.edu.unalm.enums.ModoDePago;
+
 public class Cliente {
 
 	private String nombre;

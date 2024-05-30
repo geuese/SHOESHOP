@@ -2,17 +2,21 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
+import ar.edu.unalm.enums.Categoria;
+import ar.edu.unalm.enums.TipoContrato;
+import ar.edu.unalm.enums.TipoDeEmpleado;
+
 public class Empleado {
 
-	private String nombre;
-	private Contrato modalidadDeContratacion;
 	private Integer legajo;
-	private TipoDeEmpleado tipoDeEmpleado;
+	private String nombre;
 	private Integer antiguedad;
+	private TipoContrato modalidadDeContratacion;
+	private TipoDeEmpleado tipoDeEmpleado;
 	private Categoria categoria;
 	private Double sueldo;
 
-	public Empleado(String nombre, Contrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
+	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
 			Integer antiguedad, Categoria categoria) {
 		this.nombre = nombre;
 		this.modalidadDeContratacion = modalidadDeContratacion;
@@ -80,7 +84,19 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
+	public Integer getAntiguedad() {
+		return this.antiguedad;
+	}
 
+	public TipoContrato getTipoContrato() {
+
+		return this.modalidadDeContratacion;
+	}
+
+	public Categoria getCategoria() {
+
+		return this.categoria;
+	}
 
 	@Override
 	public int hashCode() {
