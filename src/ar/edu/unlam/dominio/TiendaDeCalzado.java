@@ -2,9 +2,13 @@ package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import ar.edu.unalm.enums.Categoria;
+import ar.edu.unalm.enums.TipoDeEmpleado;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
@@ -136,7 +140,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 	
 	
-
+	@Override
 	public List<Calzado> obtenerTodosLosOutDoor() {
 		List<Calzado> calzadosOutDoor = new ArrayList<>();
 
@@ -147,8 +151,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		}
 		return calzadosOutDoor;
 	}
-
-	public List<Calzado> obtenerTodosLosBotin() {
+	
+	@Override
+	public List<Calzado> obtenerTodosLosBotines() {
 
 		List<Calzado> calzadosBotin = new ArrayList<>();
 
@@ -161,6 +166,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Integer calcularComisionEmpleado(Empleado empleadoBuscado) {
 		Integer comision = 0;
 
@@ -199,6 +205,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
 
 		for (Calzado calzado : this.calzados) {
@@ -213,6 +220,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Double devolverPrecioDelCalzado(Integer idCalzado) throws CalzadoInexistenteException {
 		// TODO Auto-generated method stub
 
@@ -235,7 +243,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	@Override
 	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
 
-		List<Calzado> botines = obtenerTodosLosBotin();
+		List<Calzado> botines = obtenerTodosLosBotines();
 
 		
 		ordenarDeManeraAscendente(botines);
@@ -274,12 +282,112 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		Collections.sort(calzados, (o1, o2) -> o1.getTalle().compareTo(o2.getTalle()));
 	}
 
+	
 	@Override
-	public List<Calzado> obtenerTodosLosBotines() {
-		// TODO Auto-generated method stub
-		return null;
+	public void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		
+		
+		Empleado empleadoEncontrado = buscarEmpleado(empleado);
+		
+		
+		TipoDeEmpleado tipoDeEmpleadoACalcular = empleadoEncontrado.getTipoDeEmpleado();
+
+		switch (tipoDeEmpleadoACalcular) {
+
+		case CAJERO:
+			sueldoCajero(empleadoEncontrado);
+			break;
+
+		case REPOSITOR:
+			sueldoRepositor(empleadoEncontrado);
+			break;
+
+		case VENTA_SALON:
+			sueldoVenta(empleadoEncontrado);
+			break;
+
+		}
+		
 	}
 
+	@Override
+	public Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		// TODO Auto-generated method stu
+		
+		for (Empleado empleadoAux : this.empleados) {
+			if(empleadoAux.equals(empleado)) {
+				return empleadoAux;
+			}
+			
+		}
+		
+		throw new EmpleadoNoEncontradoException();
+	}
 	
+	private Double sueldoCajero(Empleado empleado) {
 
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 53000.0;
+		} else {
+			sueldoAux = 424500.0;
+
+		}
+
+		calcularSegunContrato(sueldoAux,empleado);
+
+		return sueldoAux;
+
+	}
+	
+	private Double sueldoRepositor(Empleado empleado) {
+
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 41000.0;
+		} else {
+			sueldoAux = 204167.0;
+
+		}
+		calcularSegunContrato(sueldoAux,empleado);
+
+		return sueldoAux;
+
+	}
+
+	private Double sueldoVenta(Empleado empleado) {
+
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 81000.0;
+		} else {
+			sueldoAux = 500000.0;
+
+		}
+
+		calcularSegunContrato(sueldoAux,empleado);
+		return sueldoAux;
+
+	}
+	
+	private void calcularSegunContrato(Double sueldoAux,Empleado empleado) {
+		
+		
+		Double sueldoEmpleado = 0.0;
+		switch (empleado.getModalidadDeContratacion()) {
+		case PASANTIA, PRUEBA:
+			sueldoEmpleado = sueldoAux * 0.50;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+		default:
+			sueldoEmpleado = sueldoAux;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+		}
+	}
+	
+	
 }
