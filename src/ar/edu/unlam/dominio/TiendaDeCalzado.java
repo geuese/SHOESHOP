@@ -13,12 +13,15 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private List<ClienteCalzado> clientesCalzados;
 
 	private List<Empleado> empleados;
+	
+	private List<Cliente> cliente;
 
 	public TiendaDeCalzado(String nombreTienda) {
 		this.nombreTienda = nombreTienda;
 		this.calzados = new ArrayList<>();
 		this.clientesCalzados = new ArrayList<>();
 		this.empleados = new ArrayList<>();
+		this.cliente= new ArrayList<>();
 	}
 
 //	public Boolean agregarCalzado(Calzado calzado) {
@@ -189,10 +192,15 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public Boolean agregarEmpleado(Empleado empleado) {
+	public Boolean agregarEmpleado(Empleado empleados) {
+	 this.empleados.add(empleados);
+	 return true;
 
-		return this.empleados.add(empleado);
-
+	}
+	@Override
+	public Boolean agregarCliente(Cliente cliente) {
+	this.cliente.add(cliente);
+	return true;
 	}
 
 }

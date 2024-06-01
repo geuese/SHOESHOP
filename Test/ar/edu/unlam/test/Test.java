@@ -39,109 +39,39 @@ public class Test {
 	@org.junit.Test
 	public void queSePuedaAnadirCalzadoBotinALaTienda() {
 
-		Integer idCalzado = 1;
-		Integer talle = 36;
-		Integer stock = 10;
-		String color = "Negro";
-		Genero genero = Genero.MASCULINO;
-		Double precio = 20.0;
-
-		Marca marca = Marca.TOPPER;
-
-		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
-		Calzado calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
-
-		// Agregar calzado a local
-
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
-
-		assertTrue(calzadoAgregado);
-
-	}
+		Calzado calzado = crearBotin(111,37,"verde",Genero.FEMENINO,80000.0,Marca.ADIDAS,TipoSuperficie.TERRENO_ARTIFICIAL);
+        assertTrue(tiendaDeCalzado.agregarCalzado(calzado, null));
+    }
 
 	@org.junit.Test
 	public void queSePuedaAñadirUnCalzadoRunningALaTienda() {
 
-		Integer idCalzado = 1;
-		Integer talle = 36;
-		Integer stock = 10;
-		String color = "Negro";
-		Genero genero = Genero.MASCULINO;
-		Double precio = 20.0;
-		Marca marca = Marca.TOPPER;
-
-		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
-		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
-
-		// Agregar calzado a local
-
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
-
-		assertTrue(calzadoAgregado);
+		 Calzado calzado = crearRunning(112,38,"rojo",Genero.FEMENINO,80000.0,Marca.TOPPER,TipoDePisada.PISADA_SUPINADORA);
+         assertTrue(tiendaDeCalzado.agregarCalzado(calzado, null));
+     
 
 	}
 
 	@org.junit.Test
 	public void queSePuedaAñadirUnCalzadoOutDoorALaTienda() {
 
-		Integer idCalzado = 1;
-		Integer talle = 36;
-		Integer stock = 10;
-		String color = "Negro";
-		Genero genero = Genero.MASCULINO;
-		Double precio = 20.0;
-
-		Marca marca = Marca.TOPPER;
-
-		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
-
-		Calzado outDoor = new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
-
-		// Agregar calzado a local
-
-		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, stock);
-
-		assertTrue(calzadoAgregado);
-
+		Calzado calzado = crearOutDoor(113,39,"amarillo",Genero.X,90000.0,Marca.NIKE,TipoDeUso.HIKING);
+        assertTrue(tiendaDeCalzado.agregarCalzado(calzado, null));
 	}
 
 	@org.junit.Test
 	public void queSePuedaCrearElCliente() {
 
-		String nombre = "Papu";
-		Integer dni = 45555999;
-		Integer talle = 37;
-		Genero genero = Genero.X;
-		ModoDePago modoDePago = ModoDePago.DEBITO;
-
-		Cliente cliente = new Cliente(nombre, dni, talle, genero, modoDePago);
-
-		Cliente cliente1 = new Cliente(nombre, dni, talle, genero, modoDePago);
-
-		assertTrue(cliente.equals(cliente1));
-
+		 Cliente cliente = crearCliente("Raul", 27666345, 51, Genero.MASCULINO, ModoDePago.EFECTIVO);
+         assertTrue(tiendaDeCalzado.agregarCliente(cliente));
 	}
 
 	@org.junit.Test
 	public void queSePuedaCrearElEmpleado() {
 
-		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
-		Integer legajo = 1111;
-		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
-		Integer antiguedad = 20;
-		Categoria categoria = Categoria.FULL_TIME;
-
-		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
-				categoria);
-
-		Empleado empleado1 = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
-				categoria);
-
-		assertTrue(empleado.equals(empleado1));
-
+		Empleado empleado = crearEmpleado("Juana", TipoContrato.PASANTIA,2345,TipoDeEmpleado.VENTA_SALON,1,Categoria.PART_TIME);
+		 assertTrue(tiendaDeCalzado.agregarEmpleado(empleado));
 	}
-
 // Alexis
 	@org.junit.Test
 	public void queTraigaTodosLosRunning() {
@@ -556,5 +486,15 @@ public class Test {
 			Marca marca, TipoDePisada tipoPisada) {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
+	
+    private Cliente crearCliente(String nombre, Integer DNI, Integer edad, Genero genero,ModoDePago modoDePago) {
+        return new Cliente(nombre, DNI, edad, genero, modoDePago);
+    }
+
+    private Empleado crearEmpleado(String nombre, TipoContrato tipoContrato,Integer legajo,TipoDeEmpleado tipoDeEmpleado,Integer antiguedad,Categoria categoria) {
+        return new Empleado(nombre, tipoContrato,legajo,tipoDeEmpleado,antiguedad,categoria);
+    }
+
 
 }
+

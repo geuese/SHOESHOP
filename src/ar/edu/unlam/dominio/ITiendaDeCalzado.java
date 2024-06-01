@@ -17,7 +17,9 @@ public interface ITiendaDeCalzado {
 	Integer obtenerCantidadDeParesTotalesDeLaTienda();
 
 	List<Running> obtenerTodosLosRunning();
-
+//preguntarPorListaEmpleadoYCliente
 	Boolean agregarEmpleado(Empleado empleado);
+
+	Boolean agregarCliente(Cliente cliente);
 
 }
