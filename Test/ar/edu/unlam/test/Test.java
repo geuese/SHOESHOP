@@ -600,18 +600,36 @@ public class Test {
 	// Gustavo
 	@org.junit.Test
 	public void asignarCalzadosAUnCliente() {
+		//cambiar el metodo de creacion
+		Calzado calzadoBotin = crearBotin(4444, 39, "negro", Genero.MASCULINO, 120000.0, Marca.ADIDAS, TipoSuperficie.TERRENO_ARTIFICIAL);
+		Calzado calzadoRunning = crearRunning(3333, 42, "azul", Genero.MASCULINO, 90000.0, Marca.JOHN_FOOS, TipoDePisada.PISADA_PRONADORA);
+		Cliente clienteCompras = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
+		
+		List<Calzado> calzadosComprados = new ArrayList<Calzado>();
+		calzadosComprados.add(calzadoBotin);
+		calzadosComprados.add(calzadoRunning);
+		calzadosComprados.add(calzadoBotin); //compra 2 pares
+		
+		ComprasDelCliente comprasCliente = new ComprasDelCliente(clienteCompras, calzadosComprados);
+		
+		assertEquals(calzadosComprados, comprasCliente.getComprasDelCliente()); //comparacion de objeto
+		
 	}
 
 	@org.junit.Test
 	public void asignarClienteAUnEmpleado() {
+		
 	}
 
 	@org.junit.Test
 	public void calcularElTotalGastadoPorCadaCliente() {
+		//sumar total sobre precios de List calzadosComprados
 	}
 
 	@org.junit.Test
 	public void venderCalzadoAUnCliente() {
+		//restar del stock
+		//al empleado sumar la venta
 	}
 
 	// Elias
@@ -646,7 +664,8 @@ public class Test {
 		calzados.add(calzadoUno);
 		calzados.add(calzadoDos);
 		calzados.add(calzadoTres);
-
+		
+		//consultar sobre esta comparacion
 		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente));
 		assertEquals(calzados.size(), this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente).size());
 
