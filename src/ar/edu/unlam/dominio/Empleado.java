@@ -2,9 +2,9 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
-import ar.edu.unalm.enums.Categoria;
-import ar.edu.unalm.enums.TipoContrato;
-import ar.edu.unalm.enums.TipoDeEmpleado;
+import ar.edu.unlam.enums.Categoria;
+import ar.edu.unlam.enums.TipoContrato;
+import ar.edu.unlam.enums.TipoDeEmpleado;
 
 public class Empleado {
 

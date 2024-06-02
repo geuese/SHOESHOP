@@ -1,9 +1,6 @@
-package ar.edu.unlam.test;
+package ar.edu.unlam.dominio;
 
 import java.util.List;
-
-import ar.edu.unlam.dominio.Calzado;
-import ar.edu.unlam.dominio.Cliente;
 
 public class ComprasDelCliente{
 	

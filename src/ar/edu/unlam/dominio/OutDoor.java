@@ -1,8 +1,8 @@
 package ar.edu.unlam.dominio;
 
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.Marca;
-import ar.edu.unalm.enums.TipoDeUso;
+import ar.edu.unlam.enums.Genero;
+import ar.edu.unlam.enums.Marca;
+import ar.edu.unlam.enums.TipoDeUso;
 
 public class OutDoor extends Calzado {
 

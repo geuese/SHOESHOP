@@ -10,7 +10,7 @@ import org.junit.Before;
 
 
 import ar.edu.unlam.dominio.*;
-import ar.edu.unalm.enums.*;
+import ar.edu.unlam.enums.*;
 
 
 public class Test {
