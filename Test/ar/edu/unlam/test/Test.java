@@ -611,7 +611,7 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		Integer cantidadAVender = 2;
+		Integer cantidadAVender = 3;
 
 		this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, cantidadAVender, empleado);
 		this.tiendaDeCalzado.venderCalzado(cliente, calzadoDos, cantidadAVender, empleado);
@@ -625,22 +625,22 @@ public class Test {
 		calzados.add(calzadoDos);
 		calzados.add(calzadoTres);
 
-		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente));
-		assertEquals(calzados.size(), this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente).size());
+		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente));
+		assertEquals(calzados.size(), this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente).size());
 
 		// chequeo stock
 		int i = 0;
 
-		for (Calzado c : this.tiendaDeCalzado.obtenerlistaDeZapatosDeCliente(cliente)) {
+		for (Calzado c : this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente)) {
 			switch (i) {
 			case 0:
-				assertEquals((int) cantidadAVender, (int) c.getStock());
+				assertEquals((int) cantidadAVender, (int) c.getStockCliente());
 				break;
 			case 1:
-				assertEquals((int) cantidadAVender, (int) c.getStock());
+				assertEquals((int) cantidadAVender, (int) c.getStockCliente());
 				break;
 			case 2:
-				assertEquals((int) cantidadAVender, (int) c.getStock());
+				assertEquals((int) cantidadAVender, (int) c.getStockCliente());
 				break;
 			default:
 				break;

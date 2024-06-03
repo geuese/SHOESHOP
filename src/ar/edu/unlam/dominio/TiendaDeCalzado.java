@@ -27,12 +27,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-//	public Boolean agregarCalzado(Calzado calzado) {
-//		return calzados.add(calzado);
-//	}
-//	// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-//	// nuevo.
-
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
 		for (Calzado c : calzados) {
@@ -91,9 +85,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return false;
 	}
 
-	private EmpleadoCliente crearEmpleadoCliente(Empleado empleado, Cliente cliente, Integer cantidadAVender) {
-		return new EmpleadoCliente(empleado, cliente, cantidadAVender);
-
+	private EmpleadoCliente crearEmpleadoCliente(Empleado empleado, Cliente cliente, Integer cantidadAComprar) {
+		return new EmpleadoCliente(empleado, cliente, cantidadAComprar);
 	}
 
 	@Override
@@ -102,7 +95,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente) {
+	public List<Calzado> obtenerlistaDeCalzadosDeCliente(Cliente cliente) {
 		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
 		for (ClienteCalzado cc : clientesCalzados) {
 			if (cc.getCliente().getDni().equals(cliente.getDni())) {
@@ -181,6 +174,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Integer calcularComisionEmpleado(Empleado empleadoBuscado) {
 		Integer comision = 0;
 
@@ -226,7 +220,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			if (calzado.getIdCalzado().equals(idCalzado)) {
 				return calzado;
 			}
-
 		}
 
 		throw new CalzadoInexistenteException("Calzado Inexistente");
