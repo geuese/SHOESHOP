@@ -8,11 +8,23 @@ public class Running extends Calzado {
 
 	private TipoDePisada tipoDePisada;
 
-	public Running(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
-			Marca marca, TipoDePisada tipoPisada) {
+	public Running(Integer idCalzado, Integer talle, String color, Genero genero, Double precio, Marca marca,
+			TipoDePisada tipoPisada) {
 		super(idCalzado, talle, color, genero, precio, marca);
 
 		this.tipoDePisada = tipoPisada;
+	}
+
+	@Override
+	public void reducirStock(Integer cantidadAVender) {
+		this.stock -= cantidadAVender;
+
+	}
+
+	@Override
+	public void incrementarStock(Integer cantidadDeCalzados) {
+		this.stock += cantidadDeCalzados;
+
 	}
 
 }

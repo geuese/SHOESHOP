@@ -30,13 +30,8 @@ public abstract class Calzado implements Comparable<Calzado> {
 		return this.idCalzado;
 	}
 
-	public void reducirStock(Integer cantidadAVender) {
-		this.stock -= cantidadAVender;
-	}
+	
 
-	public void incrementarStock(Integer cantidadDeCalzados) {
-		this.stock += cantidadDeCalzados;
-	}
 
 	public Integer getIdCalzado() {
 		return idCalzado;
@@ -118,5 +113,10 @@ public abstract class Calzado implements Comparable<Calzado> {
 	public int compareTo(Calzado o) {
 		return this.idCalzado.compareTo(o.getIdCalzado());
 	}
+
+	
+	public abstract void reducirStock(Integer cantidadAVender);
+	
+	public abstract void incrementarStock(Integer cantidadDeCalzados);
 
 }
