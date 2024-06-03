@@ -18,6 +18,7 @@ public interface ITiendaDeCalzado {
 	
 	Boolean agregarEmpleado(Empleado empleado);
 	ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar);
+	
 	List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente);
 	List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente);
 	Integer obtenerCantidadDeParesTotalesDeLaTienda();
@@ -27,6 +28,9 @@ public interface ITiendaDeCalzado {
 	void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
 	Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
 	Integer calcularComisionEmpleado(Empleado empleadoBuscado); 
+	
+	
+	Integer devolverCantidadDeCalzadosEnLaTienda();
 
 
 }

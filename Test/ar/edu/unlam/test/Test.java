@@ -1,6 +1,7 @@
 package ar.edu.unlam.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -37,13 +38,41 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
-		Calzado calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+		Botin calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 
 		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
 
 		assertTrue(calzadoAgregado);
+
+	}
+	
+	@org.junit.Test
+	public void queNoSePuedaAnadirElMismoCalzadoBotinALaTienda() {
+
+		Integer idCalzado = 1;
+		Integer talle = 36;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+
+		Marca marca = Marca.TOPPER;
+
+		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
+		
+		
+		Calzado calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+
+
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
+		
+		Calzado calzado2 = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(calzado2, stock);
+		
+		
+		assertEquals(1,this.tiendaDeCalzado.obtenerTodosLosBotines().size());
 
 	}
 
@@ -67,6 +96,33 @@ public class Test {
 
 		assertTrue(calzadoAgregado);
 
+	}
+	
+	@org.junit.Test
+	public void queNoSePuedaAñadirElMismoCalzadoRunningALaTienda() {
+
+		Integer idCalzado = 1;
+		Integer talle = 36;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+		Marca marca = Marca.TOPPER;
+
+		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
+		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
+
+		// Agregar calzado a local
+
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
+		
+		Calzado running2 = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
+
+		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(running2, stock);
+
+		assertEquals(1,(int)this.tiendaDeCalzado.obtenerTodosLosRunning().size() );
+		
+		
 	}
 
 	@org.junit.Test
@@ -92,6 +148,34 @@ public class Test {
 		assertTrue(calzadoAgregado);
 
 	}
+	
+	@org.junit.Test
+	public void queNoSePuedaAñadirElMismoCalzadoOutDoorALaTienda() {
+
+		Integer idCalzado = 1;
+		Integer talle = 36;
+		Integer stock = 10;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+
+		Marca marca = Marca.TOPPER;
+
+		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
+
+		Calzado outDoor = new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+
+		// Agregar calzado a local
+
+		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, stock);
+		
+		Calzado outDoor2 = new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+
+		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(outDoor2, stock);
+
+		assertEquals(1,(int)this.tiendaDeCalzado.obtenerTodosLosOutDoor().size());
+
+	}
 
 	@org.junit.Test
 	public void queSePuedaCrearElCliente() {
@@ -109,6 +193,9 @@ public class Test {
 		assertTrue(cliente.equals(cliente1));
 
 	}
+	
+	
+	
 
 	@org.junit.Test
 	public void queSePuedaCrearElEmpleado() {
@@ -135,7 +222,6 @@ public class Test {
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -159,7 +245,6 @@ public class Test {
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -180,7 +265,6 @@ public class Test {
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -196,6 +280,28 @@ public class Test {
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
+	
+	
+	@org.junit.Test(expected = CalzadoInexistenteException.class)
+	public void queNoSePuedaDevolverElPrecioDelCalzadoBuscadoSiEsteNoEstaEnLaTienda() throws CalzadoInexistenteException {
+
+		Integer idCalzado = 1;
+		Integer talle = 36;
+		String color = "Negro";
+		Genero genero = Genero.MASCULINO;
+		Double precio = 20.0;
+		Marca marca = Marca.TOPPER;
+
+		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
+
+		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+
+
+		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
+
+		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
+	}
+
 
 	@org.junit.Test
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime() throws EmpleadoNoEncontradoException {
@@ -247,7 +353,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		assertEquals(102083.5, empleado.getSueldo(), 0.01);
+		assertEquals(61250.1, empleado.getSueldo(), 0.01);
 
 	}
 	
@@ -270,8 +376,9 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
-
-		assertEquals(20500.0, empleado.getSueldo(), 0.01);
+		
+		
+		assertEquals(12300.0, empleado.getSueldo(), 0.01);
 
 	}
 	
@@ -325,7 +432,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		assertEquals(212250.0, empleado.getSueldo(), 0.01);
+		assertEquals(127350.0, empleado.getSueldo(), 0.01);
 
 	}
 	
@@ -350,7 +457,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		assertEquals(26500.0, empleado.getSueldo(), 0.01);
+		assertEquals(15900.0, empleado.getSueldo(), 0.01);
 
 	}
 
@@ -405,7 +512,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		assertEquals(250000.0, empleado.getSueldo(), 0.01);
+		assertEquals(150000.0, empleado.getSueldo(), 0.01);
 
 	}
 	
@@ -429,21 +536,14 @@ public class Test {
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		assertEquals(40500.0, empleado.getSueldo(), 0.01);
+		assertEquals(24300.0, empleado.getSueldo(), 0.01);
 
 	}
-
-	// DUDA SURGIDA: ¿LA FUNCION CALCULAR SUELDO NO DEBERIA IR EN LA TIENDA DE
-	// CALZADO?
-	//
-	/*
-	*/
 
 	@org.junit.Test
 	public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
 		Integer idCalzado = 1001;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -473,7 +573,6 @@ public class Test {
 	public void queSePuedaOrdenarLosOutDoorSegunElTalleDeFormaAscendente() {
 		Integer idCalzado = 1001;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -503,7 +602,6 @@ public class Test {
 
 		Integer idCalzado = 1001;
 		Integer talle = 40;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -573,7 +671,6 @@ public class Test {
 
 		Integer idCalzadoOut = 1;
 		Integer talleOut = 36;
-		Integer stockOut = 10;
 		String colorOut = "Negro";
 		Genero generoOut = Genero.MASCULINO;
 		Double precioOut = 20.0;
@@ -652,7 +749,6 @@ public class Test {
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
-		Integer stock = 10;
 		String color = "Negro";
 		Genero genero = Genero.MASCULINO;
 		Double precio = 20.0;
@@ -672,7 +768,6 @@ public class Test {
 
 		Integer idCalzadoOut = 1;
 		Integer talleOut = 36;
-		Integer stockOut = 10;
 		String colorOut = "Negro";
 		Genero generoOut = Genero.MASCULINO;
 		Double precioOut = 20.0;
@@ -681,10 +776,11 @@ public class Test {
 
 		TipoDeUso tipoDeUsoOut = TipoDeUso.HIKING;
 
-		Calzado outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut, tipoDeUsoOut);
+		OutDoor outDoor = new OutDoor(idCalzadoOut, talleOut, colorOut, generoOut, precioOut, marcaOut, tipoDeUsoOut);
 		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
 		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
 
+		
 		this.tiendaDeCalzado.agregarCalzado(outDoor, 4);
 		this.tiendaDeCalzado.agregarCalzado(outDoor2, 2);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3, 5);
@@ -716,8 +812,28 @@ public class Test {
 
 		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
 
-		// seria 20 * 6 * 9
 		assertEquals(1080, (int) comision);
+
+	}
+	
+	
+	@org.junit.Test
+	public void queNoSePuedaCalcularComisionDeEmpleadoSiEsteNoEstaEnLaTienda() {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 20;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+
+		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
+
+		assertEquals(0, (int) comision);
 
 	}
 
@@ -737,6 +853,7 @@ public class Test {
 
 		assertTrue(sePudo);
 	}
+	
 	
 	@org.junit.Test
 	public void queSePuedaEncontrarEmpleadoATienda() throws EmpleadoNoEncontradoException {

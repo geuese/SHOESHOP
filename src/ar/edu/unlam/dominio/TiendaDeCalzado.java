@@ -138,8 +138,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosRunning;
 
 	}
-	
-	
+
 	@Override
 	public List<Calzado> obtenerTodosLosOutDoor() {
 		List<Calzado> calzadosOutDoor = new ArrayList<>();
@@ -151,7 +150,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		}
 		return calzadosOutDoor;
 	}
-	
+
 	@Override
 	public List<Calzado> obtenerTodosLosBotines() {
 
@@ -184,8 +183,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 					break;
 				}
 
-				
-			}switch (empleado.getCategoria()) {
+			}
+			switch (empleado.getCategoria()) {
 			case FULL_TIME:
 				comision *= 9;
 				break;
@@ -233,19 +232,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
-		return null;
-
-	}
-
-	
-
 	@Override
 	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
 
 		List<Calzado> botines = obtenerTodosLosBotines();
 
-		
 		ordenarDeManeraAscendente(botines);
 
 		return botines;
@@ -256,8 +247,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente() {
 		// TODO Auto-generated method stub
 		List<Calzado> outDoors = obtenerTodosLosOutDoor();
-
-		
 
 		ordenarDeManeraAscendente(outDoors);
 
@@ -270,8 +259,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		// TODO Auto-generated method stub
 		List<Calzado> runnings = obtenerTodosLosRunning();
 
-		
-
 		ordenarDeManeraAscendente(runnings);
 
 		return runnings;
@@ -282,14 +269,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		Collections.sort(calzados, (o1, o2) -> o1.getTalle().compareTo(o2.getTalle()));
 	}
 
-	
 	@Override
 	public void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
-		
-		
+
 		Empleado empleadoEncontrado = buscarEmpleado(empleado);
-		
-		
+
 		TipoDeEmpleado tipoDeEmpleadoACalcular = empleadoEncontrado.getTipoDeEmpleado();
 
 		switch (tipoDeEmpleadoACalcular) {
@@ -307,23 +291,23 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			break;
 
 		}
-		
+
 	}
 
 	@Override
 	public Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
 		// TODO Auto-generated method stu
-		
+
 		for (Empleado empleadoAux : this.empleados) {
-			if(empleadoAux.equals(empleado)) {
+			if (empleadoAux.equals(empleado)) {
 				return empleadoAux;
 			}
-			
+
 		}
-		
+
 		throw new EmpleadoNoEncontradoException();
 	}
-	
+
 	private Double sueldoCajero(Empleado empleado) {
 
 		Double sueldoAux = 0.0;
@@ -335,12 +319,12 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		}
 
-		calcularSegunContrato(sueldoAux,empleado);
+		calcularSegunContrato(sueldoAux, empleado);
 
 		return sueldoAux;
 
 	}
-	
+
 	private Double sueldoRepositor(Empleado empleado) {
 
 		Double sueldoAux = 0.0;
@@ -351,7 +335,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			sueldoAux = 204167.0;
 
 		}
-		calcularSegunContrato(sueldoAux,empleado);
+		calcularSegunContrato(sueldoAux, empleado);
 
 		return sueldoAux;
 
@@ -368,18 +352,22 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		}
 
-		calcularSegunContrato(sueldoAux,empleado);
+		calcularSegunContrato(sueldoAux, empleado);
 		return sueldoAux;
 
 	}
-	
-	private void calcularSegunContrato(Double sueldoAux,Empleado empleado) {
-		
-		
+
+	private void calcularSegunContrato(Double sueldoAux, Empleado empleado) {
+
 		Double sueldoEmpleado = 0.0;
 		switch (empleado.getModalidadDeContratacion()) {
-		case PASANTIA, PRUEBA:
+		case PASANTIA:
 			sueldoEmpleado = sueldoAux * 0.50;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+			
+		case PRUEBA:
+			sueldoEmpleado = sueldoAux * 0.30;
 			empleado.setSueldo(sueldoEmpleado);
 			break;
 		default:
@@ -388,6 +376,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			break;
 		}
 	}
-	
-	
+
+	@Override
+	public Integer devolverCantidadDeCalzadosEnLaTienda() {
+		// TODO Auto-generated method stub
+		return this.calzados.size();
+	}
+
 }
