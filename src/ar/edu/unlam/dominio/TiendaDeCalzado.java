@@ -27,111 +27,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	@Override
-	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
-		for (Calzado c : calzados) {
-			if (c.getID().equals(calzado.getID())) {
-				c.incrementarStock(cantidadDeCalzados);
-				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
-			}
-		}
-		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-		// nuevo.
-		Calzado calzadoNuevo = calzado;
-		calzadoNuevo.setStock(cantidadDeCalzados);
-		calzados.add(calzadoNuevo);
-		return true;
-	}
-
-	@Override
-	public Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender, Empleado empleado) {
-
-		for (Calzado c : calzados) {
-			if (c.getID().equals(calzado.getID())) {
-				if (c.getStock() < cantidadAVender) {
-					return false; // no hay suficiente stock
-				}
-				c.reducirStock(cantidadAVender);
-
-				Boolean clienteCalzadoEncontrado = false;
-
-				for (ClienteCalzado cc : clientesCalzados) {
-					if (cc.getCliente().getDni().equals(cliente.getDni())
-							&& cc.getCalzado().getID().equals(calzado.getID())) {
-						cc.incrementarCantidadDeCalzadosDeClienteCalzado(cantidadAVender);
-						clienteCalzadoEncontrado = true;
-						break;
-					}
-				}
-
-				if (!clienteCalzadoEncontrado) {
-					ClienteCalzado nuevoClienteCalzado = crearClienteCalzado(cliente, calzado, cantidadAVender);
-					this.clientesCalzados.add(nuevoClienteCalzado);
-				}
-
-				for (EmpleadoCliente ec : empleadosClientes) {
-					if (ec.getEmpleado().equals(empleado) && ec.getCliente().equals(cliente)) {
-						ec.incrementarCantidadAVender(cantidadAVender);
-					}
-				}
-				EmpleadoCliente nuevoEmpleadoCliente = crearEmpleadoCliente(empleado, cliente, cantidadAVender);
-				this.empleadosClientes.add(nuevoEmpleadoCliente);
-
-				return true;
-
-			}
-
-		}
-		return false;
-	}
-
-	private EmpleadoCliente crearEmpleadoCliente(Empleado empleado, Cliente cliente, Integer cantidadAComprar) {
-		return new EmpleadoCliente(empleado, cliente, cantidadAComprar);
-	}
-
-	@Override
-	public ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar) {
-		return new ClienteCalzado(cliente, calzado, cantidadAComprar);
-	}
-
-	@Override
-	public List<Calzado> obtenerlistaDeCalzadosDeCliente(Cliente cliente) {
-		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
-		for (ClienteCalzado cc : clientesCalzados) {
-			if (cc.getCliente().getDni().equals(cliente.getDni())) {
-				calzadosDeCliente.add(cc.getCalzado());
-			}
-		}
-		return calzadosDeCliente;
-	}
-
-	@Override
-	public Integer obtenerCantidadDeParesTotalesDeLaTienda() {
-		int cantidadTotalDeZapatos = 0;
-		for (Calzado c : calzados) {
-			if (c != null) {
-				cantidadTotalDeZapatos += c.getStock();
-			}
-		}
-		return cantidadTotalDeZapatos;
-	}
-
-	@Override
-	public List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente) {
-		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
-		for (ClienteCalzado cc : clientesCalzados) {
-			if (cc != null && cc.getCliente().getDni().equals(cliente.getDni())) {
-				calzadosDeCliente.add(cc.getCalzado());
-			}
-		}
-		Collections.sort(calzadosDeCliente, (o1, o2) -> o2.getPrecio().compareTo(o1.getPrecio()));
-		return calzadosDeCliente;
-	}
-
-	public List<ClienteCalzado> getClientesCalzados() {
-		return this.clientesCalzados;
-	}
-
 	public Set<Calzado> getCalzados() {
 		return this.calzados;
 	}
@@ -206,12 +101,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return comision;
 	}
 
-	@Override
-	public Boolean agregarEmpleado(Empleado empleado) {
-
-		return this.empleados.add(empleado);
-
-	}
 
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
 
@@ -280,6 +169,14 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		Collections.sort(calzados, (o1, o2) -> o1.getTalle().compareTo(o2.getTalle()));
 	}
 
+// elias
+	@Override
+	public Boolean agregarEmpleado(Empleado empleado) {
+
+		return this.empleados.add(empleado);
+
+	}
+
 	public List<Cliente> obtenerListaDeClientesDeEmpleado(Empleado empleado) {
 
 		List<Cliente> clientesDeEmpleado = new ArrayList<Cliente>();
@@ -302,4 +199,108 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return cantidadDeVentas;
 	}
 
+	@Override
+	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
+		for (Calzado c : calzados) {
+			if (c.getID().equals(calzado.getID())) {
+				c.incrementarStock(cantidadDeCalzados);
+				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
+			}
+		}
+		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
+		// nuevo.
+		Calzado calzadoNuevo = calzado;
+		calzadoNuevo.setStock(cantidadDeCalzados);
+		calzados.add(calzadoNuevo);
+		return true;
+	}
+
+	@Override
+	public Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender, Empleado empleado) {
+
+		for (Calzado c : calzados) {
+			if (c.getID().equals(calzado.getID())) {
+				if (c.getStock() < cantidadAVender) {
+					return false; // no hay suficiente stock
+				}
+				c.reducirStock(cantidadAVender);
+
+				Boolean clienteCalzadoEncontrado = false;
+
+				for (ClienteCalzado cc : clientesCalzados) {
+					if (cc.getCliente().getDni().equals(cliente.getDni())
+							&& cc.getCalzado().getID().equals(calzado.getID())) {
+						cc.incrementarCantidadDeCalzadosDeClienteCalzado(cantidadAVender);
+						clienteCalzadoEncontrado = true;
+						break;
+					}
+				}
+
+				if (!clienteCalzadoEncontrado) {
+					ClienteCalzado nuevoClienteCalzado = crearClienteCalzado(cliente, calzado, cantidadAVender);
+					this.clientesCalzados.add(nuevoClienteCalzado);
+				}
+
+				for (EmpleadoCliente ec : empleadosClientes) {
+					if (ec.getEmpleado().equals(empleado) && ec.getCliente().equals(cliente)) {
+						ec.incrementarCantidadAVender(cantidadAVender);
+					}
+				}
+				EmpleadoCliente nuevoEmpleadoCliente = crearEmpleadoCliente(empleado, cliente, cantidadAVender);
+				this.empleadosClientes.add(nuevoEmpleadoCliente);
+
+				return true;
+
+			}
+
+		}
+		return false;
+	}
+
+	private EmpleadoCliente crearEmpleadoCliente(Empleado empleado, Cliente cliente, Integer cantidadAComprar) {
+		return new EmpleadoCliente(empleado, cliente, cantidadAComprar);
+	}
+
+	@Override
+	public ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar) {
+		return new ClienteCalzado(cliente, calzado, cantidadAComprar);
+	}
+
+	@Override
+	public Integer obtenerCantidadDeParesTotalesDeLaTienda() {
+		int cantidadTotalDeZapatos = 0;
+		for (Calzado c : calzados) {
+			if (c != null) {
+				cantidadTotalDeZapatos += c.getStock();
+			}
+		}
+		return cantidadTotalDeZapatos;
+	}
+
+	@Override
+	public List<Calzado> obtenerlistaDeCalzadosDeCliente(Cliente cliente) {
+		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
+		for (ClienteCalzado cc : clientesCalzados) {
+			if (cc.getCliente().getDni().equals(cliente.getDni())) {
+				calzadosDeCliente.add(cc.getCalzado());
+			}
+		}
+		return calzadosDeCliente;
+	}
+
+	@Override
+	public List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente) {
+		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
+		for (ClienteCalzado cc : clientesCalzados) {
+			if (cc != null && cc.getCliente().getDni().equals(cliente.getDni())) {
+				calzadosDeCliente.add(cc.getCalzado());
+			}
+		}
+		Collections.sort(calzadosDeCliente, (o1, o2) -> o2.getPrecio().compareTo(o1.getPrecio()));
+		return calzadosDeCliente;
+	}
+
+	public List<ClienteCalzado> getClientesCalzados() {
+		return this.clientesCalzados;
+	}
 }
