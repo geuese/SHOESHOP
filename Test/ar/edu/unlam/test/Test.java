@@ -144,7 +144,7 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = crearOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
@@ -167,7 +167,7 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = crearOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
@@ -188,7 +188,7 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = crearOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
@@ -307,10 +307,10 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
 
-		Calzado botin1 = generarBotin(idCalzado, talle,  color, genero, precio, marca, tipoSuperficie);
-		Calzado botin2 = generarBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado botin1 = crearBotin(idCalzado, talle,  color, genero, precio, marca, tipoSuperficie);
+		Calzado botin2 = crearBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoSuperficie.SUELO_BLANDO);
-		Calzado botin3 = generarBotin(1003, 35,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado botin3 = crearBotin(1003, 35,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoSuperficie.TERRENO_ARTIFICIAL);
 
 		// AGREGAMOS CALZADOS
@@ -337,10 +337,10 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoDeUso tipoUso = TipoDeUso.ESCALADA;
 
-		Calzado outDoor1 = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoUso);
-		Calzado outDoor2 = generarOutDoor(1002, 35,  "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado outDoor1 = crearOutDoor(idCalzado, talle, color, genero, precio, marca, tipoUso);
+		Calzado outDoor2 = crearOutDoor(1002, 35,  "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDeUso.TRAIL_RUNNING);
-		Calzado outDoor3 = generarOutDoor(1003, 40,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
+		Calzado outDoor3 = crearOutDoor(1003, 40,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
 
 		// AGREGAMOS CALZADOS
 		this.tiendaDeCalzado.agregarCalzado(outDoor1,1);
@@ -367,10 +367,10 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoDePisada tipoSuperficie = TipoDePisada.PISADA_NEUTRA;
 
-		Calzado running1 = generarRunning(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
-		Calzado running2 = generarRunning(1002, 37, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado running1 = crearRunning(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+		Calzado running2 = crearRunning(1002, 37, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDePisada.PISADA_PRONADORA);
-		Calzado running3 = generarRunning(1003, 38, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado running3 = crearRunning(1003, 38, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoDePisada.PISADA_SUPINADORA);
 
 		// AGREGAMOS CALZADOS
@@ -386,23 +386,7 @@ public class Test {
 
 
 	}
-
-	private Running generarRunning(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoDePisada tipoPisada) {
-		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
-	}
-
-	private OutDoor generarOutDoor(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoDeUso tipoDeUso) {
-		return new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
-	}
-
-	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoSuperficie tipoSuperficie) {
-		return new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
-	}
 	
-		
 		
 	@org.junit.Test
 	public void queTraigaTodosLosRunnings() {
