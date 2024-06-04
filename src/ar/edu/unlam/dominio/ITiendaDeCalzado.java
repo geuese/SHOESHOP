@@ -14,14 +14,15 @@ public interface ITiendaDeCalzado {
 	List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente();
 	List<Calzado> ordenarRunningsPorTalleDeManeraAscendente();
 	Boolean agregarEmpleado(Empleado empleado);
-	Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidad);
 	ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar);
-	List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente);
+	List<Calzado> obtenerlistaDeCalzadosDeCliente(Cliente cliente);
 	List<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorPrecioDescendiente(Cliente cliente);
 	Integer obtenerCantidadDeParesTotalesDeLaTienda();
 	List<Calzado> obtenerTodosLosRunning();
 	List<Calzado> obtenerTodosLosOutDoor(); 
-	List<Calzado> obtenerTodosLosBotines(); 
+	Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender, Empleado empleado);
+	Integer obtenerTotalDeVentasTotalesDeEmpleado(Empleado empleado);
+	Integer calcularComisionEmpleado(Empleado empleadoBuscado); 
 
 
 }
