@@ -284,7 +284,7 @@ public class Test {
 
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
-		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
+		Calzado outDoor = crearOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
 
