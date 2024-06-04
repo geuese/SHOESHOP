@@ -35,9 +35,6 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 
-
-
-
 	public TipoContrato getModalidadDeContratacion() {
 		return modalidadDeContratacion;
 	}
@@ -67,7 +64,7 @@ public class Empleado {
 	}
 
 	public void setAntiguedad(Integer antiguedad) {
-		
+
 		this.antiguedad = antiguedad;
 	}
 
@@ -87,33 +84,9 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
-	
-
 	public TipoContrato getTipoContrato() {
 
 		return this.modalidadDeContratacion;
-	}
-
-	
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(antiguedad, categoria, legajo, modalidadDeContratacion, nombre, sueldo, tipoDeEmpleado);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Empleado other = (Empleado) obj;
-		return Objects.equals(antiguedad, other.antiguedad) && categoria == other.categoria
-				&& Objects.equals(legajo, other.legajo) && modalidadDeContratacion == other.modalidadDeContratacion
-				&& Objects.equals(nombre, other.nombre) && Objects.equals(sueldo, other.sueldo)
-				&& tipoDeEmpleado == other.tipoDeEmpleado;
 	}
 
 	public void calcularElSueldo() {
@@ -198,6 +171,23 @@ public class Empleado {
 		}
 	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(legajo);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		return Objects.equals(legajo, other.legajo);
+	}
+
+	
+	
 }
