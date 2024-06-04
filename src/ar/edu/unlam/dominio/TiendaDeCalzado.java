@@ -2,6 +2,7 @@ package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -100,7 +101,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		return comision;
 	}
-
 
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
 
@@ -297,6 +297,19 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			}
 		}
 		Collections.sort(calzadosDeCliente, (o1, o2) -> o2.getPrecio().compareTo(o1.getPrecio()));
+		return calzadosDeCliente;
+	}
+
+	// otra forma
+	@Override
+	public TreeSet<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorOrdenEspecifico(
+			Comparator<Calzado> OrdenEspecifico, Cliente cliente) {
+		
+		TreeSet<Calzado> calzadosDeCliente = new TreeSet<Calzado>(OrdenEspecifico);
+		List<Calzado> calzados = obtenerlistaDeCalzadosDeCliente(cliente);
+
+		calzadosDeCliente.addAll(calzados);
+
 		return calzadosDeCliente;
 	}
 
