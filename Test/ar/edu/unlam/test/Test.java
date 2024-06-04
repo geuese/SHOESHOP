@@ -1013,6 +1013,8 @@ public class Test {
 
 		assertEquals(8, (int) totalDeVentas);
 	}
+	
+	// COMMIT PRUEBA
 
 	// Metodos para la resolucion
 
