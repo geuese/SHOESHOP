@@ -9,8 +9,7 @@ public class ClienteCalzado {
 	public ClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar) {
 		this.cliente = cliente;
 		this.calzado = calzado;
-		this.cantidadAComprar = cantidadAComprar;
-		calzado.setStockCliente(cantidadAComprar);
+		this.calzado.setStock(cantidadAComprar);
 	}
 
 	public Integer getIDDeCalzado() {
@@ -24,12 +23,8 @@ public class ClienteCalzado {
 	public Cliente getCliente() {
 		return this.cliente;
 	}
-
-	public void incrementarCantidadDeCalzadosDeClienteCalzado(Integer cantidadAVender) {
-		this.cantidadAComprar += cantidadAVender;
-		this.calzado.incrementarStockCliente(cantidadAVender);
-	}
-	
 	
 
+	
+	
 }

@@ -5,7 +5,7 @@ import java.util.Objects;
 import ar.edu.unalm.enums.Genero;
 import ar.edu.unalm.enums.Marca;
 
-public class Calzado implements Comparable<Calzado> {
+public abstract class Calzado implements Comparable<Calzado> {
 
 	private Integer idCalzado;
 	private Integer talle;
@@ -14,7 +14,6 @@ public class Calzado implements Comparable<Calzado> {
 	private Double precio;
 	private Marca marca;
 	private Integer stock;
-	private Integer stockCliente;
 
 	public Calzado(Integer id, Integer talle, String color, Genero genero, Double precio, Marca marca) {
 
@@ -25,7 +24,6 @@ public class Calzado implements Comparable<Calzado> {
 		this.precio = precio;
 		this.marca = marca;
 		this.stock = 0;
-		this.stockCliente = 0;
 	}
 
 	public Integer getID() {
@@ -119,20 +117,6 @@ public class Calzado implements Comparable<Calzado> {
 	@Override
 	public int compareTo(Calzado o) {
 		return this.idCalzado.compareTo(o.getIdCalzado());
-	}
-
-	public int getStockCliente() {
-		return this.stockCliente;
-	}
-
-	public void setStockCliente(Integer cantidadAComprar) {
-
-		this.stockCliente = cantidadAComprar;
-	}
-
-	public void incrementarStockCliente(Integer cantidadAComprar) {
-		this.stockCliente += cantidadAComprar;
-		
 	}
 
 }
