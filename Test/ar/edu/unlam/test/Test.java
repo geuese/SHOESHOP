@@ -172,7 +172,6 @@ public class Test {
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
 		assertTrue(outDoor.equals(calzadoEncontrado));
-
 	}
 
 	@org.junit.Test
@@ -600,36 +599,53 @@ public class Test {
 	// Gustavo
 	@org.junit.Test
 	public void asignarCalzadosAUnCliente() {
-		//cambiar el metodo de creacion
-		Calzado calzadoBotin = crearBotin(4444, 39, "negro", Genero.MASCULINO, 120000.0, Marca.ADIDAS, TipoSuperficie.TERRENO_ARTIFICIAL);
-		Calzado calzadoRunning = crearRunning(3333, 42, "azul", Genero.MASCULINO, 90000.0, Marca.JOHN_FOOS, TipoDePisada.PISADA_PRONADORA);
-		Cliente clienteCompras = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
-		
-		List<Calzado> calzadosComprados = new ArrayList<Calzado>();
-		calzadosComprados.add(calzadoBotin);
-		calzadosComprados.add(calzadoRunning);
-		calzadosComprados.add(calzadoBotin); //compra 2 pares
-		
-		ComprasDelCliente comprasCliente = new ComprasDelCliente(clienteCompras, calzadosComprados);
-		
-		assertEquals(calzadosComprados, comprasCliente.getComprasDelCliente()); //comparacion de objeto
-		
+        Calzado calzadoBotin = crearBotin(4444, 39, "negro", Genero.MASCULINO, 120000.0, Marca.ADIDAS, TipoSuperficie.TERRENO_ARTIFICIAL);
+        Calzado calzadoRunning = crearRunning(3333, 42, "azul", Genero.MASCULINO, 90000.0, Marca.JOHN_FOOS, TipoDePisada.PISADA_PRONADORA);
+        
+        Cliente clienteCompras = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
+        
+        clienteCompras.añadirCalzado(calzadoBotin);
+        clienteCompras.añadirCalzado(calzadoRunning);
+        clienteCompras.añadirCalzado(calzadoBotin); //compra 2 pares iguales
+
+        List<Calzado> calzadosComprados = clienteCompras.getCalzadosComprados();
+
+        List<Calzado> calzadosEsperados = new ArrayList<>(); //esperados
+        calzadosEsperados.add(calzadoBotin);
+        calzadosEsperados.add(calzadoRunning);
+        calzadosEsperados.add(calzadoBotin);
+
+        assertEquals(calzadosEsperados, calzadosComprados);
 	}
 
 	@org.junit.Test
 	public void asignarClienteAUnEmpleado() {
-		
+		Cliente cliente1 = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
+        Cliente cliente2 = new Cliente("agustin", 38343546, 42, Genero.X, ModoDePago.CREDITO);
+        Empleado empleadoVenta = new Empleado("hector", TipoContrato.PRUEBA, 3456, TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
+        
+        empleadoVenta.añadirCliente(cliente1);
+        empleadoVenta.añadirCliente(cliente2);
+
+        List<Cliente> listadoDeClientesDeUnEmpleado = empleadoVenta.getClientes();
 	}
 
 	@org.junit.Test
 	public void calcularElTotalGastadoPorCadaCliente() {
 		//sumar total sobre precios de List calzadosComprados
-	}
+		Calzado calzadoBotin = crearBotin(4444, 39, "negro", Genero.MASCULINO, 120000.0, Marca.ADIDAS, TipoSuperficie.TERRENO_ARTIFICIAL);
+        Calzado calzadoRunning = crearRunning(3333, 42, "azul", Genero.MASCULINO, 90000.0, Marca.JOHN_FOOS, TipoDePisada.PISADA_PRONADORA);
+        
+        Cliente clienteCompras = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
+        
+        clienteCompras.añadirCalzado(calzadoBotin);
+        clienteCompras.añadirCalzado(calzadoRunning);
+        clienteCompras.añadirCalzado(calzadoBotin); // compra 2 pares
 
-	@org.junit.Test
-	public void venderCalzadoAUnCliente() {
-		//restar del stock
-		//al empleado sumar la venta
+        double totalEsperado = calzadoBotin.getPrecio() + calzadoRunning.getPrecio() + calzadoBotin.getPrecio();
+        double totalCalculado = clienteCompras.calcularTotalGastado();
+
+        assertEquals(totalEsperado, totalCalculado, 0.01);
 	}
 
 	// Elias

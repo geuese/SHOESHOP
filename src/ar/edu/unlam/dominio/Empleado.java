@@ -1,5 +1,7 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import ar.edu.unlam.enums.Categoria;
@@ -15,6 +17,8 @@ public class Empleado {
 	private TipoDeEmpleado tipoDeEmpleado;
 	private Categoria categoria;
 	private Double sueldo;
+	
+	private List<Cliente> clientes; //gustavo
 
 	public Empleado(String nombre, TipoContrato modalidadDeContratacion, Integer legajo, TipoDeEmpleado tipoDeEmpleado,
 			Integer antiguedad, Categoria categoria) {
@@ -25,6 +29,8 @@ public class Empleado {
 		this.antiguedad = antiguedad;
 		this.categoria = categoria;
 		this.calcularElSueldo();
+		
+		this.clientes = new ArrayList<>();
 	}
 
 	public String getNombre() {
@@ -198,6 +204,12 @@ public class Empleado {
 		}
 	}
 
+	public void añadirCliente(Cliente cliente) {
+        this.clientes.add(cliente);
+    }
 	
+	public List<Cliente> getClientes() {
+        return this.clientes;
+    }
 
 }
