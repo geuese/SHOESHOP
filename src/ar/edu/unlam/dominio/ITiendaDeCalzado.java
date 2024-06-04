@@ -27,10 +27,12 @@ public interface ITiendaDeCalzado {
 	List<Calzado> obtenerTodosLosBotines();
 	void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
 	Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
-	Integer calcularComisionEmpleado(Empleado empleadoBuscado); 
+	Integer calcularComisionEmpleado(Empleado empleadoBuscado) throws EmpleadoNoEncontradoException; 
 	
 	
 	Integer devolverCantidadDeCalzadosEnLaTienda();
+	void aplicarComisionCorrespondienteAlEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
+	Double devolverSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException;
 
 
 }

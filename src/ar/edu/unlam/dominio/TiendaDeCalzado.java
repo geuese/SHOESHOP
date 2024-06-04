@@ -14,7 +14,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
 
 	private Set<Calzado> calzados;
-	private List<Empleado> empleados;
+	private Set<Empleado> empleados;
 	private List<ClienteCalzado> clientesCalzados;
 
 	public TiendaDeCalzado(String nombreLocal) {
@@ -22,7 +22,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		this.nombreLocal = nombreLocal;
 		this.calzados = new TreeSet<>();
-		this.empleados = new ArrayList<>();
+		this.empleados = new HashSet<>();
 		this.clientesCalzados = new ArrayList<>();
 
 	}
@@ -193,8 +193,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 				break;
 			}
 		}
+		
+			return comision;
+		
 
-		return comision;
+		
 	}
 
 	@Override
@@ -381,6 +384,41 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public Integer devolverCantidadDeCalzadosEnLaTienda() {
 		// TODO Auto-generated method stub
 		return this.calzados.size();
+	}
+	
+	
+	@Override
+	public Double devolverSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		Empleado empleadoBuscado = buscarEmpleado(empleado);
+		
+		
+		if(empleadoBuscado != null) {
+			return empleadoBuscado.getSueldo();
+			
+		}
+		
+		
+		throw new EmpleadoNoEncontradoException();
+	}
+
+	@Override
+	public void aplicarComisionCorrespondienteAlEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		
+		Empleado empleadoBuscado = buscarEmpleado(empleado);
+		
+		if(empleadoBuscado != null) {
+			Double sueldoEmpleado = devolverSueldoDeEmpleado(empleadoBuscado);
+			Double comisionEmpleado = (double)calcularComisionEmpleado(empleadoBuscado);
+			Double sueldoMasComision = sueldoEmpleado + sueldoEmpleado*(comisionEmpleado/100);
+			
+			empleadoBuscado.setSueldo(sueldoMasComision);
+			
+		}
+		
+		
+
+		
+		
 	}
 
 }

@@ -9,10 +9,8 @@ import java.util.List;
 
 import org.junit.Before;
 
-
 import ar.edu.unlam.dominio.*;
 import ar.edu.unalm.enums.*;
-
 
 public class Test {
 
@@ -47,7 +45,7 @@ public class Test {
 		assertTrue(calzadoAgregado);
 
 	}
-	
+
 	@org.junit.Test
 	public void queNoSePuedaAnadirElMismoCalzadoBotinALaTienda() {
 
@@ -61,18 +59,15 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
-		
-		
+
 		Calzado calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 
-
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
-		
+
 		Calzado calzado2 = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(calzado2, stock);
-		
-		
-		assertEquals(1,this.tiendaDeCalzado.obtenerTodosLosBotines().size());
+
+		assertEquals(1, this.tiendaDeCalzado.obtenerTodosLosBotines().size());
 
 	}
 
@@ -97,7 +92,7 @@ public class Test {
 		assertTrue(calzadoAgregado);
 
 	}
-	
+
 	@org.junit.Test
 	public void queNoSePuedaAñadirElMismoCalzadoRunningALaTienda() {
 
@@ -115,14 +110,13 @@ public class Test {
 		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
-		
+
 		Calzado running2 = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 
 		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(running2, stock);
 
-		assertEquals(1,(int)this.tiendaDeCalzado.obtenerTodosLosRunning().size() );
-		
-		
+		assertEquals(1, (int) this.tiendaDeCalzado.obtenerTodosLosRunning().size());
+
 	}
 
 	@org.junit.Test
@@ -148,7 +142,7 @@ public class Test {
 		assertTrue(calzadoAgregado);
 
 	}
-	
+
 	@org.junit.Test
 	public void queNoSePuedaAñadirElMismoCalzadoOutDoorALaTienda() {
 
@@ -168,12 +162,12 @@ public class Test {
 		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, stock);
-		
+
 		Calzado outDoor2 = new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
 		Boolean calzadoAgregado2 = tiendaDeCalzado.agregarCalzado(outDoor2, stock);
 
-		assertEquals(1,(int)this.tiendaDeCalzado.obtenerTodosLosOutDoor().size());
+		assertEquals(1, (int) this.tiendaDeCalzado.obtenerTodosLosOutDoor().size());
 
 	}
 
@@ -193,9 +187,6 @@ public class Test {
 		assertTrue(cliente.equals(cliente1));
 
 	}
-	
-	
-	
 
 	@org.junit.Test
 	public void queSePuedaCrearElEmpleado() {
@@ -227,12 +218,11 @@ public class Test {
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 
-
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
 		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor, 1);
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
@@ -256,7 +246,6 @@ public class Test {
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
-		assertTrue(outDoor.equals(calzadoEncontrado));
 
 	}
 
@@ -274,16 +263,17 @@ public class Test {
 
 		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor, 1);
 
 		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
-	
-	
+
 	@org.junit.Test(expected = CalzadoInexistenteException.class)
-	public void queNoSePuedaDevolverElPrecioDelCalzadoBuscadoSiEsteNoEstaEnLaTienda() throws CalzadoInexistenteException {
+	public void queNoSePuedaDevolverElPrecioDelCalzadoBuscadoSiEsteNoEstaEnLaTienda()
+
+			throws CalzadoInexistenteException {
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
@@ -296,32 +286,28 @@ public class Test {
 
 		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-
 		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
 
-
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime()
+			throws EmpleadoNoEncontradoException {
 
 		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.FULL_TIME);
-		
-		
+
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
-
-		
 
 		assertEquals(204167.0, empleado.getSueldo(), 0.01);
 
 	}
-	
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime()
+			throws EmpleadoNoEncontradoException {
 
 		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.PART_TIME);
@@ -332,9 +318,10 @@ public class Test {
 		assertEquals(41000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPasanteFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPasanteFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.FULL_TIME);
 
@@ -344,9 +331,10 @@ public class Test {
 		assertEquals(102083.5, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPruebaFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPruebaFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.FULL_TIME);
 
@@ -356,9 +344,10 @@ public class Test {
 		assertEquals(61250.1, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPasantePartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPasantePartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.PART_TIME);
 
@@ -368,25 +357,23 @@ public class Test {
 		assertEquals(20500.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPruebaPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPruebaPartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.PART_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
-		
-		
+
 		assertEquals(12300.0, empleado.getSueldo(), 0.01);
 
 	}
-	
-	
-	
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime()
+			throws EmpleadoNoEncontradoException {
 
 		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.FULL_TIME);
@@ -397,9 +384,10 @@ public class Test {
 		assertEquals(424500.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime()
+			throws EmpleadoNoEncontradoException {
 
 		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.PART_TIME);
@@ -410,9 +398,10 @@ public class Test {
 		assertEquals(53000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPasanteFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPasanteFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.FULL_TIME);
 
@@ -422,10 +411,10 @@ public class Test {
 		assertEquals(212250.0, empleado.getSueldo(), 0.01);
 
 	}
-	
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPruebaFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPruebaFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.FULL_TIME);
 
@@ -435,9 +424,10 @@ public class Test {
 		assertEquals(127350.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPasantePartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPasantePartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.PART_TIME);
 
@@ -447,10 +437,10 @@ public class Test {
 		assertEquals(26500.0, empleado.getSueldo(), 0.01);
 
 	}
-	
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPruebaPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPruebaPartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.PART_TIME);
 
@@ -462,37 +452,36 @@ public class Test {
 	}
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime()
+			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON, 5,
-				Categoria.FULL_TIME);
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON,
+				5, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
-		
-		
+
 		assertEquals(500000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime()
+			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON, 5,
-				Categoria.PART_TIME);
-
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON,
+				5, Categoria.PART_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
-		
+
 		assertEquals(81000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
 				Categoria.FULL_TIME);
 
@@ -502,10 +491,10 @@ public class Test {
 		assertEquals(250000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
 
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
 				Categoria.FULL_TIME);
 
@@ -515,9 +504,10 @@ public class Test {
 		assertEquals(150000.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasantePartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasantePartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PASANTIA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
 				Categoria.PART_TIME);
 
@@ -527,9 +517,10 @@ public class Test {
 		assertEquals(40500.0, empleado.getSueldo(), 0.01);
 
 	}
-	
+
 	@org.junit.Test
-	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaPartTime() throws EmpleadoNoEncontradoException {
+	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaPartTime()
+			throws EmpleadoNoEncontradoException {
 		Empleado empleado = new Empleado("Jose", TipoContrato.PRUEBA, 2000, TipoDeEmpleado.VENTA_SALON, 5,
 				Categoria.PART_TIME);
 
@@ -550,16 +541,16 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
 
-		Calzado botin1 = generarBotin(idCalzado, talle,  color, genero, precio, marca, tipoSuperficie);
+		Calzado botin1 = generarBotin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 		Calzado botin2 = generarBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoSuperficie.SUELO_BLANDO);
-		Calzado botin3 = generarBotin(1003, 35,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado botin3 = generarBotin(1003, 35, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoSuperficie.TERRENO_ARTIFICIAL);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(botin1,2);
-		this.tiendaDeCalzado.agregarCalzado(botin2,2);
-		this.tiendaDeCalzado.agregarCalzado(botin3,2);
+		this.tiendaDeCalzado.agregarCalzado(botin1, 2);
+		this.tiendaDeCalzado.agregarCalzado(botin2, 2);
+		this.tiendaDeCalzado.agregarCalzado(botin3, 2);
 
 		List<Calzado> botinesOrdenados = this.tiendaDeCalzado.ordenarBotinesPorTalleDeManeraAscendente();
 
@@ -580,14 +571,14 @@ public class Test {
 		TipoDeUso tipoUso = TipoDeUso.ESCALADA;
 
 		Calzado outDoor1 = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoUso);
-		Calzado outDoor2 = generarOutDoor(1002, 35,  "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado outDoor2 = generarOutDoor(1002, 35, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDeUso.TRAIL_RUNNING);
-		Calzado outDoor3 = generarOutDoor(1003, 40,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
+		Calzado outDoor3 = generarOutDoor(1003, 40, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(outDoor1,1);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2,1);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor1, 1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2, 1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3, 1);
 
 		List<Calzado> outDoorsOrdenados = this.tiendaDeCalzado.ordenarOutDoorsPorTalleDeManeraAscendente();
 
@@ -615,40 +606,36 @@ public class Test {
 				TipoDePisada.PISADA_SUPINADORA);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(running1,1);
-		this.tiendaDeCalzado.agregarCalzado(running2,1);
-		this.tiendaDeCalzado.agregarCalzado(running3,1);
-		
+		this.tiendaDeCalzado.agregarCalzado(running1, 1);
+		this.tiendaDeCalzado.agregarCalzado(running2, 1);
+		this.tiendaDeCalzado.agregarCalzado(running3, 1);
+
 		List<Calzado> runningsOrdenados = this.tiendaDeCalzado.ordenarRunningsPorTalleDeManeraAscendente();
-		
+
 		assertEquals(running2, runningsOrdenados.get(0));
 		assertEquals(running3, runningsOrdenados.get(1));
 		assertEquals(running1, runningsOrdenados.get(2));
 
-
 	}
 
-	private Running generarRunning(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoDePisada tipoPisada) {
+	private Running generarRunning(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
+			Marca marca, TipoDePisada tipoPisada) {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
 
-	private OutDoor generarOutDoor(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoDeUso tipoDeUso) {
+	private OutDoor generarOutDoor(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
+			Marca marca, TipoDeUso tipoDeUso) {
 		return new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 	}
 
-	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero,
-			Double precio, Marca marca, TipoSuperficie tipoSuperficie) {
+	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
+			Marca marca, TipoSuperficie tipoSuperficie) {
 		return new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 	}
-	
-		
-		
+
 	@org.junit.Test
 	public void queTraigaTodosLosRunnings() {
 
-		
 		Integer idCalzado = 1;
 		Integer talle = 36;
 		String color = "Negro";
@@ -660,7 +647,6 @@ public class Test {
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
-		
 
 		// Agregar calzadoBuscado a local
 
@@ -692,7 +678,6 @@ public class Test {
 		assertEquals(2, calzadosRunning.size());
 
 	}
-	
 
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
@@ -780,7 +765,6 @@ public class Test {
 		Calzado outDoor2 = new OutDoor(2, 43, "Gris", Genero.MASCULINO, 100.0, Marca.NIKE, TipoDeUso.HIKING);
 		Calzado outDoor3 = new OutDoor(3, 47, "Negro", Genero.FEMENINO, 200.0, Marca.NIKE, tipoDeUsoOut);
 
-		
 		this.tiendaDeCalzado.agregarCalzado(outDoor, 4);
 		this.tiendaDeCalzado.agregarCalzado(outDoor2, 2);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3, 5);
@@ -815,8 +799,7 @@ public class Test {
 		assertEquals(1080, (int) comision);
 
 	}
-	
-	
+
 	@org.junit.Test
 	public void queNoSePuedaCalcularComisionDeEmpleadoSiEsteNoEstaEnLaTienda() {
 
@@ -830,10 +813,243 @@ public class Test {
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-
 		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
 
 		assertEquals(0, (int) comision);
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoFullTimeTiempoIndeterminado()
+			throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(424667.36, sueldoDeEmpleado, 0.01);
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoFullTimePasantia() throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.PASANTIA;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		// SUELDO REPOSITOR = 204167 FULLTIME
+		// SUELDO REPOSITOR = 41000 PARTTIME
+
+		// PRUEBA = ANTIGUEDAD *2
+		// PASANTE = ANTIGUEDAD*4
+		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
+
+		// FULLTIME = COMISION * 9
+		// PARTTIME = COMISION * 7
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(175583.62, sueldoDeEmpleado, 0.01);
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoFullTimePrueba() throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.PRUEBA;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		// SUELDO REPOSITOR = 204167 FULLTIME
+		// SUELDO REPOSITOR = 41000 PARTTIME
+
+		// PRUEBA = ANTIGUEDAD *2
+		// PASANTE = ANTIGUEDAD*4
+		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
+
+		// FULLTIME = COMISION * 9
+		// PARTTIME = COMISION * 7
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(83300.136, sueldoDeEmpleado, 0.01);
+
+	}
+
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoPartTimeTiempoIndeterminado()
+			throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.PART_TIME;
+
+		// SUELDO REPOSITOR = 204167 FULLTIME
+		// SUELDO REPOSITOR = 41000 PARTTIME
+
+		// PRUEBA = ANTIGUEDAD *2
+		// PASANTE = ANTIGUEDAD*4
+		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
+
+		// FULLTIME = COMISION * 9
+		// PARTTIME = COMISION * 7
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(75440.0, sueldoDeEmpleado, 0.01);
+
+	}
+	
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoPartTimePrueba()
+			throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.PRUEBA;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.PART_TIME;
+
+		// SUELDO REPOSITOR = 204167 FULLTIME
+		// SUELDO REPOSITOR = 41000 PARTTIME
+
+		// PRUEBA = ANTIGUEDAD *2
+		// PASANTE = ANTIGUEDAD*4
+		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
+
+		// FULLTIME = COMISION * 9
+		// PARTTIME = COMISION * 7
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(15744.0, sueldoDeEmpleado, 0.01);
+
+	}
+	
+	@org.junit.Test
+	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoPartTimePasantia()
+			throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.PASANTIA;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.PART_TIME;
+
+		// SUELDO REPOSITOR = 204167 FULLTIME
+		// SUELDO REPOSITOR = 41000 PARTTIME
+
+		// PRUEBA = ANTIGUEDAD *2
+		// PASANTE = ANTIGUEDAD*4
+		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
+
+		// FULLTIME = COMISION * 9
+		// PARTTIME = COMISION * 7
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(31980.0, sueldoDeEmpleado, 0.01);
 
 	}
 
@@ -853,11 +1069,10 @@ public class Test {
 
 		assertTrue(sePudo);
 	}
-	
-	
+
 	@org.junit.Test
 	public void queSePuedaEncontrarEmpleadoATienda() throws EmpleadoNoEncontradoException {
-		
+
 		String nombre = "Empleado";
 		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
 		Integer legajo = 1111;
@@ -869,17 +1084,16 @@ public class Test {
 				categoria);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
-		
+
 		Empleado empleadoEncontrado = this.tiendaDeCalzado.buscarEmpleado(empleado);
-		
+
 		assertTrue(empleado.equals(empleadoEncontrado));
 
-		
 	}
-	
+
 	@org.junit.Test(expected = EmpleadoNoEncontradoException.class)
 	public void queNoSePuedaEncontrarElEmpleado() throws EmpleadoNoEncontradoException {
-		
+
 		String nombre = "Empleado";
 		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
 		Integer legajo = 1111;
@@ -890,15 +1104,9 @@ public class Test {
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		
 		Empleado empleadoEncontrado = this.tiendaDeCalzado.buscarEmpleado(empleado);
-		
-		
 
-		
 	}
-
-	
 
 	// Gustavo
 	@org.junit.Test
