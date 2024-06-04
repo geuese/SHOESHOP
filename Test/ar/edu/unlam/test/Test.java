@@ -1014,7 +1014,7 @@ public class Test {
 		assertEquals(8, (int) totalDeVentas);
 	}
 	
-	// COMMIT PRUEBA
+	// COMMIT PRUEBA 1
 
 	// Metodos para la resolucion
 
