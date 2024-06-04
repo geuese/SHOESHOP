@@ -5,8 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
-import ar.edu.unlam.test.CalzadoInexistenteException;
-
 public interface ITiendaDeCalzado {
 	Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados);
 	Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidad);

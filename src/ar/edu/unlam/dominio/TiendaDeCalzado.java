@@ -7,12 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-<<<<<<< Updated upstream
 import ar.edu.unalm.enums.Categoria;
 import ar.edu.unalm.enums.TipoDeEmpleado;
-=======
-import ar.edu.unlam.test.CalzadoInexistenteException;
->>>>>>> Stashed changes
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
@@ -80,43 +76,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			}
 		}
 		return false;
-
-//		for (Calzado c : calzados) {
-//			if (c.getID().equals(calzado.getID()) && c.getStock() >= cantidadAVender) {
-//
-//				if (calzado instanceof Botin) {
-//					venderBotin((Botin) c, cantidadAVender);
-//				}
-//
-//				else if (calzado instanceof OutDoor) {
-//					venderOutDoor((OutDoor) c, cantidadAVender);
-//				}
-//
-//				else if (calzado instanceof Running) {
-//					venderRunning((Running) c, cantidadAVender);
-//				}
-//
-//			}
-//
-//		}
-//
-//		return true;
 	}
-
-//	private void venderBotin(Botin c, Integer cantidadAVender) {
-//		c.reducirStock(cantidadAVender);
-//
-//	}
-//
-//	private void venderOutDoor(OutDoor c, Integer cantidadAVender) {
-//		c.reducirStock(cantidadAVender);
-//
-//	}
-//
-//	private void venderRunning(Running c, Integer cantidadAVender) {
-//		c.reducirStock(cantidadAVender);
-//
-//	}
 
 	@Override
 	public ClienteCalzado crearClienteCalzado(Cliente cliente, Calzado calzado, Integer cantidadAComprar) {
@@ -255,7 +215,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		}
 
-		throw new CalzadoInexistenteException();
+		throw new CalzadoInexistenteException("Calzado Inexistente");
 
 	}
 
@@ -268,18 +228,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		if (calzadoHallado != null) {
 			return calzadoHallado.getPrecio();
 		}
-		throw new CalzadoInexistenteException();
+		throw new CalzadoInexistenteException("Calzado Inexistente");
 
 	}
 
-<<<<<<< Updated upstream
-=======
-	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
-		return null;
-
-	}
-
->>>>>>> Stashed changes
 	@Override
 	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
 
@@ -342,7 +294,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-<<<<<<< Updated upstream
 	@Override
 	public Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
 		// TODO Auto-generated method stu
@@ -432,6 +383,4 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return this.calzados.size();
 	}
 
-=======
->>>>>>> Stashed changes
 }

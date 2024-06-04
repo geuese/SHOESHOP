@@ -9,8 +9,10 @@ import java.util.List;
 
 import org.junit.Before;
 
+
 import ar.edu.unlam.dominio.*;
 import ar.edu.unalm.enums.*;
+
 
 public class Test {
 
@@ -225,11 +227,12 @@ public class Test {
 		Double precio = 20.0;
 		Marca marca = Marca.TOPPER;
 
+
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
 		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor, 1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
 		Calzado calzadoEncontrado = this.tiendaDeCalzado.buscarCalzadoPorCodigo(idCalzado);
 
@@ -271,13 +274,12 @@ public class Test {
 
 		Calzado outDoor = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 
-		this.tiendaDeCalzado.agregarCalzado(outDoor, 1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor,1);
 
 		Double precioDelCalzadoEncontrado = this.tiendaDeCalzado.devolverPrecioDelCalzado(idCalzado);
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
-<<<<<<< Updated upstream
 	
 	
 	@org.junit.Test(expected = CalzadoInexistenteException.class)
@@ -537,106 +539,6 @@ public class Test {
 		assertEquals(24300.0, empleado.getSueldo(), 0.01);
 
 	}
-=======
-	/*
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(204167.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(41000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(424500.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(53000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(500000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(81000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PASANTIA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PRUEBA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * // DUDA SURGIDA: ¿LA FUNCION CALCULAR SUELDO NO DEBERIA IR EN LA TIENDA DE //
-	 * CALZADO? //
-	 */
->>>>>>> Stashed changes
 
 	@org.junit.Test
 	public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
@@ -648,16 +550,16 @@ public class Test {
 		Marca marca = Marca.TOPPER;
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
 
-		Calzado botin1 = generarBotin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
+		Calzado botin1 = generarBotin(idCalzado, talle,  color, genero, precio, marca, tipoSuperficie);
 		Calzado botin2 = generarBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoSuperficie.SUELO_BLANDO);
-		Calzado botin3 = generarBotin(1003, 35, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
+		Calzado botin3 = generarBotin(1003, 35,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS,
 				TipoSuperficie.TERRENO_ARTIFICIAL);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(botin1, 2);
-		this.tiendaDeCalzado.agregarCalzado(botin2, 2);
-		this.tiendaDeCalzado.agregarCalzado(botin3, 2);
+		this.tiendaDeCalzado.agregarCalzado(botin1,2);
+		this.tiendaDeCalzado.agregarCalzado(botin2,2);
+		this.tiendaDeCalzado.agregarCalzado(botin3,2);
 
 		List<Calzado> botinesOrdenados = this.tiendaDeCalzado.ordenarBotinesPorTalleDeManeraAscendente();
 
@@ -678,14 +580,14 @@ public class Test {
 		TipoDeUso tipoUso = TipoDeUso.ESCALADA;
 
 		Calzado outDoor1 = generarOutDoor(idCalzado, talle, color, genero, precio, marca, tipoUso);
-		Calzado outDoor2 = generarOutDoor(1002, 35, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
+		Calzado outDoor2 = generarOutDoor(1002, 35,  "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER,
 				TipoDeUso.TRAIL_RUNNING);
-		Calzado outDoor3 = generarOutDoor(1003, 40, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
+		Calzado outDoor3 = generarOutDoor(1003, 40,  "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoDeUso.HIKING);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(outDoor1, 1);
-		this.tiendaDeCalzado.agregarCalzado(outDoor2, 1);
-		this.tiendaDeCalzado.agregarCalzado(outDoor3, 1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor1,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor2,1);
+		this.tiendaDeCalzado.agregarCalzado(outDoor3,1);
 
 		List<Calzado> outDoorsOrdenados = this.tiendaDeCalzado.ordenarOutDoorsPorTalleDeManeraAscendente();
 
@@ -713,36 +615,40 @@ public class Test {
 				TipoDePisada.PISADA_SUPINADORA);
 
 		// AGREGAMOS CALZADOS
-		this.tiendaDeCalzado.agregarCalzado(running1, 1);
-		this.tiendaDeCalzado.agregarCalzado(running2, 1);
-		this.tiendaDeCalzado.agregarCalzado(running3, 1);
-
+		this.tiendaDeCalzado.agregarCalzado(running1,1);
+		this.tiendaDeCalzado.agregarCalzado(running2,1);
+		this.tiendaDeCalzado.agregarCalzado(running3,1);
+		
 		List<Calzado> runningsOrdenados = this.tiendaDeCalzado.ordenarRunningsPorTalleDeManeraAscendente();
-
+		
 		assertEquals(running2, runningsOrdenados.get(0));
 		assertEquals(running3, runningsOrdenados.get(1));
 		assertEquals(running1, runningsOrdenados.get(2));
 
+
 	}
 
-	private Running generarRunning(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
-			Marca marca, TipoDePisada tipoPisada) {
+	private Running generarRunning(Integer idCalzado, Integer talle, String color, Genero genero,
+			Double precio, Marca marca, TipoDePisada tipoPisada) {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
 
-	private OutDoor generarOutDoor(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
-			Marca marca, TipoDeUso tipoDeUso) {
+	private OutDoor generarOutDoor(Integer idCalzado, Integer talle, String color, Genero genero,
+			Double precio, Marca marca, TipoDeUso tipoDeUso) {
 		return new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
 	}
 
-	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
-			Marca marca, TipoSuperficie tipoSuperficie) {
+	private Botin generarBotin(Integer idCalzado, Integer talle, String color, Genero genero,
+			Double precio, Marca marca, TipoSuperficie tipoSuperficie) {
 		return new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
 	}
-
+	
+		
+		
 	@org.junit.Test
 	public void queTraigaTodosLosRunnings() {
 
+		
 		Integer idCalzado = 1;
 		Integer talle = 36;
 		String color = "Negro";
@@ -754,6 +660,7 @@ public class Test {
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
+		
 
 		// Agregar calzadoBuscado a local
 
@@ -785,6 +692,7 @@ public class Test {
 		assertEquals(2, calzadosRunning.size());
 
 	}
+	
 
 	@org.junit.Test
 	public void queTraigaTodosLosOutDoor() {
@@ -990,6 +898,8 @@ public class Test {
 		
 	}
 
+	
+
 	// Gustavo
 	@org.junit.Test
 	public void asignarCalzadosAUnCliente() {
@@ -1112,30 +1022,6 @@ public class Test {
 		assertTrue(seVendioCalzadoUno);
 		assertTrue(seVendioCalzadoDos);
 		assertTrue(seVendioCalzadoTres);
-
-	}
-
-	@org.junit.Test
-	public void queNoSePuedaVenderCalzadosDeMas() {
-		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
-
-		Calzado calzadoUno = crearBotin(123, 42, "Negro", Genero.MASCULINO, 45000.00, Marca.ADIDAS,
-				TipoSuperficie.SUELO_FIRME);
-
-////		Calzado calzadoDos = crearOutDoor(12, 42, "Rojo", Genero.MASCULINO, 90000.00, Marca.TOPPER, TipoDeUso.HIKING);
-////		Calzado calzadoTres = crearRunning(45, 42, "Amarillo", Genero.MASCULINO, 70000.00, Marca.JOHN_FOOS,
-//				TipoDePisada.PISADA_SUPINADORA);
-
-		this.tiendaDeCalzado.agregarCalzado(calzadoUno,2);
-//		this.tiendaDeCalzado.agregarCalzado(calzadoDos, 3);
-//		this.tiendaDeCalzado.agregarCalzado(calzadoTres, 3);
-		
-		assertEquals(2,(int) calzadoUno.getStock());
-
-		Boolean seVendioCalzadoUno = this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, 2);
-		
-		assertEquals(0,(int) calzadoUno.getStock());
-
 
 	}
 
