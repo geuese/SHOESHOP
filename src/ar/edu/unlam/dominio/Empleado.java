@@ -203,6 +203,16 @@ public class Empleado {
 		return Objects.equals(legajo, other.legajo);
 	}
 
+	public double calcularTotalVentas() {
+		// TODO Auto-generated method stub
+		return 100;
+	}
+
+	public double calcularComision() {
+		// TODO Auto-generated method stub
+		return 10;
+	}
+
 	
 	
 }

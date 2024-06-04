@@ -84,10 +84,11 @@ public class Cliente {
 		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(talle, other.talle);
 	}
-
+	
 	public void añadirCalzado(Calzado calzado) { //gustavo
 		this.calzadosComprados.add(calzado);	
 	}
+	
 	public List<Calzado> getCalzadosComprados() {
         return this.calzadosComprados;
     }

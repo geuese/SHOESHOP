@@ -1,6 +1,6 @@
 package ar.edu.unlam.enums;
 
 public enum TipoContrato {
-	TIEMPO_INDETERMINDADO,PASANTIA,PRUEBA;
+	TIEMPO_INDETERMIDADO,PASANTIA,PRUEBA;
 
 }

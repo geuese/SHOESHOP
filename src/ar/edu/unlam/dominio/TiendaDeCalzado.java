@@ -1,7 +1,5 @@
 package ar.edu.unlam.dominio;
 
-import ar.edu.unlam.dominio.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -84,7 +82,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 				case PASANTIA:
 					comision = empleado.getAntiguedad() * 4;
 					break;
-				case TIEMPO_INDETERMINDADO:
+				case TIEMPO_INDETERMIDADO:
 					comision = empleado.getAntiguedad() * 6;
 					break;
 				}
@@ -305,4 +303,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<ClienteCalzado> getClientesCalzados() {
 		return this.clientesCalzados;
 	}
+
+	public List<Empleado> getEmpleados() {
+		return empleados;
+	}
+
 }
