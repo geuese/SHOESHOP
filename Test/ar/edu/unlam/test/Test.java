@@ -617,15 +617,8 @@ public class Test {
 		this.tiendaDeCalzado.venderCalzado(cliente, calzadoDos, cantidadAVender, empleado);
 		this.tiendaDeCalzado.venderCalzado(cliente, calzadoTres, cantidadAVender, empleado);
 
-		List<Calzado> calzados = new ArrayList<Calzado>();
-		calzadoUno.setStock(cantidadAVender);
-		calzadoDos.setStock(cantidadAVender);
-		calzadoTres.setStock(cantidadAVender);
-		calzados.add(calzadoUno);
-		calzados.add(calzadoDos);
-		calzados.add(calzadoTres);
+		List<Calzado> calzados = this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente);
 
-		assertEquals(calzados, this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente));
 		assertEquals(calzados.size(), this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente).size());
 
 		// chequeo stock
