@@ -1,5 +1,7 @@
 package ar.edu.unlam.dominio;
 
+import ar.edu.unlam.dominio.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;

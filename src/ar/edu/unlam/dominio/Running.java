@@ -14,5 +14,10 @@ public class Running extends Calzado {
 
 		this.tipoDePisada = tipoPisada;
 	}
-
+	
+	@Override
+	public void incrementarStockCliente(Integer cantidadAComprar) {
+		// TODO Auto-generated method stub
+		this.stockCliente += cantidadAComprar;
+	}
 }

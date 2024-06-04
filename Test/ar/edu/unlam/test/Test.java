@@ -192,104 +192,7 @@ public class Test {
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
-	/*
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(204167.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(41000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(424500.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(53000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(500000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(81000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PASANTIA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PRUEBA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * // DUDA SURGIDA: ¿LA FUNCION CALCULAR SUELDO NO DEBERIA IR EN LA TIENDA DE //
-	 * CALZADO? //
-	 */
+
 
 	@org.junit.Test
 	public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
@@ -569,40 +472,67 @@ public class Test {
 		assertTrue(sePudo);
 	}
 
-	// Gustavo
+/////////////////////////////// GUSTAVO
+	
+	@org.junit.Test
+	public void queNoSePuedaVenderMasDelStock() {
+		
+	}
+	
+	@org.junit.Test
+	public void obtenerListaDeClientesDeEmpleadoOrdenadoPorParametro() {
+		
+	}
+	
 	@org.junit.Test
 	public void asignarCalzadosAUnCliente() {
-        Calzado calzadoBotin = crearBotin(4444, 39, "negro", Genero.MASCULINO, 120000.0, Marca.ADIDAS, TipoSuperficie.TERRENO_ARTIFICIAL);
-        Calzado calzadoRunning = crearRunning(3333, 42, "azul", Genero.MASCULINO, 90000.0, Marca.JOHN_FOOS, TipoDePisada.PISADA_PRONADORA);
-        
-        Cliente clienteCompras = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
-        
-        clienteCompras.añadirCalzado(calzadoBotin);
-        clienteCompras.añadirCalzado(calzadoRunning);
-        clienteCompras.añadirCalzado(calzadoBotin); //compra 2 pares iguales
-
-        List<Calzado> calzadosComprados = clienteCompras.getCalzadosComprados();
-
-        List<Calzado> calzadosEsperados = new ArrayList<>(); //esperados
-        calzadosEsperados.add(calzadoBotin);
-        calzadosEsperados.add(calzadoRunning);
-        calzadosEsperados.add(calzadoBotin);
-
-        assertEquals(calzadosEsperados, calzadosComprados);
+		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
+ 
+		Calzado calzadoUno = crearBotin(123, 42, "Negro", Genero.MASCULINO, 45000.00, Marca.ADIDAS,
+				TipoSuperficie.SUELO_FIRME);
+		Calzado calzadoDos = crearOutDoor(12, 42, "Rojo", Genero.MASCULINO, 90000.00, Marca.TOPPER, TipoDeUso.HIKING);
+		Calzado calzadoTres = crearRunning(45, 42, "Amarillo", Genero.MASCULINO, 70000.00, Marca.JOHN_FOOS,
+				TipoDePisada.PISADA_SUPINADORA);
+ 
+		Integer cantidadDeCalzados = 4;
+ 
+		this.tiendaDeCalzado.agregarCalzado(calzadoUno, cantidadDeCalzados);
+		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
+		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
+ 
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+ 
+		this.tiendaDeCalzado.agregarEmpleado(empleado);
+ 
+		Integer cantidadAVender = 2;
+ 
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoUno, cantidadAVender, empleado);
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoDos, cantidadAVender, empleado);
+		this.tiendaDeCalzado.venderCalzado(cliente, calzadoTres, cantidadAVender, empleado);
+ 
+		List<Calzado> calzadosDeClientes = this.tiendaDeCalzado.obtenerlistaDeCalzadosDeCliente(cliente);
+		int i = 0;
+		for (Calzado c : calzadosDeClientes) {
+ 
+			switch (i) {
+			case 0:
+				assertEquals(calzadoUno, c);
+				break;
+			case 1:
+				assertEquals(calzadoDos, c);
+				break;
+			case 2:
+				assertEquals(calzadoTres, c);
+				break;
+			default:
+				break;
+			}
+			i++;
+		}
+ 
 	}
-
-	@org.junit.Test
-	public void asignarClienteAUnEmpleado() {
-		Cliente cliente1 = new Cliente("matias", 40343987, 39, Genero.MASCULINO, ModoDePago.DEBITO);
-        Cliente cliente2 = new Cliente("agustin", 38343546, 42, Genero.X, ModoDePago.CREDITO);
-        Empleado empleadoVenta = new Empleado("hector", TipoContrato.PRUEBA, 3456, TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-        
-        empleadoVenta.añadirCliente(cliente1);
-        empleadoVenta.añadirCliente(cliente2);
-
-        List<Cliente> listadoDeClientesDeUnEmpleado = empleadoVenta.getClientes();
-	}
-
+	
 	@org.junit.Test
 	public void calcularElTotalGastadoPorCadaCliente() {
 		//sumar total sobre precios de List calzadosComprados

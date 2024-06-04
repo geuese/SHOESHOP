@@ -14,5 +14,10 @@ public class OutDoor extends Calzado {
 
 		this.tipoDeUso = tipoDeUso;
 	}
-
+	
+	@Override
+	public void incrementarStockCliente(Integer cantidadAComprar) {
+		// TODO Auto-generated method stub
+		this.stockCliente += cantidadAComprar;
+	}
 }

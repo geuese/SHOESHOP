@@ -24,5 +24,4 @@ public interface ITiendaDeCalzado {
 	Integer obtenerTotalDeVentasTotalesDeEmpleado(Empleado empleado);
 	Integer calcularComisionEmpleado(Empleado empleadoBuscado); 
 
-
 }

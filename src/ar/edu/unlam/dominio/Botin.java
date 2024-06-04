@@ -23,6 +23,13 @@ public class Botin extends Calzado {
 	public void setTipoSuperficie(TipoSuperficie tipoSuperficie) {
 		this.tipoSuperficie = tipoSuperficie;
 	}
+
+
+	@Override
+	public void incrementarStockCliente(Integer cantidadAComprar) {
+		// TODO Auto-generated method stub
+		this.stockCliente += cantidadAComprar;
+	}
 	
 	
 	
