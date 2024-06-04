@@ -25,12 +25,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		this.empleados = new HashSet<>();
 		this.clientesCalzados = new ArrayList<>();
 
-	private List<ClienteCalzado> clientesCalzados;
-
-	public TiendaDeCalzado(String nombreTienda) {
-		this.nombreTienda = nombreTienda;
-		this.calzados = new ArrayList<>();
-		this.clientesCalzados = new ArrayList<>();
 	}
 
 	@Override
@@ -419,8 +413,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		
 		
-	public List<Calzado> getCalzados() {
-		return this.calzados;
 	}
 
 }

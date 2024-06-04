@@ -1366,9 +1366,6 @@ public class Test {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
 
-	public Running crearRunning(Integer idCalzado, Integer talle, String color, Genero genero, Double precio,
-			Marca marca, TipoDePisada tipoPisada) {
-		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
-	}
+	
 
 }
