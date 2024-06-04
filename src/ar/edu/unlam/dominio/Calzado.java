@@ -7,13 +7,13 @@ import ar.edu.unalm.enums.Marca;
 
 public abstract class Calzado implements Comparable<Calzado> {
 
-	private Integer idCalzado;
-	private Integer talle;
-	private String color;
-	private Genero genero;
-	private Double precio;
-	private Marca marca;
-	private Integer stock;
+	protected Integer idCalzado;
+	protected Integer talle;
+	protected String color;
+	protected Genero genero;
+	protected Double precio;
+	protected Marca marca;
+	protected Integer stock;
 
 	public Calzado(Integer id, Integer talle, String color, Genero genero, Double precio, Marca marca) {
 

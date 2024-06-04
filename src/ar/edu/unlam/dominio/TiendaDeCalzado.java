@@ -2,15 +2,19 @@ package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import ar.edu.unalm.enums.Categoria;
+import ar.edu.unalm.enums.TipoDeEmpleado;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
 
 	private Set<Calzado> calzados;
-	private List<Empleado> empleados;
+	private Set<Empleado> empleados;
 	private List<ClienteCalzado> clientesCalzados;
 
 	public TiendaDeCalzado(String nombreLocal) {
@@ -18,7 +22,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		this.nombreLocal = nombreLocal;
 		this.calzados = new TreeSet<>();
-		this.empleados = new ArrayList<>();
+		this.empleados = new HashSet<>();
 		this.clientesCalzados = new ArrayList<>();
 
 	}
@@ -134,9 +138,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosRunning;
 
 	}
-	
-	
 
+	@Override
 	public List<Calzado> obtenerTodosLosOutDoor() {
 		List<Calzado> calzadosOutDoor = new ArrayList<>();
 
@@ -148,7 +151,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosOutDoor;
 	}
 
-	public List<Calzado> obtenerTodosLosBotin() {
+	@Override
+	public List<Calzado> obtenerTodosLosBotines() {
 
 		List<Calzado> calzadosBotin = new ArrayList<>();
 
@@ -161,6 +165,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Integer calcularComisionEmpleado(Empleado empleadoBuscado) {
 		Integer comision = 0;
 
@@ -178,8 +183,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 					break;
 				}
 
-				
-			}switch (empleado.getCategoria()) {
+			}
+			switch (empleado.getCategoria()) {
 			case FULL_TIME:
 				comision *= 9;
 				break;
@@ -188,8 +193,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 				break;
 			}
 		}
+		
+			return comision;
+		
 
-		return comision;
+		
 	}
 
 	@Override
@@ -199,6 +207,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
 
 		for (Calzado calzado : this.calzados) {
@@ -213,6 +222,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
+	@Override
 	public Double devolverPrecioDelCalzado(Integer idCalzado) throws CalzadoInexistenteException {
 		// TODO Auto-generated method stub
 
@@ -225,19 +235,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
-		return null;
-
-	}
-
-	
-
 	@Override
 	public List<Calzado> ordenarBotinesPorTalleDeManeraAscendente() {
 
-		List<Calzado> botines = obtenerTodosLosBotin();
+		List<Calzado> botines = obtenerTodosLosBotines();
 
-		
 		ordenarDeManeraAscendente(botines);
 
 		return botines;
@@ -248,8 +250,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<Calzado> ordenarOutDoorsPorTalleDeManeraAscendente() {
 		// TODO Auto-generated method stub
 		List<Calzado> outDoors = obtenerTodosLosOutDoor();
-
-		
 
 		ordenarDeManeraAscendente(outDoors);
 
@@ -262,8 +262,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		// TODO Auto-generated method stub
 		List<Calzado> runnings = obtenerTodosLosRunning();
 
-		
-
 		ordenarDeManeraAscendente(runnings);
 
 		return runnings;
@@ -275,11 +273,152 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	@Override
-	public List<Calzado> obtenerTodosLosBotines() {
-		// TODO Auto-generated method stub
-		return null;
+	public void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+
+		Empleado empleadoEncontrado = buscarEmpleado(empleado);
+
+		TipoDeEmpleado tipoDeEmpleadoACalcular = empleadoEncontrado.getTipoDeEmpleado();
+
+		switch (tipoDeEmpleadoACalcular) {
+
+		case CAJERO:
+			sueldoCajero(empleadoEncontrado);
+			break;
+
+		case REPOSITOR:
+			sueldoRepositor(empleadoEncontrado);
+			break;
+
+		case VENTA_SALON:
+			sueldoVenta(empleadoEncontrado);
+			break;
+
+		}
+
 	}
 
+	@Override
+	public Empleado buscarEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		// TODO Auto-generated method stu
+
+		for (Empleado empleadoAux : this.empleados) {
+			if (empleadoAux.equals(empleado)) {
+				return empleadoAux;
+			}
+
+		}
+
+		throw new EmpleadoNoEncontradoException();
+	}
+
+	private Double sueldoCajero(Empleado empleado) {
+
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 53000.0;
+		} else {
+			sueldoAux = 424500.0;
+
+		}
+
+		calcularSegunContrato(sueldoAux, empleado);
+
+		return sueldoAux;
+
+	}
+
+	private Double sueldoRepositor(Empleado empleado) {
+
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 41000.0;
+		} else {
+			sueldoAux = 204167.0;
+
+		}
+		calcularSegunContrato(sueldoAux, empleado);
+
+		return sueldoAux;
+
+	}
+
+	private Double sueldoVenta(Empleado empleado) {
+
+		Double sueldoAux = 0.0;
+
+		if (empleado.getCategoria().equals(Categoria.PART_TIME)) {
+			sueldoAux = 81000.0;
+		} else {
+			sueldoAux = 500000.0;
+
+		}
+
+		calcularSegunContrato(sueldoAux, empleado);
+		return sueldoAux;
+
+	}
+
+	private void calcularSegunContrato(Double sueldoAux, Empleado empleado) {
+
+		Double sueldoEmpleado = 0.0;
+		switch (empleado.getModalidadDeContratacion()) {
+		case PASANTIA:
+			sueldoEmpleado = sueldoAux * 0.50;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+			
+		case PRUEBA:
+			sueldoEmpleado = sueldoAux * 0.30;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+		default:
+			sueldoEmpleado = sueldoAux;
+			empleado.setSueldo(sueldoEmpleado);
+			break;
+		}
+	}
+
+	@Override
+	public Integer devolverCantidadDeCalzadosEnLaTienda() {
+		// TODO Auto-generated method stub
+		return this.calzados.size();
+	}
 	
+	
+	@Override
+	public Double devolverSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		Empleado empleadoBuscado = buscarEmpleado(empleado);
+		
+		
+		if(empleadoBuscado != null) {
+			return empleadoBuscado.getSueldo();
+			
+		}
+		
+		
+		throw new EmpleadoNoEncontradoException();
+	}
+
+	@Override
+	public void aplicarComisionCorrespondienteAlEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
+		
+		Empleado empleadoBuscado = buscarEmpleado(empleado);
+		
+		if(empleadoBuscado != null) {
+			Double sueldoEmpleado = devolverSueldoDeEmpleado(empleadoBuscado);
+			Double comisionEmpleado = (double)calcularComisionEmpleado(empleadoBuscado);
+			Double sueldoMasComision = sueldoEmpleado + sueldoEmpleado*(comisionEmpleado/100);
+			
+			empleadoBuscado.setSueldo(sueldoMasComision);
+			
+		}
+		
+		
+
+		
+		
+	}
 
 }
