@@ -25,18 +25,18 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		this.empleados = new HashSet<>();
 		this.clientesCalzados = new ArrayList<>();
 
-	}
+	private List<ClienteCalzado> clientesCalzados;
 
-//	public Boolean agregarCalzado(Calzado calzado) {
-//		return calzados.add(calzado);
-//	}
-//	// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-//	// nuevo.
+	public TiendaDeCalzado(String nombreTienda) {
+		this.nombreTienda = nombreTienda;
+		this.calzados = new ArrayList<>();
+		this.clientesCalzados = new ArrayList<>();
+	}
 
 	@Override
 	public Boolean agregarCalzado(Calzado calzado, Integer cantidadDeCalzados) {
 		for (Calzado c : calzados) {
-			if (c.getID().equals(calzado.getID())) {
+			if (c != null && c.getID().equals(calzado.getID())) {
 				c.incrementarStock(cantidadDeCalzados);
 				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
 			}
@@ -52,7 +52,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender) {
 
 		for (Calzado c : calzados) {
-			if (c.getID().equals(calzado.getID()) && c.getStock() >= cantidadAVender) {
+			if (c != (null) && c.getID().equals(calzado.getID()) && c.getStock() >= cantidadAVender) {
 				c.reducirStock(cantidadAVender);
 
 				Boolean clienteCalzadoEncontrado = false;
@@ -87,7 +87,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<Calzado> obtenerlistaDeZapatosDeCliente(Cliente cliente) {
 		List<Calzado> calzadosDeCliente = new ArrayList<Calzado>();
 		for (ClienteCalzado cc : clientesCalzados) {
-			if (cc.getCliente().getDni().equals(cliente.getDni())) {
+			if (cc != null && cc.getCliente().getDni().equals(cliente.getDni())) {
 				calzadosDeCliente.add(cc.getCalzado());
 			}
 		}
@@ -419,6 +419,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 		
 		
+	public List<Calzado> getCalzados() {
+		return this.calzados;
 	}
 
 }
