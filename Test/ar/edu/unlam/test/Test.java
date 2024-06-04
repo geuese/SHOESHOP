@@ -191,104 +191,6 @@ public class Test {
 
 		assertEquals(outDoor.getPrecio(), precioDelCalzadoEncontrado);
 	}
-	/*
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(204167.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.REPOSITOR, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(41000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(424500.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.CAJERO, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(53000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(500000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime() {
-	 * 
-	 * Empleado empleado = new Empleado("Jose", Contrato.TIEMPO_INDETERMINDADO,
-	 * 2000, TipoDeEmpleado.VENTA_SALON, 5, Categoria.PART_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(81000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPasanteFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PASANTIA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * @org.junit.Test public void
-	 * queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPruebaFullTime() {
-	 * Empleado empleado = new Empleado("Jose", Contrato.PRUEBA, 2000,
-	 * TipoDeEmpleado.VENTA_SALON, 5, Categoria.FULL_TIME);
-	 * 
-	 * empleado.calcularElSueldo();
-	 * 
-	 * assertEquals(250000.0, empleado.getSueldo(), 0.01);
-	 * 
-	 * }
-	 * 
-	 * // DUDA SURGIDA: ¿LA FUNCION CALCULAR SUELDO NO DEBERIA IR EN LA TIENDA DE //
-	 * CALZADO? //
-	 */
 
 	@org.junit.Test
 	public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
@@ -792,8 +694,8 @@ public class Test {
 
 		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
 				TipoDeEmpleado.VENTA_SALON, 20, Categoria.FULL_TIME);
-		Empleado empleado2 = new Empleado("non", TipoContrato.TIEMPO_INDETERMINDADO, 234,
-				TipoDeEmpleado.VENTA_SALON, 23, Categoria.FULL_TIME);
+		Empleado empleado2 = new Empleado("non", TipoContrato.TIEMPO_INDETERMINDADO, 234, TipoDeEmpleado.VENTA_SALON,
+				23, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
