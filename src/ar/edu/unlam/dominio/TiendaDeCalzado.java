@@ -101,7 +101,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return comision;
 	}
 
-
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
 
 		for (Calzado calzado : this.calzados) {
@@ -112,7 +111,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		}
 
 		throw new CalzadoInexistenteException("Calzado Inexistente");
-
 	}
 
 	public Double devolverPrecioDelCalzado(Integer idCalzado) throws CalzadoInexistenteException {
@@ -128,8 +126,9 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	}
 
 	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
+		
 		return null;
-
+		
 	}
 
 	@Override
@@ -140,7 +139,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		ordenarDeManeraAscendente(botines);
 
 		return botines;
-
 	}
 
 	@Override
@@ -151,7 +149,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		ordenarDeManeraAscendente(outDoors);
 
 		return outDoors;
-
 	}
 
 	@Override
@@ -217,44 +214,52 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	@Override
 	public Boolean venderCalzado(Cliente cliente, Calzado calzado, Integer cantidadAVender, Empleado empleado) {
+	    for (Calzado c : calzados) {
+	        if (c.getID().equals(calzado.getID())) {
+	            if (c.getStock() < cantidadAVender) {
+	                return false; // no hay suficiente stock
+	            }
+	            c.reducirStock(cantidadAVender);
 
-		for (Calzado c : calzados) {
-			if (c.getID().equals(calzado.getID())) {
-				if (c.getStock() < cantidadAVender) {
-					return false; // no hay suficiente stock
-				}
-				c.reducirStock(cantidadAVender);
+	            // Añadir el calzado a la lista de compras del cliente
+	            for (int i = 0; i < cantidadAVender; i++) {
+	                cliente.añadirCalzado(c);
+	            }
 
-				Boolean clienteCalzadoEncontrado = false;
+	            Boolean clienteCalzadoEncontrado = false;
 
-				for (ClienteCalzado cc : clientesCalzados) {
-					if (cc.getCliente().getDni().equals(cliente.getDni())
-							&& cc.getCalzado().getID().equals(calzado.getID())) {
-						cc.incrementarCantidadDeCalzadosDeClienteCalzado(cantidadAVender);
-						clienteCalzadoEncontrado = true;
-						break;
-					}
-				}
+	            for (ClienteCalzado cc : clientesCalzados) {
+	                if (cc.getCliente().getDni().equals(cliente.getDni())
+	                        && cc.getCalzado().getID().equals(calzado.getID())) {
+	                    cc.incrementarCantidadDeCalzadosDeClienteCalzado(cantidadAVender);
+	                    clienteCalzadoEncontrado = true;
+	                    break;
+	                }
+	            }
 
-				if (!clienteCalzadoEncontrado) {
-					ClienteCalzado nuevoClienteCalzado = crearClienteCalzado(cliente, calzado, cantidadAVender);
-					this.clientesCalzados.add(nuevoClienteCalzado);
-				}
+	            if (!clienteCalzadoEncontrado) {
+	                ClienteCalzado nuevoClienteCalzado = crearClienteCalzado(cliente, calzado, cantidadAVender);
+	                this.clientesCalzados.add(nuevoClienteCalzado);
+	            }
 
-				for (EmpleadoCliente ec : empleadosClientes) {
-					if (ec.getEmpleado().equals(empleado) && ec.getCliente().equals(cliente)) {
-						ec.incrementarCantidadAVender(cantidadAVender);
-					}
-				}
-				EmpleadoCliente nuevoEmpleadoCliente = crearEmpleadoCliente(empleado, cliente, cantidadAVender);
-				this.empleadosClientes.add(nuevoEmpleadoCliente);
+	            Boolean empleadoClienteEncontrado = false;
+	            for (EmpleadoCliente ec : empleadosClientes) {
+	                if (ec.getEmpleado().equals(empleado) && ec.getCliente().equals(cliente)) {
+	                    ec.incrementarCantidadAVender(cantidadAVender);
+	                    empleadoClienteEncontrado = true;
+	                    break;
+	                }
+	            }
 
-				return true;
+	            if (!empleadoClienteEncontrado) {
+	                EmpleadoCliente nuevoEmpleadoCliente = crearEmpleadoCliente(empleado, cliente, cantidadAVender);
+	                this.empleadosClientes.add(nuevoEmpleadoCliente);
+	            }
 
-			}
-
-		}
-		return false;
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	private EmpleadoCliente crearEmpleadoCliente(Empleado empleado, Cliente cliente, Integer cantidadAComprar) {
@@ -306,6 +311,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	public List<Empleado> getEmpleados() {
 		return empleados;
+	}
+
+	public String getNombreLocal() {
+		return nombreLocal;
 	}
 
 }

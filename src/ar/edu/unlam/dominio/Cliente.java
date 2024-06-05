@@ -98,7 +98,8 @@ public class Cliente {
         for (Calzado calzado : calzadosComprados) {
             total += calzado.getPrecio();
         }
-        return total;
+        System.out.println(total);
+        return total;      
 	}
 
 }

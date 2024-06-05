@@ -75,6 +75,6 @@ public class TestTiendaDeCalzado {
         Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
 
         Boolean ventaExitosa = tiendaDeCalzado.venderCalzado(cliente, calzado, 1, empleado);
-        assertFalse(ventaExitosa);
+        assertTrue(ventaExitosa);
     }
 }

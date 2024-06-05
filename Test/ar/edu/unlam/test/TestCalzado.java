@@ -30,7 +30,7 @@ public class TestCalzado {
     }
 
     @Test
-    public void queSePuedaBuscarCalzadoPorCodigo() {
+    public void queSePuedaBuscarCalzadoPorCodigo() throws CalzadoInexistenteException {
         Calzado calzado = crearBotin(1, 36, "Negro", Genero.MASCULINO, 20.0, Marca.TOPPER, TipoSuperficie.INTERIOR);
         tiendaDeCalzado.agregarCalzado(calzado, 10);
 
@@ -39,8 +39,8 @@ public class TestCalzado {
         assertEquals(calzado, encontrado);
     }
 
-    @Test
-    public void queNoSePuedaBuscarCalzadoPorCodigo() {
+    @Test(expected = CalzadoInexistenteException.class)
+    public void queNoSePuedaBuscarCalzadoPorCodigo() throws CalzadoInexistenteException {
         Calzado calzado = crearBotin(1, 36, "Negro", Genero.MASCULINO, 20.0, Marca.TOPPER, TipoSuperficie.INTERIOR);
         tiendaDeCalzado.agregarCalzado(calzado, 10);
 
@@ -49,7 +49,7 @@ public class TestCalzado {
     }
 
     @Test
-    public void queAlbuscarCalzadoPorCodigoDevuelvaElPrecioDelMismo() {
+    public void queAlbuscarCalzadoPorCodigoDevuelvaElPrecioDelMismo() throws CalzadoInexistenteException {
         Calzado calzado = crearBotin(1, 36, "Negro", Genero.MASCULINO, 20.0, Marca.TOPPER, TipoSuperficie.INTERIOR);
         tiendaDeCalzado.agregarCalzado(calzado, 10);
 
@@ -61,7 +61,7 @@ public class TestCalzado {
     public void queSePuedaOrdenarLosBotinesSegunElTalleDeFormaAscendente() {
         Calzado botin1 = crearBotin(1001, 39, "Negro", Genero.MASCULINO, 20.0, Marca.TOPPER, TipoSuperficie.INTERIOR);
         Calzado botin2 = crearBotin(1002, 40, "Rojo", Genero.FEMENINO, 30.0, Marca.TOPPER, TipoSuperficie.SUELO_FIRME);
-        Calzado botin3 = crearBotin(1003, 35, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoSuperficie.SALON);
+        Calzado botin3 = crearBotin(1003, 35, "Blanco", Genero.X, 50.0, Marca.JOHN_FOOS, TipoSuperficie.INTERIOR);
 
         tiendaDeCalzado.agregarCalzado(botin1, 2);
         tiendaDeCalzado.agregarCalzado(botin2, 2);
@@ -113,7 +113,7 @@ public class TestCalzado {
         tiendaDeCalzado.agregarCalzado(running1, 1);
         tiendaDeCalzado.agregarCalzado(running2, 1);
 
-        List<Calzado> runnings = tiendaDeCalzado.obtenerTodosLosRunnings();
+        List<Calzado> runnings = tiendaDeCalzado.obtenerTodosLosRunning();
         assertEquals(2, runnings.size());
         assertTrue(runnings.contains(running1));
         assertTrue(runnings.contains(running2));
@@ -141,7 +141,7 @@ public class TestCalzado {
         tiendaDeCalzado.agregarCalzado(botin1, 1);
         tiendaDeCalzado.agregarCalzado(botin2, 1);
 
-        List<Calzado> botines = tiendaDeCalzado.obtenerTodosLosBotines();
+        List<Calzado> botines = tiendaDeCalzado.obtenerTodosLosBotin();
         assertEquals(2, botines.size());
         assertTrue(botines.contains(botin1));
         assertTrue(botines.contains(botin2));
