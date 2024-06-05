@@ -1,6 +1,7 @@
 package ar.edu.unlam.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -476,12 +477,35 @@ public class Test {
 	
 	@org.junit.Test
 	public void queNoSePuedaVenderMasDelStock() {
-		
+		Cliente cliente = new Cliente("Ana", 342, 42, Genero.FEMENINO, ModoDePago.EFECTIVO);
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+	    Calzado calzado = new Botin(1, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_FIRME);
+	 
+	    tiendaDeCalzado.agregarCalzado(calzado, 5);
+	    Boolean ventaExitosa = tiendaDeCalzado.venderCalzado(cliente, calzado, 6, empleado);
+	    
+	    assertFalse(ventaExitosa);
+	    assertEquals(5, tiendaDeCalzado.obtenerCantidadDeParesTotalesDeLaTienda().intValue());
 	}
 	
 	@org.junit.Test
 	public void obtenerListaDeClientesDeEmpleadoOrdenadoPorParametro() {
-		
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+	    Cliente cliente1 = new Cliente("Ana", 342, 42, Genero.FEMENINO, ModoDePago.EFECTIVO);
+	    Cliente cliente2 = new Cliente("Maria", 342, 42, Genero.X, ModoDePago.DEBITO);
+	    Cliente cliente3 = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.CREDITO);
+
+	    empleado.añadirCliente(cliente1);
+	    empleado.añadirCliente(cliente2);
+	    empleado.añadirCliente(cliente3);
+	    
+	    List<Cliente> clientesOrdenados = empleado.obtenerClientesOrdenadosPorNombre();
+
+	    assertEquals(cliente1, clientesOrdenados.get(0));
+	    assertEquals(cliente3, clientesOrdenados.get(1));
+	    assertEquals(cliente2, clientesOrdenados.get(2));
 	}
 	
 	@org.junit.Test
@@ -552,8 +576,7 @@ public class Test {
 	}
 
 	// Elias
-
-	// 1
+	
 	@org.junit.Test
 	public void obtenerListaDeCalzadosDelCliente() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);

@@ -1,6 +1,8 @@
 package ar.edu.unlam.dominio;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -203,6 +205,9 @@ public class Empleado {
 		return Objects.equals(legajo, other.legajo);
 	}
 
-	
-	
+	public List<Cliente> obtenerClientesOrdenadosPorNombre() {
+		List<Cliente> clientesOrdenados = new ArrayList<>(this.clientes);
+        Collections.sort(clientesOrdenados, Comparator.comparing(Cliente::getNombre));
+        return clientesOrdenados;
+	}
 }
