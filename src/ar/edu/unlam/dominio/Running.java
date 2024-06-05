@@ -1,8 +1,8 @@
 package ar.edu.unlam.dominio;
 
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.Marca;
-import ar.edu.unalm.enums.TipoDePisada;
+import ar.edu.unlam.enums.Genero;
+import ar.edu.unlam.enums.Marca;
+import ar.edu.unlam.enums.TipoDePisada;
 
 public class Running extends Calzado {
 
@@ -14,5 +14,10 @@ public class Running extends Calzado {
 
 		this.tipoDePisada = tipoPisada;
 	}
-
+	
+	@Override
+	public void incrementarStockCliente(Integer cantidadAComprar) {
+		// TODO Auto-generated method stub
+		this.stockCliente += cantidadAComprar;
+	}
 }

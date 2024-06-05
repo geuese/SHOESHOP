@@ -2,9 +2,9 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
-import ar.edu.unalm.enums.Categoria;
-import ar.edu.unalm.enums.TipoContrato;
-import ar.edu.unalm.enums.TipoDeEmpleado;
+import ar.edu.unlam.enums.Categoria;
+import ar.edu.unlam.enums.TipoContrato;
+import ar.edu.unlam.enums.TipoDeEmpleado;
 
 public class Empleado   {
 
@@ -33,9 +33,6 @@ public class Empleado   {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
-
 
 	public TipoContrato getModalidadDeContratacion() {
 		return modalidadDeContratacion;
@@ -66,7 +63,7 @@ public class Empleado   {
 	}
 
 	public void setAntiguedad(Integer antiguedad) {
-		
+
 		this.antiguedad = antiguedad;
 	}
 
@@ -86,19 +83,16 @@ public class Empleado   {
 		this.sueldo = sueldo;
 	}
 
-	
-
 	public TipoContrato getTipoContrato() {
 
 		return this.modalidadDeContratacion;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(antiguedad, categoria, legajo, modalidadDeContratacion, nombre, sueldo, tipoDeEmpleado);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -114,7 +108,5 @@ public class Empleado   {
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(sueldo, other.sueldo)
 				&& tipoDeEmpleado == other.tipoDeEmpleado;
 	}
-
-	
 
 }

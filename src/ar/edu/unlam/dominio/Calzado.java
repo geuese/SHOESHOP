@@ -2,18 +2,19 @@ package ar.edu.unlam.dominio;
 
 import java.util.Objects;
 
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.Marca;
+import ar.edu.unlam.enums.Genero;
+import ar.edu.unlam.enums.Marca;
 
 public abstract class Calzado implements Comparable<Calzado> {
 
-	protected Integer idCalzado;
-	protected Integer talle;
-	protected String color;
-	protected Genero genero;
-	protected Double precio;
-	protected Marca marca;
-	protected Integer stock;
+	private Integer idCalzado;
+	private Integer talle;
+	private String color;
+	private Genero genero;
+	private Double precio;
+	private Marca marca;
+	private Integer stock;
+	protected Integer stockCliente;
 
 	public Calzado(Integer id, Integer talle, String color, Genero genero, Double precio, Marca marca) {
 
@@ -24,6 +25,7 @@ public abstract class Calzado implements Comparable<Calzado> {
 		this.precio = precio;
 		this.marca = marca;
 		this.stock = 0;
+		this.stockCliente = 0;
 	}
 
 	public Integer getID() {
@@ -118,5 +120,16 @@ public abstract class Calzado implements Comparable<Calzado> {
 	public int compareTo(Calzado o) {
 		return this.idCalzado.compareTo(o.getIdCalzado());
 	}
+
+	public int getStockCliente() {
+		return this.stockCliente;
+	}
+
+	public void setStockCliente(Integer cantidadAComprar) {
+
+		this.stockCliente = cantidadAComprar;
+	}
+
+	public abstract void incrementarStockCliente(Integer cantidadAComprar);
 
 }
