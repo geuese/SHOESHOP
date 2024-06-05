@@ -6,7 +6,7 @@ import ar.edu.unalm.enums.Categoria;
 import ar.edu.unalm.enums.TipoContrato;
 import ar.edu.unalm.enums.TipoDeEmpleado;
 
-public class Empleado {
+public class Empleado   {
 
 	private Integer legajo;
 	private String nombre;
@@ -24,7 +24,6 @@ public class Empleado {
 		this.tipoDeEmpleado = tipoDeEmpleado;
 		this.antiguedad = antiguedad;
 		this.categoria = categoria;
-		this.calcularElSueldo();
 	}
 
 	public String getNombre() {
@@ -89,91 +88,11 @@ public class Empleado {
 		return this.modalidadDeContratacion;
 	}
 
-	public void calcularElSueldo() {
-
-		TipoDeEmpleado tipoDeEmpleadoACalcular = this.getTipoDeEmpleado();
-
-		switch (tipoDeEmpleadoACalcular) {
-
-		case CAJERO:
-			sueldoCajero();
-			break;
-
-		case REPOSITOR:
-			sueldoRepositor();
-			break;
-
-		case VENTA_SALON:
-			sueldoVenta();
-			break;
-
-		}
-
-	}
-
-	private Double sueldoCajero() {
-
-		Double sueldoAux = 0.0;
-
-		if (this.getCategoria().equals(Categoria.PART_TIME)) {
-			sueldoAux = 53000.0;
-		} else {
-			sueldoAux = 424500.0;
-
-		}
-
-		calcularSegunContrato(sueldoAux);
-
-		return sueldoAux;
-
-	}
-
-	private Double sueldoRepositor() {
-
-		Double sueldoAux = 0.0;
-
-		if (this.getCategoria().equals(Categoria.PART_TIME)) {
-			sueldoAux = 41000.0;
-		} else {
-			sueldoAux = 204167.0;
-
-		}
-		calcularSegunContrato(sueldoAux);
-
-		return sueldoAux;
-
-	}
-
-	private Double sueldoVenta() {
-
-		Double sueldoAux = 0.0;
-
-		if (this.getCategoria().equals(Categoria.PART_TIME)) {
-			sueldoAux = 81000.0;
-		} else {
-			sueldoAux = 500000.0;
-
-		}
-
-		calcularSegunContrato(sueldoAux);
-		return sueldoAux;
-
-	}
-
-	private void calcularSegunContrato(Double sueldoAux) {
-		switch (this.getModalidadDeContratacion()) {
-		case PASANTIA, PRUEBA:
-			this.sueldo = sueldoAux * 0.50;
-			break;
-		default:
-			this.sueldo = sueldoAux;
-			break;
-		}
-	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(legajo);
+		return Objects.hash(antiguedad, categoria, legajo, modalidadDeContratacion, nombre, sueldo, tipoDeEmpleado);
 	}
 
 	@Override
@@ -185,8 +104,15 @@ public class Empleado {
 		if (getClass() != obj.getClass())
 			return false;
 		Empleado other = (Empleado) obj;
-		return Objects.equals(legajo, other.legajo);
+		return Objects.equals(antiguedad, other.antiguedad) && categoria == other.categoria
+				&& Objects.equals(legajo, other.legajo) && modalidadDeContratacion == other.modalidadDeContratacion
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(sueldo, other.sueldo)
+				&& tipoDeEmpleado == other.tipoDeEmpleado;
 	}
+
+	
+
+
 
 	
 	

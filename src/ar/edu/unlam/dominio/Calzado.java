@@ -5,7 +5,7 @@ import java.util.Objects;
 import ar.edu.unalm.enums.Genero;
 import ar.edu.unalm.enums.Marca;
 
-public class Calzado implements Comparable<Calzado> {
+public abstract class Calzado implements Comparable<Calzado> {
 
 	private Integer idCalzado;
 	private Integer talle;
