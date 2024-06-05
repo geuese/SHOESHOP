@@ -103,13 +103,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 				break;
 			}
 		}
-		
-			return comision;
-		
 
-		
+		return comision;
+
 	}
-
 
 	@Override
 	public Calzado buscarCalzadoPorCodigo(Integer idCalzado) throws CalzadoInexistenteException {
@@ -135,11 +132,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			return calzadoHallado.getPrecio();
 		}
 		throw new CalzadoInexistenteException("Calzado Inexistente");
-
-	}
-
-	public List<Calzado> ordenarTipoDeCalzadoPorTalle() {
-		return null;
 
 	}
 
@@ -188,7 +180,6 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	}
 
-	
 	public void calcularElSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
 
 		Empleado empleadoEncontrado = buscarEmpleado(empleado);
@@ -284,7 +275,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 			sueldoEmpleado = sueldoAux * 0.50;
 			empleado.setSueldo(sueldoEmpleado);
 			break;
-			
+
 		case PRUEBA:
 			sueldoEmpleado = sueldoAux * 0.30;
 			empleado.setSueldo(sueldoEmpleado);
@@ -301,41 +292,36 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		// TODO Auto-generated method stub
 		return this.calzados.size();
 	}
-	
-	
+
 	@Override
 	public Double devolverSueldoDeEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
 		Empleado empleadoBuscado = buscarEmpleado(empleado);
-		
-		
-		if(empleadoBuscado != null) {
+
+		if (empleadoBuscado != null) {
 			return empleadoBuscado.getSueldo();
-			
+
 		}
-		
-		
+
 		throw new EmpleadoNoEncontradoException();
 	}
 
 	@Override
 	public void aplicarComisionCorrespondienteAlEmpleado(Empleado empleado) throws EmpleadoNoEncontradoException {
-		
-		Empleado empleadoBuscado = buscarEmpleado(empleado);
-		
-		if(empleadoBuscado != null) {
-			Double sueldoEmpleado = devolverSueldoDeEmpleado(empleadoBuscado);
-			Double comisionEmpleado = (double)calcularComisionEmpleado(empleadoBuscado);
-			Double sueldoMasComision = sueldoEmpleado + sueldoEmpleado*(comisionEmpleado/100);
-			
-			empleadoBuscado.setSueldo(sueldoMasComision);
-			
-		}
-		
-		
 
-		
-		
+		Empleado empleadoBuscado = buscarEmpleado(empleado);
+
+		if (empleadoBuscado != null) {
+			Double sueldoEmpleado = devolverSueldoDeEmpleado(empleadoBuscado);
+			Double comisionEmpleado = (double) calcularComisionEmpleado(empleadoBuscado);
+			Double sueldoMasComision = sueldoEmpleado + sueldoEmpleado * (comisionEmpleado / 100);
+
+			empleadoBuscado.setSueldo(sueldoMasComision);
+
+		}
+
 	}
+
+	@Override
 	public List<Cliente> obtenerListaDeClientesDeEmpleado(Empleado empleado) {
 
 		List<Cliente> clientesDeEmpleado = new ArrayList<Cliente>();
@@ -346,10 +332,11 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		}
 		return clientesDeEmpleado;
 	}
-	
+
+	@Override
 	public List<Cliente> obtenerClientesOrdenadosPorNombre(Empleado empleado) {
 		List<Cliente> clientesDeEmpleado = obtenerListaDeClientesDeEmpleado(empleado);
-        Collections.sort(clientesDeEmpleado, Comparator.comparing(Cliente::getNombre));
+		Collections.sort(clientesDeEmpleado, Comparator.comparing(Cliente::getNombre));
 		return clientesDeEmpleado;
 	}
 
@@ -369,11 +356,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		for (Calzado c : calzados) {
 			if (c.getID().equals(calzado.getID())) {
 				c.incrementarStock(cantidadDeCalzados);
-				return true; // Se encontro el calzado, se actualizo el stock y se retorna true.
+				return true;
 			}
 		}
-		// Si se recorrio toda la lista y no se encontro el calzado, se agrega uno
-		// nuevo.
+
 		Calzado calzadoNuevo = calzado;
 		calzadoNuevo.setStock(cantidadDeCalzados);
 		calzados.add(calzadoNuevo);
@@ -386,7 +372,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		for (Calzado c : calzados) {
 			if (c.getID().equals(calzado.getID())) {
 				if (c.getStock() < cantidadAVender) {
-					return false; // no hay suficiente stock
+					return false;
 				}
 				c.reducirStock(cantidadAVender);
 
@@ -465,11 +451,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return calzadosDeCliente;
 	}
 
-	// otra forma
 	@Override
 	public TreeSet<Calzado> obtenerlistaDeZapatosDeClienteOrdenadosPorOrdenEspecifico(
 			Comparator<Calzado> OrdenEspecifico, Cliente cliente) {
-		
+
 		TreeSet<Calzado> calzadosDeCliente = new TreeSet<Calzado>(OrdenEspecifico);
 		List<Calzado> calzados = obtenerlistaDeCalzadosDeCliente(cliente);
 
@@ -486,7 +471,4 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		return nombreLocal;
 	}
 
-	
-
-	
 }

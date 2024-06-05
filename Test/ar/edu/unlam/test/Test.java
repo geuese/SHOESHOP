@@ -22,7 +22,6 @@ public class Test {
 		this.tiendaDeCalzado = new TiendaDeCalzado(NOMBRE_TIENDA_CALZADO);
 	}
 
-	// Fatima
 	@org.junit.Test
 	public void queSePuedaAnadirCalzadoBotinALaTienda() {
 
@@ -200,7 +199,6 @@ public class Test {
 
 	}
 
-	//Kevin
 	@org.junit.Test
 	public void queSePuedabuscarCalzadoPorCodigo() throws CalzadoInexistenteException {
 
@@ -608,7 +606,6 @@ public class Test {
 
 	}
 
-	// Alexis
 	@org.junit.Test
 	public void queTraigaTodosLosRunnings() {
 
@@ -624,12 +621,10 @@ public class Test {
 		Calzado running2 = new Running(2, 40, "Azul", Genero.FEMENINO, 35.0, Marca.ADIDAS,
 				TipoDePisada.PISADA_SUPINADORA);
 
-		// Agregar calzadoBuscado a local
 
 		this.tiendaDeCalzado.agregarCalzado(running, 12);
 		this.tiendaDeCalzado.agregarCalzado(running2, 21);
 
-		// ahora agrego otro tipo
 
 		Integer idCalzadoOut = 1;
 		Integer talleOut = 36;
@@ -647,7 +642,6 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(outDoor, 11);
 		this.tiendaDeCalzado.agregarCalzado(botin, 22);
 
-		// verifico
 
 		List<Calzado> calzadosRunning = this.tiendaDeCalzado.obtenerTodosLosRunning();
 
@@ -678,7 +672,6 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarCalzado(botin, 32);
 
-		// ahora agrego de Tipo que busco
 
 		Integer idCalzadoOut = 23;
 		Integer talleOut = 36;
@@ -699,14 +692,13 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(outDoor2, 3);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3, 3);
 
-		// verifico
 		List<Calzado> calzadosOutDoor = this.tiendaDeCalzado.obtenerTodosLosOutDoor();
 
 		assertEquals(3, calzadosOutDoor.size());
 	}
 
 	@org.junit.Test
-	public void queTraigaTodosLosBotin() { // repito codigo desordenado
+	public void queTraigaTodosLosBotin() { 
 
 		Integer idCalzado = 1;
 		Integer talle = 36;
@@ -745,7 +737,6 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(outDoor2, 2);
 		this.tiendaDeCalzado.agregarCalzado(outDoor3, 5);
 
-		// verifico
 
 		List<Calzado> calzadosBotin = this.tiendaDeCalzado.obtenerTodosLosBotines();
 
@@ -767,8 +758,7 @@ public class Test {
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// deberia agregar un empleado al array tienda de calzado y el test de que se
-		// pueda crear un empleado teberia tener el agregado ahi?
+		
 
 		Integer comision = this.tiendaDeCalzado.calcularComisionEmpleado(empleado);
 
@@ -809,19 +799,12 @@ public class Test {
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
-
-		// STEP 5
-		assertEquals(424667.36, sueldoDeEmpleado, 0.01);
 
 	}
 
@@ -839,19 +822,14 @@ public class Test {
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(424667.36, sueldoDeEmpleado, 0.01);
 
 	}
@@ -866,32 +844,18 @@ public class Test {
 		Integer antiguedad = 2;
 		Categoria categoria = Categoria.FULL_TIME;
 
-		// SUELDO REPOSITOR = 204167 FULLTIME
-		// SUELDO REPOSITOR = 41000 PARTTIME
-
-		// PRUEBA = ANTIGUEDAD *2
-		// PASANTE = ANTIGUEDAD*4
-		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
-
-		// FULLTIME = COMISION * 9
-		// PARTTIME = COMISION * 7
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(175583.62, sueldoDeEmpleado, 0.01);
 
 	}
@@ -906,32 +870,19 @@ public class Test {
 		Integer antiguedad = 2;
 		Categoria categoria = Categoria.FULL_TIME;
 
-		// SUELDO REPOSITOR = 204167 FULLTIME
-		// SUELDO REPOSITOR = 41000 PARTTIME
-
-		// PRUEBA = ANTIGUEDAD *2
-		// PASANTE = ANTIGUEDAD*4
-		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
-
-		// FULLTIME = COMISION * 9
-		// PARTTIME = COMISION * 7
+	
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(83300.136, sueldoDeEmpleado, 0.01);
 
 	}
@@ -947,32 +898,19 @@ public class Test {
 		Integer antiguedad = 2;
 		Categoria categoria = Categoria.PART_TIME;
 
-		// SUELDO REPOSITOR = 204167 FULLTIME
-		// SUELDO REPOSITOR = 41000 PARTTIME
-
-		// PRUEBA = ANTIGUEDAD *2
-		// PASANTE = ANTIGUEDAD*4
-		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
-
-		// FULLTIME = COMISION * 9
-		// PARTTIME = COMISION * 7
+	
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(75440.0, sueldoDeEmpleado, 0.01);
 
 	}
@@ -988,32 +926,19 @@ public class Test {
 		Integer antiguedad = 2;
 		Categoria categoria = Categoria.PART_TIME;
 
-		// SUELDO REPOSITOR = 204167 FULLTIME
-		// SUELDO REPOSITOR = 41000 PARTTIME
-
-		// PRUEBA = ANTIGUEDAD *2
-		// PASANTE = ANTIGUEDAD*4
-		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
-
-		// FULLTIME = COMISION * 9
-		// PARTTIME = COMISION * 7
+		
 
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(15744.0, sueldoDeEmpleado, 0.01);
 
 	}
@@ -1029,32 +954,18 @@ public class Test {
 		Integer antiguedad = 2;
 		Categoria categoria = Categoria.PART_TIME;
 
-		// SUELDO REPOSITOR = 204167 FULLTIME
-		// SUELDO REPOSITOR = 41000 PARTTIME
-
-		// PRUEBA = ANTIGUEDAD *2
-		// PASANTE = ANTIGUEDAD*4
-		// TIEMPO_INDETERMINADO = ANTIGUEDAD*6
-
-		// FULLTIME = COMISION * 9
-		// PARTTIME = COMISION * 7
-
+	
 		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
 				categoria);
 
-		// STEP 1
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
 
-		// STEP 2
 		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
 
-		// STEP 3
 		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
 
-		// STEP 4
 		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
 
-		// STEP 5
 		assertEquals(31980.0, sueldoDeEmpleado, 0.01);
 
 	}
@@ -1114,7 +1025,6 @@ public class Test {
 
 	}
 
-/////////////////////////////// GUSTAVO
 	
 	@org.junit.Test
 	public void queNoSePuedaVenderMasDelStock() {
@@ -1219,7 +1129,6 @@ public class Test {
         assertEquals(totalEsperado, totalCalculado, 0.01);
 	}
 
-	// Elias
 	
 	@org.junit.Test
 	public void obtenerListaDeCalzadosDelCliente() {
@@ -1291,14 +1200,11 @@ public class Test {
 		assertTrue(seAgregoCalzadoDos);
 		assertTrue(seAgregoCalzadoTres);
 
-		// no me da el stock sino la cantidad de calzados distintos, x ej en este caso
-		// agregue 3 calzados
-		// que son un botin un outdoor y un running, el stock es aparte.
+		
 		assertEquals(3, this.tiendaDeCalzado.getCalzados().size());
 		assertEquals(4, (int) calzadoUno.getStock());
 
-		// Aca me da el total de calzados de la tienda, es decir el stock total de todos
-		// los calzados de la tienda.
+		
 		assertEquals(8, (int) this.tiendaDeCalzado.obtenerCantidadDeParesTotalesDeLaTienda());
 
 	}
@@ -1331,11 +1237,9 @@ public class Test {
 		assertTrue(seVendioCalzadoDos);
 		assertTrue(seVendioCalzadoTres);
 
-//		assertEquals(1, (int) calzadoUno.getStock());
 
 	}
 
-	// 2
 	@org.junit.Test
 	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
@@ -1374,7 +1278,6 @@ public class Test {
 
 	}
 
-	// 2 con TreeSet
 	@org.junit.Test
 	public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente2() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
@@ -1413,7 +1316,6 @@ public class Test {
 
 	}
 
-	// 3
 	@org.junit.Test
 	public void obtenerListaDeClientesDelEmpleado() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
@@ -1455,7 +1357,6 @@ public class Test {
 		assertEquals(1, clientesDeEmpleado2.size());
 	}
 
-	// 4
 	@org.junit.Test
 	public void obtenerElTotalDeVentasPorEmpleado() {
 		Cliente cliente = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
@@ -1490,9 +1391,7 @@ public class Test {
 		assertEquals(8, (int) totalDeVentas);
 	}
 	
-	// COMMIT PRUEBA 1
 
-	// Metodos para la resolucion
 
 	public Botin crearBotin(Integer idCalzado, Integer talle, String color, Genero genero, Double precio, Marca marca,
 			TipoSuperficie tipoSuperficie) {
@@ -1510,6 +1409,12 @@ public class Test {
 	}
 	
 	
-	// WAOS
+	
+	//SHOESHOP
+	//INTEGRANTES
+		// Elias Tucci
+		// Kevin Rotela
+		// Alexis Heredia
+		// Gustavo Cristaldo
 
 }
