@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -23,8 +22,7 @@ public class Test {
 		this.tiendaDeCalzado = new TiendaDeCalzado(NOMBRE_TIENDA_CALZADO);
 	}
 
-	// prueba de commit
-	// Faa
+	// Fatima
 	@org.junit.Test
 	public void queSePuedaAnadirCalzadoBotinALaTienda() {
 
@@ -39,8 +37,6 @@ public class Test {
 
 		TipoSuperficie tipoSuperficie = TipoSuperficie.INTERIOR;
 		Botin calzado = new Botin(idCalzado, talle, color, genero, precio, marca, tipoSuperficie);
-
-		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(calzado, stock);
 
@@ -87,8 +83,6 @@ public class Test {
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 
-		// Agregar calzado a local
-
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
 
 		assertTrue(calzadoAgregado);
@@ -108,8 +102,6 @@ public class Test {
 
 		TipoDePisada tipoPisada = TipoDePisada.PISADA_NEUTRA;
 		Calzado running = new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
-
-		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(running, stock);
 
@@ -136,8 +128,6 @@ public class Test {
 		TipoDeUso tipoDeUso = TipoDeUso.HIKING;
 
 		Calzado outDoor = new OutDoor(idCalzado, talle, color, genero, precio, marca, tipoDeUso);
-
-		// Agregar calzado a local
 
 		Boolean calzadoAgregado = tiendaDeCalzado.agregarCalzado(outDoor, stock);
 
@@ -1129,7 +1119,7 @@ public class Test {
 	@org.junit.Test
 	public void queNoSePuedaVenderMasDelStock() {
 		Cliente cliente = new Cliente("Ana", 342, 42, Genero.FEMENINO, ModoDePago.EFECTIVO);
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
 	    Calzado calzado = new Botin(1, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_FIRME);
 	 
@@ -1142,17 +1132,20 @@ public class Test {
 	
 	@org.junit.Test
 	public void obtenerListaDeClientesDeEmpleadoOrdenadoPorParametro() {
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Calzado calzado = new Botin(1, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_FIRME);
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
 	    Cliente cliente1 = new Cliente("Ana", 342, 42, Genero.FEMENINO, ModoDePago.EFECTIVO);
 	    Cliente cliente2 = new Cliente("Maria", 342, 42, Genero.X, ModoDePago.DEBITO);
 	    Cliente cliente3 = new Cliente("Jose", 342, 42, Genero.MASCULINO, ModoDePago.CREDITO);
-
-	    empleado.añadirCliente(cliente1);
-	    empleado.añadirCliente(cliente2);
-	    empleado.añadirCliente(cliente3);
 	    
-	    List<Cliente> clientesOrdenados = empleado.obtenerClientesOrdenadosPorNombre();
+	    this.tiendaDeCalzado.agregarCalzado(calzado, 10);
+
+	    tiendaDeCalzado.venderCalzado(cliente1, calzado, 1, empleado);
+	    tiendaDeCalzado.venderCalzado(cliente2, calzado, 2, empleado);
+	    tiendaDeCalzado.venderCalzado(cliente3, calzado, 1, empleado);
+	    
+	    List<Cliente> clientesOrdenados = tiendaDeCalzado.obtenerClientesOrdenadosPorNombre(empleado);
 
 	    assertEquals(cliente1, clientesOrdenados.get(0));
 	    assertEquals(cliente3, clientesOrdenados.get(1));
@@ -1175,7 +1168,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
  
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
  
 		this.tiendaDeCalzado.agregarEmpleado(empleado);

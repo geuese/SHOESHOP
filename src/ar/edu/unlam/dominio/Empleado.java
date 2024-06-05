@@ -1,9 +1,5 @@
 package ar.edu.unlam.dominio;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
 
 import ar.edu.unlam.enums.Categoria;
@@ -92,16 +88,6 @@ public class Empleado   {
 		return this.modalidadDeContratacion;
 	}
 
-	
-
-	public void añadirCliente(Cliente cliente) {
-        this.clientes.add(cliente);
-    }
-	
-	public List<Cliente> getClientes() {
-        return this.clientes;
-    }
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(antiguedad, categoria, legajo, modalidadDeContratacion, nombre, sueldo, tipoDeEmpleado);
@@ -123,9 +109,4 @@ public class Empleado   {
 				&& tipoDeEmpleado == other.tipoDeEmpleado;
 	}
 
-	public List<Cliente> obtenerClientesOrdenadosPorNombre() {
-		List<Cliente> clientesOrdenados = new ArrayList<>(this.clientes);
-        Collections.sort(clientesOrdenados, Comparator.comparing(Cliente::getNombre));
-        return clientesOrdenados;
-	}
 }

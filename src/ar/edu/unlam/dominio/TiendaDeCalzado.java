@@ -1,7 +1,5 @@
 package ar.edu.unlam.dominio;
 
-import ar.edu.unlam.dominio.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,8 +8,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import ar.edu.unalm.enums.Categoria;
-import ar.edu.unalm.enums.TipoDeEmpleado;
+import ar.edu.unlam.enums.Categoria;
+import ar.edu.unlam.enums.TipoDeEmpleado;
 
 public class TiendaDeCalzado implements ITiendaDeCalzado {
 	private String nombreLocal;
@@ -348,6 +346,12 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 		}
 		return clientesDeEmpleado;
 	}
+	
+	public List<Cliente> obtenerClientesOrdenadosPorNombre(Empleado empleado) {
+		List<Cliente> clientesDeEmpleado = obtenerListaDeClientesDeEmpleado(empleado);
+        Collections.sort(clientesDeEmpleado, Comparator.comparing(Cliente::getNombre));
+		return clientesDeEmpleado;
+	}
 
 	@Override
 	public Integer obtenerTotalDeVentasTotalesDeEmpleado(Empleado empleado) {
@@ -476,6 +480,10 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 
 	public List<ClienteCalzado> getClientesCalzados() {
 		return this.clientesCalzados;
+	}
+
+	public String getNombreLocal() {
+		return nombreLocal;
 	}
 
 	
