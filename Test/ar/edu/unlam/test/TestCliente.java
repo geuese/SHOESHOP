@@ -22,7 +22,7 @@ public class TestCliente {
 
     @Test
     public void asignarCalzadosAUnCliente() {
-    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         Calzado calzado = new Running(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
         tiendaDeCalzado.agregarCalzado(calzado, 5);
 
@@ -32,7 +32,7 @@ public class TestCliente {
 
     @Test
     public void calcularElTotalGastadoPorCadaCliente() {
-    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         Calzado calzado1 = new Running(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
         Calzado calzado2 = new Botin(2, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_BLANDO);
         tiendaDeCalzado.agregarCalzado(calzado1, 5);
@@ -46,7 +46,7 @@ public class TestCliente {
 
     @Test
     public void obtenerListaDeCalzadosDelCliente() {
-    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         Calzado calzado = new Running(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
         tiendaDeCalzado.agregarCalzado(calzado, 5);
         
@@ -56,7 +56,7 @@ public class TestCliente {
 
     @Test
     public void queSePuedaVenderCalzadosACliente() {
-    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         Calzado calzado = new Running(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
         tiendaDeCalzado.agregarCalzado(calzado, 5);
 
@@ -66,7 +66,7 @@ public class TestCliente {
 
     @Test
     public void obtenerLosCalzadosPorClienteOrdenadosPorPrecioDescendente() {
-    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+    	Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         Calzado calzado1 = new Running(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
         Calzado calzado2 = new Botin(2, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_BLANDO);
         tiendaDeCalzado.agregarCalzado(calzado1, 5);

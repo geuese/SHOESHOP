@@ -14,12 +14,12 @@ public class TestEmpleado {
     @Before
     public void inicializar() {
         tiendaDeCalzado = new TiendaDeCalzado("ShoesShop");
-        empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+        empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
     }
 
     @Test
     public void calcularComisionDelEmpleado() {
-        Empleado vendedor = new Empleado("Vendedor", TipoContrato.TIEMPO_INDETERMIDADO, 2222, TipoDeEmpleado.VENTA_SALON, 10, Categoria.PART_TIME);
+        Empleado vendedor = new Empleado("Vendedor", TipoContrato.TIEMPO_INDETERMINADO, 2222, TipoDeEmpleado.VENTA_SALON, 10, Categoria.PART_TIME);
         tiendaDeCalzado.agregarEmpleado(vendedor);
         
         Calzado calzado = new Running(1, 42, "Rojo", Genero.FEMENINO, 50.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);
@@ -59,7 +59,7 @@ public class TestEmpleado {
 
     @Test
     public void obtenerElTotalDeVentasPorEmpleado() {
-        Empleado vendedor = new Empleado("Vendedor", TipoContrato.TIEMPO_INDETERMIDADO, 2222, TipoDeEmpleado.VENTA_SALON, 10, Categoria.PART_TIME);
+        Empleado vendedor = new Empleado("Vendedor", TipoContrato.TIEMPO_INDETERMINADO, 2222, TipoDeEmpleado.VENTA_SALON, 10, Categoria.PART_TIME);
         tiendaDeCalzado.agregarEmpleado(vendedor);
         
         Calzado calzado = new Running(1, 42, "Rojo", Genero.FEMENINO, 50.0, Marca.ADIDAS, TipoDePisada.PISADA_NEUTRA);

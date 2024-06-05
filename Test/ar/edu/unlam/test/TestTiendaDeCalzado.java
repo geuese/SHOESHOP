@@ -63,18 +63,28 @@ public class TestTiendaDeCalzado {
 
     @Test
     public void queSePuedaCrearElEmpleado() {
-        Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+        Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
         assertNotNull(empleado);
     }
 
     @Test
     public void queNoSePuedaVenderMasDelStock() {
-        Calzado calzado = crearRunning(1, 42, "Azul", Genero.MASCULINO, 30.0, Marca.ADIDAS, TipoDePisada.PISADA_SUPINADORA);
-        tiendaDeCalzado.agregarCalzado(calzado, 5);
-        Cliente cliente = new Cliente("Juan", 12345678, 42, Genero.MASCULINO, ModoDePago.EFECTIVO);
-        Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMIDADO, 1111, TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+		Cliente cliente = new Cliente("Ana", 342, 42, Genero.FEMENINO, ModoDePago.EFECTIVO);
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
+				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
+		// Crear un objeto Calzado
+	    Calzado calzado = new Botin(1, 42, "Negro", Genero.MASCULINO, 50.0, Marca.NIKE, TipoSuperficie.SUELO_FIRME);
+	    
+	    // Agregar el calzado a la tienda con una cantidad específica en el stock
+	    tiendaDeCalzado.agregarCalzado(calzado, 5); // Añadimos 5 unidades
 
-        Boolean ventaExitosa = tiendaDeCalzado.venderCalzado(cliente, calzado, 1, empleado);
-        assertTrue(ventaExitosa);
-    }
+	    // Intentar vender una cantidad mayor a la disponible en el stock
+	    Boolean ventaExitosa = tiendaDeCalzado.venderCalzado(cliente, calzado, 6, empleado); // Intentamos vender 10 unidades
+
+	    // Verificar que la venta no sea exitosa
+	    assertFalse(ventaExitosa);
+
+	    // Verificar que el stock no haya cambiado
+	    assertEquals(5, tiendaDeCalzado.obtenerCantidadDeParesTotalesDeLaTienda().intValue());
+	}
 }

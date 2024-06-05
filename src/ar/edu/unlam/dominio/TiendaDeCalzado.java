@@ -82,7 +82,7 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 				case PASANTIA:
 					comision = empleado.getAntiguedad() * 4;
 					break;
-				case TIEMPO_INDETERMIDADO:
+				case TIEMPO_INDETERMINADO:
 					comision = empleado.getAntiguedad() * 6;
 					break;
 				}
