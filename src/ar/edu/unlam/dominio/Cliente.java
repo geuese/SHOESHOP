@@ -1,9 +1,11 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.ModoDePago;
+import ar.edu.unlam.enums.Genero;
+import ar.edu.unlam.enums.ModoDePago;
 
 public class Cliente {
 
@@ -12,6 +14,8 @@ public class Cliente {
 	private Integer talle;
 	private Genero genero;
 	private ModoDePago modoDePago;
+	
+	private List<Calzado> calzadosComprados; //gustavo
 
 	public Cliente(String nombre, Integer dni, Integer talle, Genero genero, ModoDePago modoDePago) {
 		this.nombre = nombre;
@@ -19,6 +23,8 @@ public class Cliente {
 		this.talle = talle;
 		this.genero = genero;
 		this.modoDePago = modoDePago;
+		
+		this.calzadosComprados = new ArrayList<>(); //gustavo
 	}
 
 	public String getNombre() {
@@ -77,6 +83,21 @@ public class Cliente {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(talle, other.talle);
+	}
+
+	public void añadirCalzado(Calzado calzado) { //gustavo
+		this.calzadosComprados.add(calzado);	
+	}
+	public List<Calzado> getCalzadosComprados() {
+        return this.calzadosComprados;
+    }
+
+	public double calcularTotalGastado() {
+		double total = 0.0;
+        for (Calzado calzado : calzadosComprados) {
+            total += calzado.getPrecio();
+        }
+        return total;
 	}
 
 }

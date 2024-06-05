@@ -1,8 +1,8 @@
 package ar.edu.unlam.dominio;
 
-import ar.edu.unalm.enums.Genero;
-import ar.edu.unalm.enums.Marca;
-import ar.edu.unalm.enums.TipoSuperficie;
+import ar.edu.unlam.enums.Genero;
+import ar.edu.unlam.enums.Marca;
+import ar.edu.unlam.enums.TipoSuperficie;
 
 public class Botin extends Calzado {
 
@@ -22,6 +22,13 @@ public class Botin extends Calzado {
 
 	public void setTipoSuperficie(TipoSuperficie tipoSuperficie) {
 		this.tipoSuperficie = tipoSuperficie;
+	}
+
+
+	@Override
+	public void incrementarStockCliente(Integer cantidadAComprar) {
+		// TODO Auto-generated method stub
+		this.stockCliente += cantidadAComprar;
 	}
 	
 	
