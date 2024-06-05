@@ -804,6 +804,36 @@ public class Test {
 		assertEquals(0, (int) comision);
 
 	}
+	
+	@org.junit.Test(expected = EmpleadoNoEncontradoException.class)
+	public void queNoSePuedaAplicarLaComisionAlSueldoDelEmpleadoSiEsteNoExiste()
+			throws EmpleadoNoEncontradoException {
+
+		String nombre = "Empleado";
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		Integer legajo = 1111;
+		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
+		Integer antiguedad = 2;
+		Categoria categoria = Categoria.FULL_TIME;
+
+		Empleado empleado = new Empleado(nombre, modalidadDeContratacion, legajo, tipoDeEmpleado, antiguedad,
+				categoria);
+
+		// STEP 1
+
+		// STEP 2
+		this.tiendaDeCalzado.calcularElSueldoDeEmpleado(empleado);
+
+		// STEP 3
+		this.tiendaDeCalzado.aplicarComisionCorrespondienteAlEmpleado(empleado);
+
+		// STEP 4
+		Double sueldoDeEmpleado = this.tiendaDeCalzado.devolverSueldoDeEmpleado(empleado);
+
+		// STEP 5
+		assertEquals(424667.36, sueldoDeEmpleado, 0.01);
+
+	}
 
 	@org.junit.Test
 	public void queSePuedaAplicarLaComisionAlSueldoDelEmpleadoFullTimeTiempoIndeterminado()
