@@ -21,7 +21,7 @@ public class Test {
 	public void init() {
 		this.tiendaDeCalzado = new TiendaDeCalzado(NOMBRE_TIENDA_CALZADO);
 	}
-
+	//prueba de commit
 	// Faa
 	@org.junit.Test
 	public void queSePuedaAnadirCalzadoBotinALaTienda() {
