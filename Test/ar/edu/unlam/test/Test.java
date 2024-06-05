@@ -194,7 +194,7 @@ public class Test {
 	public void queSePuedaCrearElEmpleado() {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -298,7 +298,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorFullTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -312,7 +312,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoRepositorPartTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.REPOSITOR, 5,
 				Categoria.PART_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -378,7 +378,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroFullTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.CAJERO, 5,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -392,7 +392,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoCajeroPartTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.CAJERO, 5,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.CAJERO, 5,
 				Categoria.PART_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -458,7 +458,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaFullTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.VENTA_SALON,
 				5, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -472,7 +472,7 @@ public class Test {
 	public void queSePuedaCalcularElSueldoTotalSegunElTipoDeEmpleadoVentaPartTime()
 			throws EmpleadoNoEncontradoException {
 
-		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINDADO, 2000, TipoDeEmpleado.VENTA_SALON,
+		Empleado empleado = new Empleado("Jose", TipoContrato.TIEMPO_INDETERMINADO, 2000, TipoDeEmpleado.VENTA_SALON,
 				5, Categoria.PART_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -767,7 +767,7 @@ public class Test {
 	public void calcularComisionDelEmpleado() {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -791,7 +791,7 @@ public class Test {
 	public void queNoSePuedaCalcularComisionDeEmpleadoSiEsteNoEstaEnLaTienda() {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -811,7 +811,7 @@ public class Test {
 			throws EmpleadoNoEncontradoException {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 2;
@@ -841,7 +841,7 @@ public class Test {
 			throws EmpleadoNoEncontradoException {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 2;
@@ -952,7 +952,7 @@ public class Test {
 			throws EmpleadoNoEncontradoException {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 2;
@@ -1073,7 +1073,7 @@ public class Test {
 	@org.junit.Test
 	public void queSePuedaAgregarEmpleadoATienda() {
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -1091,7 +1091,7 @@ public class Test {
 	public void queSePuedaEncontrarEmpleadoATienda() throws EmpleadoNoEncontradoException {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -1112,7 +1112,7 @@ public class Test {
 	public void queNoSePuedaEncontrarElEmpleado() throws EmpleadoNoEncontradoException {
 
 		String nombre = "Empleado";
-		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINDADO;
+		TipoContrato modalidadDeContratacion = TipoContrato.TIEMPO_INDETERMINADO;
 		Integer legajo = 1111;
 		TipoDeEmpleado tipoDeEmpleado = TipoDeEmpleado.REPOSITOR;
 		Integer antiguedad = 20;
@@ -1161,7 +1161,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -1242,7 +1242,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, 3);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, 3);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.VENTA_SALON, 20, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -1276,7 +1276,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.VENTA_SALON, 20, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -1316,7 +1316,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.VENTA_SALON, 20, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -1355,9 +1355,9 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.VENTA_SALON, 20, Categoria.FULL_TIME);
-		Empleado empleado2 = new Empleado("non", TipoContrato.TIEMPO_INDETERMINDADO, 234, TipoDeEmpleado.VENTA_SALON,
+		Empleado empleado2 = new Empleado("non", TipoContrato.TIEMPO_INDETERMINADO, 234, TipoDeEmpleado.VENTA_SALON,
 				23, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
@@ -1397,7 +1397,7 @@ public class Test {
 		this.tiendaDeCalzado.agregarCalzado(calzadoDos, cantidadDeCalzados);
 		this.tiendaDeCalzado.agregarCalzado(calzadoTres, cantidadDeCalzados);
 
-		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINDADO, 11113,
+		Empleado empleado = new Empleado("Empleado", TipoContrato.TIEMPO_INDETERMINADO, 11113,
 				TipoDeEmpleado.REPOSITOR, 20, Categoria.FULL_TIME);
 
 		this.tiendaDeCalzado.agregarEmpleado(empleado);
