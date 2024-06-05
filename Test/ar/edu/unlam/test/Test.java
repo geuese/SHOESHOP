@@ -1432,5 +1432,8 @@ public class Test {
 			Marca marca, TipoDePisada tipoPisada) {
 		return new Running(idCalzado, talle, color, genero, precio, marca, tipoPisada);
 	}
+	
+	
+	// WAOS
 
 }

@@ -475,4 +475,8 @@ public class TiendaDeCalzado implements ITiendaDeCalzado {
 	public List<ClienteCalzado> getClientesCalzados() {
 		return this.clientesCalzados;
 	}
+
+	
+
+	
 }
